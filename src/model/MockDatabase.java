@@ -16,7 +16,7 @@ public class MockDatabase implements IDatabase {
 
     @Override
     public boolean checkIfExists(String name) {
-        return userMap.containsKey(name);
+        return userMap.containsKey(name.toLowerCase());
     }
 
     @Override
