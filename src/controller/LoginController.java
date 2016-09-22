@@ -64,6 +64,20 @@ public class LoginController implements ILoginController {
         }
     }
 
+    @FXML
+    public void cancel() {
+        try {
+            Stage stage = (Stage) usernameBox.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/WelcomeScreen.fxml"));
+            Scene scene = new Scene(root);
+
+            stage.setScene(scene);
+            stage.show();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private void sendLoginAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Login Error");
