@@ -16,7 +16,7 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root));
 
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(Main.class.getResource("/view/Welcome.fxml"));
+        loader.setLocation(Main.class.getResource("/view/WelcomeScreen.fxml"));
         loader.load();
         WelcomeScreenController controller = loader.getController();
         controller.setMainApp(this);
