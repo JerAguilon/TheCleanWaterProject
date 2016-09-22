@@ -1,7 +1,11 @@
 package controller;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import sample.Main;
 
 /**
@@ -11,6 +15,9 @@ public class WelcomeScreenController {
 
     /** reference back to mainApplication if needed */
     private Main mainApplication;
+
+    //@FXML
+    //private Button loginButton;
 
     /**
      * allow for calling back to the main application code if necessary
@@ -29,15 +36,30 @@ public class WelcomeScreenController {
 
     }
 
+    @FXML
+    private void initialize() throws Exception {
+        /*System.out.print("in initialize");
+        loginButton.setOnMousePressed(
+                new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                loginButton.requestFocus();
+            }
+        });*/
+    }
+
+    @FXML
+    public void loginButtonPressed(ActionEvent event) throws Exception {
+        mainApplication.hashCode();
+       mainApplication.showLoginScene();
+    }
+
     /**
      * About menu item event handler
      */
     @FXML
     private void handleAboutMenu() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("M3 Individual Project");
-        alert.setHeaderText("About");
-        alert.setContentText("Student Registration with code from Marco Jakob\nWebsite: http://code.makery.ch");
 
         alert.showAndWait();
 

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.WelcomeScreenController">
     <columnConstraints>
         <ColumnConstraints />
     </columnConstraints>
@@ -17,7 +17,7 @@
     <children>
         <Pane prefHeight="400.0" prefWidth="600.0">
             <children>
-                <Button id="loginButton" layoutX="114.0" layoutY="200.0" mnemonicParsing="false" text="Login" />
+                <Button id="loginButton" layoutX="114.0" layoutY="200.0" mnemonicParsing="false" onAction="#loginButtonPressed" text="Login" />
                 <Button id="registerButton" layoutX="391.0" layoutY="200.0" mnemonicParsing="false" text="Register" />
                 <Label layoutX="184.0" layoutY="129.0" text="Click on a button to proceed:" />
             </children></Pane>
