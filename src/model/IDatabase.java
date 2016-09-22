@@ -6,4 +6,5 @@ package model;
 public interface IDatabase {
     boolean checkIfExists(String name);
     void addUser(String name, String password);
+    boolean checkPassword(String name, String password);
 }

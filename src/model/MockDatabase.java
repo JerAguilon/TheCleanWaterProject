@@ -8,6 +8,12 @@ import java.util.*;
 public class MockDatabase implements IDatabase {
     Map<String, String> userMap = new HashMap<String, String>();
 
+    public static MockDatabase mockDatabase = new MockDatabase();
+
+    private MockDatabase(){
+        addUser("testUser", "pw");
+    }
+
     @Override
     public boolean checkIfExists(String name) {
         return userMap.containsKey(name);
@@ -19,6 +25,11 @@ public class MockDatabase implements IDatabase {
             throw new IllegalStateException("Can't add user that already exists");
         }
 
-        userMap.put(name, password);
+        userMap.put(name.toLowerCase(), password);
+    }
+
+    @Override
+    public boolean checkPassword(String name, String password) {
+        return password.equals(userMap.get(name.toLowerCase()));
     }
 }

@@ -1,24 +1,22 @@
-package sample;
+package apploader;
 
 import controller.WelcomeScreenController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/view/Welcome.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/WelcomeScreen.fxml"));
         primaryStage.setTitle("Welcome!");
         primaryStage.setScene(new Scene(root));
 
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(Main.class.getResource("/view/Welcome.fxml"));
+        loader.setLocation(Main.class.getResource("/view/WelcomeScreen.fxml"));
         loader.load();
         WelcomeScreenController controller = loader.getController();
         controller.setMainApp(this);
