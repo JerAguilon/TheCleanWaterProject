@@ -8,6 +8,10 @@ import java.util.*;
 public class MockDatabase implements IDatabase {
     Map<String, String> userMap = new HashMap<String, String>();
 
+    public static MockDatabase mockDatabase = new MockDatabase();
+
+    private MockDatabase(){}
+
     @Override
     public boolean checkIfExists(String name) {
         return userMap.containsKey(name);
@@ -20,5 +24,10 @@ public class MockDatabase implements IDatabase {
         }
 
         userMap.put(name, password);
+    }
+
+    @Override
+    public boolean checkPassword(String name, String password) {
+        return password.equals(userMap.get(name));
     }
 }
