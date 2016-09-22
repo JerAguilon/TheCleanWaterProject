@@ -1,16 +1,25 @@
 package controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import sample.Main;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
+import apploader.Main;
 
 /**
  * Created by Ben Radock on 9/21/2016.
  */
 public class WelcomeScreenController {
 
+    @FXML
+    Button loginButton;
+
     /** reference back to mainApplication if needed */
     private Main mainApplication;
+
 
     /**
      * allow for calling back to the main application code if necessary
@@ -42,5 +51,23 @@ public class WelcomeScreenController {
         alert.showAndWait();
 
     }
+
+    @FXML
+    public void login() {
+        try {
+
+            Stage stage = (Stage) loginButton.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/LoginScreen.fxml"));
+
+            Scene scene = new Scene(root);
+
+            stage.setScene(scene);
+            stage.show();
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

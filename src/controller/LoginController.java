@@ -1,9 +1,11 @@
 package controller;
 
+import controller.interfaces.ILoginController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.MockDatabase;
@@ -18,6 +20,7 @@ public class LoginController implements ILoginController {
     @FXML
     private TextField passwordBox;
 
+    private int attemptCount = 0;
 
     public boolean isLockedOut() {
         return false;
@@ -25,27 +28,52 @@ public class LoginController implements ILoginController {
 
     @FXML
     public void validate() {
+        if (!validateBoxes()) {
+            sendLoginAlert("Please fill in fields appropriately.");
+            return;
+        }
+
+        if (attemptCount == 3) {
+            sendLoginAlert("Attempted logins exceeded. Please register if you haven't.");
+            return;
+        }
+
+
         if (MockDatabase.mockDatabase.checkIfExists(usernameBox.getText())) {
 
             if (MockDatabase.mockDatabase.checkPassword(usernameBox.getText(), passwordBox.getText())) {
-                //TODO: implement logic here
+                try {
+
+                    Stage stage = (Stage) usernameBox.getScene().getWindow();
+                    Parent root = FXMLLoader.load(getClass().getResource("/view/MainScreen.fxml"));
+
+                    Scene scene = new Scene(root);
+
+                    stage.setScene(scene);
+                    stage.show();
+
+                } catch(Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                sendLoginAlert("Password incorrect. Attempted logins left: " + (2 - attemptCount));
+                attemptCount++;
             }
-            //TODO: implement denial here
         } else {
-
+            sendLoginAlert("User doesn't exist.");
         }
+    }
 
+    private void sendLoginAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Login Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Welcome.fxml"));
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            Parent root = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+    private boolean validateBoxes() {
+        return !(usernameBox.getText().equals("") && passwordBox.getText().equals(""));
     }
 
 

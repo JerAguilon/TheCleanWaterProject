@@ -10,7 +10,9 @@ public class MockDatabase implements IDatabase {
 
     public static MockDatabase mockDatabase = new MockDatabase();
 
-    private MockDatabase(){}
+    private MockDatabase(){
+        addUser("testUser", "pw");
+    }
 
     @Override
     public boolean checkIfExists(String name) {
@@ -23,11 +25,11 @@ public class MockDatabase implements IDatabase {
             throw new IllegalStateException("Can't add user that already exists");
         }
 
-        userMap.put(name, password);
+        userMap.put(name.toLowerCase(), password);
     }
 
     @Override
     public boolean checkPassword(String name, String password) {
-        return password.equals(userMap.get(name));
+        return password.equals(userMap.get(name.toLowerCase()));
     }
 }
