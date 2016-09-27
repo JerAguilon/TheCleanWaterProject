@@ -39,9 +39,9 @@ public class LoginController implements ILoginController {
         }
 
 
-        if (MockDatabase.mockDatabase.checkIfExists(usernameBox.getText())) {
+        if (MockDatabase.mockDatabase.getUser(usernameBox.getText()) != null) {
 
-            if (MockDatabase.mockDatabase.checkPassword(usernameBox.getText(), passwordBox.getText())) {
+            if (MockDatabase.mockDatabase.getUser(usernameBox.getText()).PASS_HASH == passwordBox.getText().hashCode()) {
                 try {
 
                     Stage stage = (Stage) usernameBox.getScene().getWindow();

@@ -6,30 +6,33 @@ import java.util.*;
  * Created by jeremy on 9/21/16.
  */
 public class MockDatabase implements IDatabase {
-    Map<String, String> userMap = new HashMap<String, String>();
+    Map<String, User> database = new HashMap<>();
 
     public static MockDatabase mockDatabase = new MockDatabase();
 
     private MockDatabase(){
-        addUser("testUser", "pw");
+
+        Profile profile = new Profile("Test@test.com", "1234", "Sr.");
+        User user = new User("user", "pass".hashCode(), AuthorizationLevel.ADMINISTRATOR, profile);
+        database.put("user", user);
     }
 
     @Override
-    public boolean checkIfExists(String name) {
-        return userMap.containsKey(name.toLowerCase());
+    public User getUser(String name) {
+        return database.get(name);
     }
 
     @Override
-    public void addUser(String name, String password) {
-        if (checkIfExists(name)) {
-            throw new IllegalStateException("Can't add user that already exists");
+    public boolean addUser(String username, int passHash, AuthorizationLevel auth, Profile profile) {
+
+        User newUser =  new User(username, passHash, auth, profile);
+
+        if (getUser(username) == null) {
+            return false;
         }
 
-        userMap.put(name.toLowerCase(), password);
-    }
+        database.put(username, newUser);
 
-    @Override
-    public boolean checkPassword(String name, String password) {
-        return password.equals(userMap.get(name.toLowerCase()));
+        return true;
     }
 }
