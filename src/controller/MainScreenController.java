@@ -1,9 +1,11 @@
 package controller;
 
 import controller.interfaces.IMainScreenController;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 /**
@@ -11,14 +13,18 @@ import javafx.stage.Stage;
  */
 public class MainScreenController implements IMainScreenController {
 
+    @FXML
+    Button logout;
+
     @Override
     public void logout() throws Exception {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            Parent root = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
+            Stage stage = (Stage) logout.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/WelcomeScreen.fxml"));
+
+            Scene scene = new Scene(root);
+
+            stage.setScene(scene);
             stage.show();
         } catch(Exception e) {
             e.printStackTrace();
