@@ -25,5 +25,23 @@ public class User {
         idCount++;
     }
 
+    @Override
+    public boolean equals(Object other) {
+        if (!(other instanceof User)) {
+            return false;
+        }
+
+        User that = (User) other;
+
+        return that.USERNAME.equals(this.USERNAME);
+    }
+
+    @Override
+    public int hashCode() {
+        return this.USERNAME.hashCode();
+    }
+
+
+
 
 }
