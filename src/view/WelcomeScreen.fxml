@@ -18,7 +18,7 @@
         <Pane prefHeight="400.0" prefWidth="600.0">
             <children>
                 <Button fx:id="loginButton" layoutX="114.0" layoutY="200.0" mnemonicParsing="false" text="Login" onAction="#login"/>
-                <Button id="registerButton" layoutX="391.0" layoutY="200.0" mnemonicParsing="false" text="Register" />
+                <Button fx:id="registerButton" layoutX="391.0" layoutY="200.0" mnemonicParsing="false" text="Register" onAction="#register"/>
                 <Label layoutX="184.0" layoutY="129.0" text="Click on a button to proceed:" />
             </children></Pane>
     </children>

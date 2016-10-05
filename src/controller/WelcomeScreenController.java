@@ -17,6 +17,9 @@ public class WelcomeScreenController {
     @FXML
     Button loginButton;
 
+    @FXML
+    Button registerButton;
+
     /** reference back to mainApplication if needed */
     private Main mainApplication;
 
@@ -58,6 +61,22 @@ public class WelcomeScreenController {
 
             Stage stage = (Stage) loginButton.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/view/LoginScreen.fxml"));
+
+            Scene scene = new Scene(root);
+
+            stage.setScene(scene);
+            stage.show();
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void register() {
+        try {
+            Stage stage = (Stage) registerButton.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/RegistrationScreen.fxml"));
 
             Scene scene = new Scene(root);
 

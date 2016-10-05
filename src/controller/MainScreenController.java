@@ -30,4 +30,19 @@ public class MainScreenController implements IMainScreenController {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void profile() throws Exception {
+        try {
+            Stage stage = (Stage) logout.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/WelcomeScreen.fxml"));
+
+            Scene scene = new Scene(root);
+
+            stage.setScene(scene);
+            stage.show();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
