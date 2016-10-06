@@ -5,4 +5,5 @@ package controller.interfaces;
  */
 public interface IMainScreenController {
     void logout() throws Exception;
+    void profile() throws Exception;
 }
