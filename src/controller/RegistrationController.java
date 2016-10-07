@@ -34,6 +34,10 @@ public class RegistrationController {
     @FXML
     TextField account;
 
+    /**
+     * allow the user to register within the system
+     *
+     * */
     @FXML
     public void register() {
         String username = user.getText();
@@ -69,6 +73,10 @@ public class RegistrationController {
 
     }
 
+    /**
+     * allow the user to go to back to the welcome screen
+     *
+     * */
     @FXML
     public void handleCancelPressed() {
         try {

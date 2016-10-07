@@ -19,6 +19,10 @@ public class MainScreenController implements IMainScreenController {
     @FXML
     Button profileedit;
 
+    /**
+     * allow the user to logout and go to the welcome screen again
+     *
+     * */
     @Override
     public void logout() throws Exception {
         try {
@@ -34,6 +38,10 @@ public class MainScreenController implements IMainScreenController {
         }
     }
 
+    /**
+     * allow the user to go to the profile editing screen
+     *
+     * */
     @Override
     public void profile() throws Exception {
         try {

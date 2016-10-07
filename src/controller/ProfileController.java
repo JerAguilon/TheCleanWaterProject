@@ -35,6 +35,10 @@ public class ProfileController {
     @FXML
     TextField address;
 
+    /**
+     * allow the user to go back to the main screen
+     *
+     * */
     public void handleCancelPressed() {
         try {
             Stage stage = (Stage) home.getScene().getWindow();
@@ -49,6 +53,10 @@ public class ProfileController {
         }
     }
 
+    /**
+     * allow the user to save their personal information to their profile
+     *
+     * */
     public void saveInformation() {
         String username = user.getText();
         String em = email.getText();
