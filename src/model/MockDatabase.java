@@ -6,7 +6,7 @@ import java.util.*;
  * Created by jeremy on 9/21/16.
  */
 public class MockDatabase implements IDatabase {
-    Map<String, User> database = new HashMap<>();
+    public Map<String, User> database = new HashMap<>();
 
     public static MockDatabase mockDatabase = new MockDatabase();
 
@@ -27,7 +27,7 @@ public class MockDatabase implements IDatabase {
 
         User newUser =  new User(username, passHash, auth, profile);
 
-        if (getUser(username) == null) {
+        if (getUser(username) != null) {
             return false;
         }
 

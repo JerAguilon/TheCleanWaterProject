@@ -39,6 +39,7 @@ public class LoginController implements ILoginController {
         }
 
 
+        System.out.println(MockDatabase.mockDatabase.database.size());
         if (MockDatabase.mockDatabase.getUser(usernameBox.getText()) != null) {
 
             if (MockDatabase.mockDatabase.getUser(usernameBox.getText()).PASS_HASH == passwordBox.getText().hashCode()) {

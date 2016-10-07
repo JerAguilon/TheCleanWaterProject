@@ -38,7 +38,7 @@ public class MainScreenController implements IMainScreenController {
     public void profile() throws Exception {
         try {
             Stage stage = (Stage) profileedit.getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource("/view/ProfileScreen.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/view/ProfileEditorScreen.fxml"));
 
             Scene scene = new Scene(root);
 

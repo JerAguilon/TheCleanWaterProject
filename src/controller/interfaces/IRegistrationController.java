@@ -6,7 +6,5 @@ package controller.interfaces;
 public interface IRegistrationController {
     void register();
 
-    void register(String username, String password);
-
     void handleCancelPressed();
 }
