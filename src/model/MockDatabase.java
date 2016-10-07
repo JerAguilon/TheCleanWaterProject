@@ -35,4 +35,39 @@ public class MockDatabase implements IDatabase {
 
         return true;
     }
+
+    @Override
+    public Report getReport(long id) {
+        return null;
+    }
+
+    @Override
+    public Report getReport(Report report) {
+        return null;
+    }
+
+    @Override
+    public boolean addReport(Report report) {
+        return false;
+    }
+
+    @Override
+    public List<Report> getReportList() {
+        return null;
+    }
+
+    @Override
+    public boolean deleteReport(long id) {
+        return false;
+    }
+
+    @Override
+    public boolean deleteReport(Report report) {
+        return false;
+    }
+
+    @Override
+    public boolean modifyReport(Report report, Report newReport) {
+        return false;
+    }
 }
