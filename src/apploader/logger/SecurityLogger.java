@@ -22,8 +22,6 @@ public class SecurityLogger {
 
         String fileName = date.format(timeInfo) + ".txt";
 
-        Properties config = ConfigLoader.CONFIG;
-
         if (ConfigLoader.CONFIG.getProperty("testMode").equals("true")) {
             fileName = "src/apploader/logger/tests/" + fileName;
         } else {
@@ -44,10 +42,14 @@ public class SecurityLogger {
 
             BufferedWriter bw = new BufferedWriter(fw);
 
+            bw.write(currentTime);
+
             for (String item : result) {
                 bw.write("\t" + item);
                 bw.newLine();
             }
+
+            bw.newLine();
 
             bw.close();
 
