@@ -56,4 +56,10 @@ public class SecurityLoggerTest {
         assertTrue(file.exists());
     }
 
+    @Test
+    public void secondEntryOnDate_ShouldNotOverwriteTheFile() {}
+
+    @Test
+    public void entriedData_ShouldMatchExpectedFormat() {}
+
 }
