@@ -1,4 +1,4 @@
-package tests.model;
+package model;
 
 import model.AuthorizationLevel;
 import database.MockDatabase;

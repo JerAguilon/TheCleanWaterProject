@@ -1,4 +1,4 @@
-package tests.logging;
+package logging;
 
 import apploader.logger.SecurityLogger;
 import org.junit.After;
