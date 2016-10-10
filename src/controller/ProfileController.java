@@ -1,5 +1,6 @@
 package controller;
 
+import database.DatabaseFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
-import database.MockDatabase;
 import model.Profile;
 
 /**
@@ -61,7 +61,7 @@ public class ProfileController {
         String personTitle = title.getText();
         String homeAddress = address.getText();
 
-        MockDatabase.mockDatabase.getUser(username).setProfile(new Profile(em, homeAddress, personTitle));
+        DatabaseFactory.getDatabase().getUser(username).setProfile(new Profile(em, homeAddress, personTitle));
 
         System.out.println("Username: " + username);
         System.out.println("Email: " + em);

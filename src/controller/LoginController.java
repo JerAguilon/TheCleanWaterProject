@@ -1,6 +1,8 @@
 package controller;
 
 import controller.interfaces.ILoginController;
+import database.DatabaseFactory;
+import database.IDatabase;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import database.MockDatabase;
 
 /**
  * Created by jeremy on 9/21/16.
@@ -37,10 +38,11 @@ public class LoginController implements ILoginController {
             sendLoginAlert("Attempted logins exceeded. Please register if you haven't.");
             return;
         }
+        IDatabase database = DatabaseFactory.getDatabase();
 
-        if (MockDatabase.mockDatabase.getUser(usernameBox.getText()) != null) {
+        if (database.getUser(usernameBox.getText()) != null) {
 
-            if (MockDatabase.mockDatabase.getUser(usernameBox.getText()).PASS_HASH == passwordBox.getText().hashCode()) {
+            if (database.getUser(usernameBox.getText()).PASS_HASH == passwordBox.getText().hashCode()) {
                 try {
 
                     Stage stage = (Stage) usernameBox.getScene().getWindow();
