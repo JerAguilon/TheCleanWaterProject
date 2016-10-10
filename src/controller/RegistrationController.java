@@ -74,34 +74,38 @@ public class RegistrationController {
         if (username == null || password == null ||
                 confirmPassword == null || address == null ||
                 title == null || email == null) {
-            sendLoginAlert("Please complete all fields before registration");
+            sendAlert("Please complete all fields before registration");
 
             return;
         }
 
         if (username.isEmpty() || password.isEmpty() ||
             address.isEmpty() || title.isEmpty() || email.isEmpty()) {
-            sendLoginAlert("Please complete all fields before registration");
+            sendAlert("Please complete all fields before registration");
 
             return;
         }
 
         if (!password.equals(confirmPassword)) {
-            sendLoginAlert("Passwords don't match");
-
+            sendAlert("Passwords don't match");
             return;
         }
 
         Profile profile = new Profile(email, address, title);
 
-        DatabaseFactory.getDatabase().addUser(username, password.hashCode(), auth, profile);
+        //returns false if a use has already been added
+        if (!DatabaseFactory.getDatabase().addUser(username, password.hashCode(), auth, profile)) {
+            sendAlert("Username already exists. Please select a new username");
+            return;
+        }
 
-        handleCancelPressed();
+
+        returnToWelcomeScreen();
 
 
     }
 
-    private void sendLoginAlert(String message) {
+    private void sendAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Registration Error");
         alert.setHeaderText(null);
@@ -114,7 +118,7 @@ public class RegistrationController {
      *
      * */
     @FXML
-    public void handleCancelPressed() {
+    public void returnToWelcomeScreen() {
         try {
             Stage stage = (Stage) confirmPassword.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/view/WelcomeScreen.fxml"));

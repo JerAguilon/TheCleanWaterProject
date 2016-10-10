@@ -90,7 +90,7 @@
       <AnchorPane prefHeight="38.0" prefWidth="600.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
          <children>
             <Button fx:id="submit" layoutX="524.0" layoutY="11.0" mnemonicParsing="false" onAction="#register" text="submit" />
-            <Button layoutX="14.0" layoutY="6.0" mnemonicParsing="false" onAction="#handleCancelPressed" text="cancel" />
+            <Button layoutX="14.0" layoutY="6.0" mnemonicParsing="false" onAction="#returnToWelcomeScreen" text="cancel" />
          </children></AnchorPane>
    </children>
 </GridPane>
