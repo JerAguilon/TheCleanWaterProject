@@ -1,38 +1,57 @@
 package controller;
 
+import database.DatabaseFactory;
 import javafx.fxml.FXML;
-import controller.interfaces.IRegistrationController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
-import javafx.scene.control.PasswordField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.AuthorizationLevel;
-import model.MockDatabase;
-import javafx.scene.control.Button;
 import model.Profile;
 import model.User;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by AshimaGauba on 10/7/16.
  */
 public class RegistrationController {
     @FXML
-    Button welcreturn;
+    TextField username;
 
     @FXML
-    Button create;
+    PasswordField password;
 
     @FXML
-    TextField user;
+    PasswordField confirmPassword;
 
     @FXML
-    PasswordField pass;
+    TextField email;
 
     @FXML
-    TextField account;
+    ComboBox auth;
+
+    @FXML
+    TextField address;
+
+    @FXML
+    TextField title;
+
+    @FXML
+    public void initialize() {
+        List<String> values = new ArrayList<>();
+
+        auth.getItems().clear();
+        for (AuthorizationLevel auth : AuthorizationLevel.values()) {
+            values.add(auth.toString());
+        }
+        auth.getItems().addAll(values);
+
+        auth.getSelectionModel().select(0);
+    }
+
 
     /**
      * allow the user to register within the system
@@ -40,37 +59,54 @@ public class RegistrationController {
      * */
     @FXML
     public void register() {
-        String username = user.getText();
-        String password = pass.getText();
-        String userAuth = account.getText();
-        AuthorizationLevel author = AuthorizationLevel.USER;
-        if (userAuth.equalsIgnoreCase("Worker")) {
-            author = AuthorizationLevel.WORKER;
-        } else if (userAuth.equalsIgnoreCase("Manager")) {
-            author = AuthorizationLevel.MANAGER;
-        } else if (userAuth.equalsIgnoreCase("Administrator")) {
-            author = AuthorizationLevel.ADMINISTRATOR;
+        String username = this.username.getText();
+        String password = this.password.getText();
+        String confirmPassword = this.confirmPassword.getText();
+        AuthorizationLevel auth = AuthorizationLevel.match(this.auth.getSelectionModel().getSelectedItem().toString());
+        String address = this.address.getText();
+        String title = this.title.getText();
+        String email = this.email.getText();
+
+
+
+
+
+        if (username == null || password == null ||
+                confirmPassword == null || address == null ||
+                title == null || email == null) {
+            sendLoginAlert("Please complete all fields before registration");
+
+            return;
         }
 
-        MockDatabase.mockDatabase.addUser(username, password.hashCode(), author, new Profile("", "", ""));
-        MockDatabase.mockDatabase.getUser(username);
-        System.out.println(MockDatabase.mockDatabase.database.size());
-        System.out.println("Username: " + username);
-        System.out.println("Password: " + password);
-        System.out.println("Authorization Level: " + userAuth);
+        if (username.isEmpty() || password.isEmpty() ||
+            address.isEmpty() || title.isEmpty() || email.isEmpty()) {
+            sendLoginAlert("Please complete all fields before registration");
 
-        try {
-            Stage stage = (Stage) welcreturn.getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource("/view/WelcomeScreen.fxml"));
-
-            Scene scene = new Scene(root);
-
-            stage.setScene(scene);
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
+            return;
         }
 
+        if (!password.equals(confirmPassword)) {
+            sendLoginAlert("Passwords don't match");
+
+            return;
+        }
+
+        Profile profile = new Profile(email, address, title);
+
+        DatabaseFactory.getDatabase().addUser(username, password.hashCode(), auth, profile);
+
+        handleCancelPressed();
+
+
+    }
+
+    private void sendLoginAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Registration Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     /**
@@ -80,7 +116,7 @@ public class RegistrationController {
     @FXML
     public void handleCancelPressed() {
         try {
-            Stage stage = (Stage) welcreturn.getScene().getWindow();
+            Stage stage = (Stage) confirmPassword.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/view/WelcomeScreen.fxml"));
 
             Scene scene = new Scene(root);

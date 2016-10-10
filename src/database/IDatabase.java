@@ -1,4 +1,9 @@
-package model;
+package database;
+
+import model.AuthorizationLevel;
+import model.Profile;
+import model.Report;
+import model.User;
 
 import java.util.List;
 

@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import model.MockDatabase;
+import database.MockDatabase;
 
 /**
  * Created by jeremy on 9/21/16.
@@ -38,8 +38,6 @@ public class LoginController implements ILoginController {
             return;
         }
 
-
-        System.out.println(MockDatabase.mockDatabase.database.size());
         if (MockDatabase.mockDatabase.getUser(usernameBox.getText()) != null) {
 
             if (MockDatabase.mockDatabase.getUser(usernameBox.getText()).PASS_HASH == passwordBox.getText().hashCode()) {
