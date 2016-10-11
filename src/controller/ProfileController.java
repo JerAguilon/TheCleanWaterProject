@@ -1,14 +1,22 @@
 package controller;
 
+import apploader.LocalSession;
 import database.DatabaseFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
+import model.AuthorizationLevel;
 import model.Profile;
+import model.User;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Ashima on 09/30/16.
@@ -22,7 +30,7 @@ public class ProfileController {
     Button save;
 
     @FXML
-    TextField user;
+    TextField username;
 
     @FXML
     TextField email;
@@ -32,6 +40,34 @@ public class ProfileController {
 
     @FXML
     TextField address;
+
+    @FXML
+    Label auth;
+
+    @FXML
+    Label name;
+
+    @FXML
+    public void initialize() {
+        List<String> values = new ArrayList<>();
+
+        /*auth.getItems().clear();
+        for (AuthorizationLevel auth : AuthorizationLevel.values()) {
+            values.add(auth.toString());
+        }
+        auth.getItems().addAll(values);
+
+        auth.getSelectionModel().select(0);*/
+
+        User user = DatabaseFactory.getDatabase().getUser(LocalSession.currentUsername);
+        email.setText(user.PROFILE.EMAIL);
+        title.setText(user.PROFILE.TITLE);
+        address.setText(user.PROFILE.HOME_ADDRESS);
+
+        //auth.getSelectionModel().select(auth.getItems().get(auth.getItems().indexOf(user.AUTH.toString())));
+        auth.setText(user.AUTH.toString());
+        name.setText(user.USERNAME);
+    }
 
     /**
      * allow the user to go back to the main screen
@@ -56,14 +92,13 @@ public class ProfileController {
      *
      * */
     public void saveInformation() {
-        String username = user.getText();
-        String em = email.getText();
+        String em = this.email.getText();
         String personTitle = title.getText();
         String homeAddress = address.getText();
 
-        DatabaseFactory.getDatabase().getUser(username).setProfile(new Profile(em, homeAddress, personTitle));
+        DatabaseFactory.getDatabase().getUser(LocalSession.currentUsername).setProfile(new Profile(em, homeAddress, personTitle));
 
-        System.out.println("Username: " + username);
+        //System.out.println("Username: " + username);
         System.out.println("Email: " + em);
         System.out.println("Title: " + personTitle);
         System.out.println("Address: " + homeAddress);

@@ -1,5 +1,6 @@
 package controller;
 
+import apploader.LocalSession;
 import controller.interfaces.IMainScreenController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,6 +34,9 @@ public class MainScreenController implements IMainScreenController {
 
             stage.setScene(scene);
             stage.show();
+
+            LocalSession.currentUsername = null;
+
         } catch(Exception e) {
             e.printStackTrace();
         }

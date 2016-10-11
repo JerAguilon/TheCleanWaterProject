@@ -1,5 +1,6 @@
 package controller;
 
+import apploader.LocalSession;
 import controller.interfaces.ILoginController;
 import database.DatabaseFactory;
 import database.IDatabase;
@@ -52,6 +53,8 @@ public class LoginController implements ILoginController {
 
                     stage.setScene(scene);
                     stage.show();
+
+                    LocalSession.currentUsername = usernameBox.getText();
 
                 } catch(Exception e) {
                     e.printStackTrace();

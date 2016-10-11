@@ -29,6 +29,10 @@ public class User {
         this.PROFILE = newProfile;
     }
 
+    public void setAuthorizationLevel(AuthorizationLevel auth) {
+        //this.AUTH = auth;
+    }
+
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof User)) {
