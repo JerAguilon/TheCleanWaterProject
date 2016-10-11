@@ -16,6 +16,13 @@ public class MainScreenController implements IMainScreenController {
     @FXML
     Button logout;
 
+    @FXML
+    Button profileedit;
+
+    /**
+     * allow the user to logout and go to the welcome screen again
+     *
+     * */
     @Override
     public void logout() throws Exception {
         try {
@@ -31,11 +38,15 @@ public class MainScreenController implements IMainScreenController {
         }
     }
 
+    /**
+     * allow the user to go to the profile editing screen
+     *
+     * */
     @Override
     public void profile() throws Exception {
         try {
-            Stage stage = (Stage) logout.getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource("/view/WelcomeScreen.fxml"));
+            Stage stage = (Stage) profileedit.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/ProfileEditorScreen.fxml"));
 
             Scene scene = new Scene(root);
 

@@ -55,6 +55,10 @@ public class WelcomeScreenController {
 
     }
 
+    /**
+     * allow the user to go to the login screen
+     *
+     * */
     @FXML
     public void login() {
         try {
@@ -72,6 +76,10 @@ public class WelcomeScreenController {
         }
     }
 
+    /**
+     * allow the user to go to the registration screen
+     *
+     * */
     @FXML
     public void register() {
         try {

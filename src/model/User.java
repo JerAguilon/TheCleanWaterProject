@@ -13,7 +13,7 @@ public class User {
 
     public final AuthorizationLevel AUTH;
 
-    public final Profile PROFILE;
+    public Profile PROFILE;
 
     public User(String username, int passHash, AuthorizationLevel auth, Profile profile) {
         this.ID = idCount;
@@ -23,6 +23,10 @@ public class User {
         this.USERNAME = username;
 
         idCount++;
+    }
+
+    public void setProfile(Profile newProfile) {
+        this.PROFILE = newProfile;
     }
 
     @Override

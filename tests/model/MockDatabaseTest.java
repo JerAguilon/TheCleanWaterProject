@@ -1,7 +1,7 @@
-package tests.model;
+package model;
 
 import model.AuthorizationLevel;
-import model.MockDatabase;
+import database.MockDatabase;
 import model.Profile;
 import model.User;
 import org.junit.Test;

@@ -33,18 +33,10 @@ public class Main extends Application {
         primaryStage.show();*/
     }
 
-    public void showLoginScene() throws Exception {
-        Stage stage = new Stage();
-        stage.setTitle("Login");
-        Parent root = FXMLLoader.load(getClass().getResource("/view/LoginScreen.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        System.out.print("HELLO");
-    }
 
 
     public static void main(String[] args) {
+        ConfigLoader.loadConfig();
         launch(args);
     }
 }
