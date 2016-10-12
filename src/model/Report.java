@@ -20,7 +20,7 @@ public abstract class Report {
 
     public Report(String reporterName, String location) {
         this.dateTime = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         dateColumnProperty.set(dateTime.format(formatter));
 
         this.usernameColumnProperty.set(reporterName);
@@ -42,7 +42,7 @@ public abstract class Report {
 
     public void setDateColumn(LocalDateTime dateTime) {
         this.dateTime = dateTime;
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         dateColumnProperty.set(dateTime.format(formatter));
     }
 
