@@ -29,10 +29,10 @@ public class MockDatabaseReportManager {
     }
 
     public static boolean addReport(Report report) {
-        if (locations.contains(report.getLocation())) {
+        if (locations.contains(report.getLocationColumn())) {
             return false;
         } else {
-            report.setReportID(reportNumber);
+            report.setIdColumn(reportNumber);
             reports.put(reportNumber, report);
             reportNumber++;
             return true;
@@ -51,18 +51,18 @@ public class MockDatabaseReportManager {
     }
 
     public static boolean deleteReport(Report report) {
-        if (reports.containsKey(report.getReportID())) return false;
-        reports.remove(report.getReportID());
+        if (reports.containsKey(report.getIdColumn())) return false;
+        reports.remove(report.getIdColumn());
 
         return true;
     }
 
     public static boolean modifyReport(Report report, Report newReport) {
-        if (!reports.containsKey(report.getReportID())) return false;
+        if (!reports.containsKey(report.getIdColumn())) return false;
 
-        newReport.setReportID(report.getReportID());
-        newReport.setDateTime(report.getDateTime());
-        reports.put(report.getReportID(), newReport);
+        newReport.setIdColumn(report.getIdColumn());
+        newReport.setDateColumn(report.getDateTime());
+        reports.put(report.getIdColumn(), newReport);
 
         return true;
     }
