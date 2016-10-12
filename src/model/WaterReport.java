@@ -2,6 +2,8 @@ package model;
 
 import javafx.beans.property.SimpleStringProperty;
 
+import java.util.List;
+
 /**
  * Created by jeremy on 10/6/16.
  */
@@ -45,6 +47,15 @@ public class WaterReport extends Report {
         this.condition = newCondition;
 
         conditionColumnProperty.set(condition.toString());
+    }
+
+    @Override
+    public List<String> toLogList() {
+        List<String> output = super.toLogList();
+        output.add(String.format("\tType: %s", getTypeColumn()));
+        output.add(String.format("\tCondition: %s", getConditionColumn()));
+        return output;
+
     }
 
 

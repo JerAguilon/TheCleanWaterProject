@@ -1,6 +1,7 @@
 package controller;
 
 import apploader.LocalSession;
+import apploader.logger.SecurityLogger;
 import database.DatabaseFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -64,6 +65,8 @@ public class SubmitWaterReportScreenController {
         } else {
             sendAlert("Something went wrong in adding to the database", Alert.AlertType.ERROR);
         }
+
+        SecurityLogger.log(report.toLogList());
 
         returnToMainScreen();
     }

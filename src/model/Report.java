@@ -2,14 +2,17 @@ package model;
 
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
+import model.interfaces.Loggable;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 /*
  * Created by jeremy on 10/6/16.
  */
-public abstract class Report {
+public abstract class Report implements Loggable {
 
     private LocalDateTime dateTime;
     private final SimpleStringProperty dateColumnProperty = new SimpleStringProperty();
@@ -84,5 +87,19 @@ public abstract class Report {
 
     public int hashCode() {
         return (int) this.idColumnProperty.get();
+    }
+
+    public List<String> toLogList() {
+        List<String> output = new ArrayList<>();
+
+        String ID = String.format("\tReport ID:  %d", getIdColumn());
+        String username = String.format("\tUsername: %s", getUsernameColumn());
+        String location = String.format("\tLocation: %s", getLocationColumn());
+
+        output.add(ID);
+        output.add(username);
+        output.add(location);
+
+        return output;
     }
 }

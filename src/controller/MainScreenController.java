@@ -120,7 +120,6 @@ public class MainScreenController implements IMainScreenController {
         conditionColumn.setCellValueFactory(new PropertyValueFactory<WaterReport, String>("conditionColumn"));
         usernameColumn.setCellValueFactory(new PropertyValueFactory<WaterReport, String>("usernameColumn"));
 
-
         userReportTable.getItems().setAll(reports);
     }
 
