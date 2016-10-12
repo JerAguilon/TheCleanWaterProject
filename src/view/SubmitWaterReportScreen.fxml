@@ -19,5 +19,6 @@
       <Label layoutX="87.0" layoutY="260.0" text="Water Source Type" />
       <ComboBox fx:id="sourceType" layoutX="350.0" layoutY="254.0" prefWidth="150.0" />
       <Label fx:id="reportType" layoutX="360.0" layoutY="106.0" text="Label" />
+      <Button cancelButton="true" layoutX="118.0" layoutY="325.0" mnemonicParsing="false" onAction="#returnToMainScreen" text="Cancel" />
    </children>
 </Pane>

@@ -89,7 +89,8 @@ public class SubmitWaterReportScreenController {
         alert.showAndWait();
     }
 
-    private void returnToMainScreen() {
+    @FXML
+    public void returnToMainScreen() {
         try {
             Stage stage = (Stage) reportType.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/view/MainScreen.fxml"));

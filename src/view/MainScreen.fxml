@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -38,7 +39,11 @@
                <content>
                   <BorderPane prefHeight="125.0" prefWidth="555.0">
                      <bottom>
-                        <Button mnemonicParsing="false" onAction="#submitWaterReport" text="Submit Water Report" BorderPane.alignment="CENTER" />
+                        <FlowPane BorderPane.alignment="CENTER">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#submitWaterReport" text="Submit Water Report" />
+                           </children>
+                        </FlowPane>
                      </bottom>
                      <center>
                         <TableView fx:id="userReportTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
