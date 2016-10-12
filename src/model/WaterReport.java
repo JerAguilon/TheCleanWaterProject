@@ -7,11 +7,12 @@ public class WaterReport extends Report {
     private WaterSourceType type;
     private WaterSourceCondition condition;
 
-    @Override
-    public int compareTo(Report report) {
-        return 0;
-    }
+    public WaterReport(String reporterName, String location, WaterSourceType type, WaterSourceCondition condition) {
+        super(reporterName, location);
+        this.type = type;
+        this.condition = condition;
 
+    }
 
     public WaterSourceCondition getCondition() {
         return condition;

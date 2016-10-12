@@ -1,9 +1,6 @@
 package model;
 
-import model.AuthorizationLevel;
-import database.MockDatabase;
-import model.Profile;
-import model.User;
+import database.mock.MockDatabaseWrapper;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -11,20 +8,20 @@ import static org.junit.Assert.*;
 /**
  * Created by jeremy on 9/27/16.
  */
-public class MockDatabaseTest {
+public class MockDatabaseWrapperTest {
 
     @Test
     public void getUser_WhenAUserDoesntExistNullIsReturned() {
-        assertEquals(null, MockDatabase.mockDatabase.getUser("foobarwijef"));
+        assertEquals(null, MockDatabaseWrapper.mockDatabase.getUser("foobarwijef"));
     }
 
     @Test
     public void getUser_WhenAUserExistsTheUserObjectIsReturned() {
         Profile profile = new Profile("Test@test.com", "1234", "Sr.");
         User user = new User("user", "pass".hashCode(), AuthorizationLevel.ADMINISTRATOR, profile);
-        MockDatabase.mockDatabase.addUser(user.USERNAME, user.PASS_HASH, user.AUTH, user.PROFILE);
+        MockDatabaseWrapper.mockDatabase.addUser(user.USERNAME, user.PASS_HASH, user.AUTH, user.PROFILE);
 
-        assertEquals(user, MockDatabase.mockDatabase.getUser("user"));
+        assertEquals(user, MockDatabaseWrapper.mockDatabase.getUser("user"));
     }
 
     @Test

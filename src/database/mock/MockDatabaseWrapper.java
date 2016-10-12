@@ -1,5 +1,6 @@
-package database;
+package database.mock;
 
+import database.IDatabase;
 import model.*;
 
 import java.util.*;
@@ -7,12 +8,12 @@ import java.util.*;
 /**
  * Created by jeremy on 9/21/16.
  */
-public class MockDatabase implements IDatabase {
+public class MockDatabaseWrapper implements IDatabase {
     public Map<String, User> database = new HashMap<>();
 
-    public static MockDatabase mockDatabase = new MockDatabase();
+    public static MockDatabaseWrapper mockDatabase = new MockDatabaseWrapper();
 
-    private MockDatabase(){
+    private MockDatabaseWrapper(){
 
         Profile profile = new Profile("Test@test.com", "1234", "Sr.");
         User user = new User("user", "pass".hashCode(), AuthorizationLevel.ADMINISTRATOR, profile);
@@ -40,36 +41,36 @@ public class MockDatabase implements IDatabase {
 
     @Override
     public Report getReport(long id) {
-        return null;
+        return MockDatabaseReportManager.getReport(id);
     }
 
     @Override
     public Report getReport(Report report) {
-        return null;
+        return MockDatabaseReportManager.getReport(report);
     }
 
     @Override
     public boolean addReport(Report report) {
-        return false;
+        return MockDatabaseReportManager.addReport(report);
     }
 
     @Override
-    public List<Report> getReportList() {
-        return null;
+    public Collection<Report> getReportList() {
+        return MockDatabaseReportManager.getReportList();
     }
 
     @Override
     public boolean deleteReport(long id) {
-        return false;
+        return MockDatabaseReportManager.deleteReport(id);
     }
 
     @Override
     public boolean deleteReport(Report report) {
-        return false;
+        return MockDatabaseReportManager.deleteReport(report);
     }
 
     @Override
     public boolean modifyReport(Report report, Report newReport) {
-        return false;
+        return MockDatabaseReportManager.modifyReport(report, newReport);
     }
 }

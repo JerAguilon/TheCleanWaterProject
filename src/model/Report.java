@@ -5,12 +5,21 @@ import java.time.LocalDateTime;
 /*
  * Created by jeremy on 10/6/16.
  */
-public abstract class Report implements Comparable<Report> {
+public abstract class Report {
     private LocalDateTime dateTime;
     private long reportID;
     private String reporterName;
     private String location;
 
+    public Report(String reporterName, String location) {
+        this.reporterName = reporterName;
+        this.location = location;
+    }
+
+    //used for lookup in mockdatabase
+    public Report(long ID) {
+        this.reportID = ID;
+    }
 
     public LocalDateTime getDateTime() {
         return dateTime;
@@ -42,5 +51,21 @@ public abstract class Report implements Comparable<Report> {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public boolean equals(Object other) {
+        if (!(other instanceof Report)) {
+            return false;
+        }
+
+        Report that = (Report) other;
+
+        if (this.reportID == that.reportID) return true;
+
+        return false;
+    }
+
+    public int hashCode() {
+        return (int) this.reportID;
     }
 }

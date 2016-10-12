@@ -1,6 +1,7 @@
 package database;
 
 import apploader.ConfigLoader;
+import database.mock.MockDatabaseWrapper;
 
 /**
  * Created by jeremy on 10/9/16.
@@ -11,7 +12,7 @@ public class DatabaseFactory {
 
 
         if (ConfigLoader.CONFIG.getProperty("database").equals("mock")) {
-            return MockDatabase.mockDatabase;
+            return MockDatabaseWrapper.mockDatabase;
         }
 
         //should never get here

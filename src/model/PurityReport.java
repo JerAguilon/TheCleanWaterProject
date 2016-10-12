@@ -5,8 +5,7 @@ package model;
  */
 public class PurityReport extends Report {
 
-    @Override
-    public int compareTo(Report report) {
-        return 0;
+    public PurityReport(String reporterName, String location) {
+        super(reporterName, location);
     }
 }

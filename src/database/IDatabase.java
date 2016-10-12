@@ -5,6 +5,7 @@ import model.Profile;
 import model.Report;
 import model.User;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -17,7 +18,7 @@ public interface IDatabase {
     Report getReport(long id);
     Report getReport(Report report);
     boolean addReport(Report report);
-    List<Report> getReportList();
+    Collection<Report> getReportList();
     boolean deleteReport(long id);
     boolean deleteReport(Report report);
 

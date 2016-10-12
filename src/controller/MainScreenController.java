@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 /**
@@ -19,6 +20,9 @@ public class MainScreenController implements IMainScreenController {
 
     @FXML
     Button profileedit;
+
+    @FXML
+    ListView waterReportList;
 
     /**
      * allow the user to logout and go to the welcome screen again
@@ -60,4 +64,26 @@ public class MainScreenController implements IMainScreenController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    public void submitWaterReport() {
+        try {
+            Stage stage = (Stage) logout.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/SubmitWaterReportScreen.fxml"));
+
+            Scene scene = new Scene(root);
+
+            stage.setScene(scene);
+            stage.show();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void populateWaterReportsList() {
+
+    }
+
+
 }
