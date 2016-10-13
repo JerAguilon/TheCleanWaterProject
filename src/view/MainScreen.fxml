@@ -59,6 +59,9 @@
                      </center></BorderPane>
                </content></Tab>
 
+            <Tab text="Water Availability Map">
+            </Tab>
+
          </tabs>
       </TabPane>
    </children>
