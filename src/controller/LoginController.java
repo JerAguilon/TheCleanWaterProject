@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -20,7 +21,7 @@ public class LoginController implements ILoginController {
     private TextField usernameBox;
 
     @FXML
-    private TextField passwordBox;
+    private PasswordField passwordBox;
 
     private int attemptCount = 0;
 
