@@ -13,28 +13,30 @@ import java.util.Collection;
  * Created by jeremy on 10/17/16.
  */
 public class SqliteDatabaseWrapper implements IDatabase {
-    public SqliteDatabaseWrapper database = new SqliteDatabaseWrapper();
-
+    public static SqliteDatabaseWrapper database = new SqliteDatabaseWrapper();
 
     //FIELDS
     private SqliteLoginManager loginManager;
 
+    private SqliteRegistrationManager registrationManager;
 
+    //TODO: Implement dependency injection
 
     private SqliteDatabaseWrapper() {
         loginManager = new SqliteLoginManager();
+        registrationManager = new SqliteRegistrationManager();
     }
 
 
 
     @Override
     public User getUser(String name) {
-        return null;
+        return registrationManager.getUser(name);
     }
 
     @Override
     public void addUser(User user) throws UserException {
-
+        registrationManager.addUser(user);
     }
 
     @Override
@@ -77,5 +79,4 @@ public class SqliteDatabaseWrapper implements IDatabase {
         return false;
     }
 
-    //TODO: Implement dependency injection
 }

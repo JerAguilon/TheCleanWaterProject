@@ -5,23 +5,8 @@ import java.sql.*;
 /**
  * Created by jeremy on 10/17/16.
  */
-public class SqliteLoginManager {
-    Connection connection;
+public class SqliteLoginManager extends Connectable {
 
-    public SqliteLoginManager () {
-        connection = SqliteConnection.connect();
-        if (connection == null) System.exit(1);
-    }
-
-    public boolean isConnected() {
-        try {
-            return !connection.isClosed();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return false;
-    }
 
     public boolean validate(String username, String pass) throws SQLException {
         PreparedStatement preparedStatement = null;
