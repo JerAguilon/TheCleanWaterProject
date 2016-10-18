@@ -99,7 +99,7 @@ public class SubmitWaterReportScreenController {
             Parent root = FXMLLoader.load(getClass().getResource("/view/MainScreen.fxml"));
 
             Scene scene = new Scene(root);
-
+            scene.getStylesheets().add("css/stylesheet.css");
             stage.setScene(scene);
             stage.show();
         } catch (Exception ex) {

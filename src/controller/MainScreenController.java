@@ -64,7 +64,7 @@ public class MainScreenController implements IMainScreenController {
             Parent root = FXMLLoader.load(getClass().getResource("/view/WelcomeScreen.fxml"));
 
             Scene scene = new Scene(root);
-
+            scene.getStylesheets().add("css/stylesheet.css");
             stage.setScene(scene);
             stage.show();
 
@@ -86,7 +86,7 @@ public class MainScreenController implements IMainScreenController {
             Parent root = FXMLLoader.load(getClass().getResource("/view/ProfileEditorScreen.fxml"));
 
             Scene scene = new Scene(root);
-
+            scene.getStylesheets().add("css/stylesheet.css");
             stage.setScene(scene);
             stage.show();
         } catch(Exception e) {
@@ -101,7 +101,7 @@ public class MainScreenController implements IMainScreenController {
             Parent root = FXMLLoader.load(getClass().getResource("/view/SubmitWaterReportScreen.fxml"));
 
             Scene scene = new Scene(root);
-
+            scene.getStylesheets().add("css/stylesheet.css");
             stage.setScene(scene);
             stage.show();
         } catch(Exception e) {

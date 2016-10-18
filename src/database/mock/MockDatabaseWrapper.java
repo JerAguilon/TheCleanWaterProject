@@ -40,6 +40,11 @@ public class MockDatabaseWrapper implements IDatabase {
     }
 
     @Override
+    public boolean validate(String username, String pass) {
+        return false;
+    }
+
+    @Override
     public Report getReport(long id) {
         return MockDatabaseReportManager.getReport(id);
     }

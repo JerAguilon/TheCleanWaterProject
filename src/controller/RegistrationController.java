@@ -124,7 +124,7 @@ public class RegistrationController {
             Parent root = FXMLLoader.load(getClass().getResource("/view/WelcomeScreen.fxml"));
 
             Scene scene = new Scene(root);
-
+            scene.getStylesheets().add("css/stylesheet.css");
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {

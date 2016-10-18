@@ -67,7 +67,7 @@ public class WelcomeScreenController {
             Parent root = FXMLLoader.load(getClass().getResource("/view/LoginScreen.fxml"));
 
             Scene scene = new Scene(root);
-
+            scene.getStylesheets().add("css/stylesheet.css");
             stage.setScene(scene);
             stage.show();
 
@@ -87,7 +87,7 @@ public class WelcomeScreenController {
             Parent root = FXMLLoader.load(getClass().getResource("/view/RegistrationScreen.fxml"));
 
             Scene scene = new Scene(root);
-
+            scene.getStylesheets().add("css/stylesheet.css");
             stage.setScene(scene);
             stage.show();
 

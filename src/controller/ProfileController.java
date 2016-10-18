@@ -79,7 +79,7 @@ public class ProfileController {
             Parent root = FXMLLoader.load(getClass().getResource("/view/MainScreen.fxml"));
 
             Scene scene = new Scene(root);
-
+            scene.getStylesheets().add("css/stylesheet.css");
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {
@@ -108,8 +108,8 @@ public class ProfileController {
             Parent root = FXMLLoader.load(getClass().getResource("/view/MainScreen.fxml"));
 
             Scene scene = new Scene(root);
-
             stage.setScene(scene);
+            scene.getStylesheets().add("css/stylesheet.css");
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
