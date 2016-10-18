@@ -1,6 +1,7 @@
 package controller;
 
 import database.DatabaseFactory;
+import exceptions.UserException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -68,36 +69,20 @@ public class RegistrationController {
         String email = this.email.getText();
 
 
-
-
-
-        if (username == null || password == null ||
-                confirmPassword == null || address == null ||
-                title == null || email == null) {
-            sendAlert("Please complete all fields before registration");
-
-            return;
-        }
-
-        if (username.isEmpty() || password.isEmpty() ||
-            address.isEmpty() || title.isEmpty() || email.isEmpty()) {
-            sendAlert("Please complete all fields before registration");
-
-            return;
-        }
-
-        if (!password.equals(confirmPassword)) {
-            sendAlert("Passwords don't match");
-            return;
-        }
-
         Profile profile = new Profile(email, address, title);
 
-        //returns false if a use has already been added
-        if (!DatabaseFactory.getDatabase().addUser(username, password.hashCode(), auth, profile)) {
-            sendAlert("Username already exists. Please select a new username");
+        try {
+            User user = new User(username, password, auth, profile);
+            DatabaseFactory.getDatabase().addUser(user);
+
+
+        } catch (UserException e) {
+            sendAlert(e.getMessage());
             return;
         }
+
+
+
 
 
         returnToWelcomeScreen();

@@ -1,6 +1,7 @@
 package model;
 
 import database.mock.MockDatabaseWrapper;
+import exceptions.UserException;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -16,10 +17,10 @@ public class MockDatabaseWrapperTest {
     }
 
     @Test
-    public void getUser_WhenAUserExistsTheUserObjectIsReturned() {
+    public void getUser_WhenAUserExistsTheUserObjectIsReturned() throws UserException {
         Profile profile = new Profile("Test@test.com", "1234", "Sr.");
-        User user = new User("user", "pass".hashCode(), AuthorizationLevel.ADMINISTRATOR, profile);
-        MockDatabaseWrapper.mockDatabase.addUser(user.USERNAME, user.PASS_HASH, user.AUTH, user.PROFILE);
+        User user = new User("user", "pass", AuthorizationLevel.ADMINISTRATOR, profile);
+        MockDatabaseWrapper.mockDatabase.addUser(user);
 
         assertEquals(user, MockDatabaseWrapper.mockDatabase.getUser("user"));
     }

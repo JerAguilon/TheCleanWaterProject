@@ -1,5 +1,6 @@
 package database;
 
+import exceptions.UserException;
 import model.AuthorizationLevel;
 import model.Profile;
 import model.Report;
@@ -13,7 +14,9 @@ import java.util.List;
  */
 public interface IDatabase {
     User getUser(String name);
-    boolean addUser(String username, int passHash, AuthorizationLevel auth, Profile profile);
+
+    void addUser(User user) throws UserException;
+
     boolean validate(String username, String pass);
 
     Report getReport(long id);

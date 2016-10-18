@@ -42,30 +42,30 @@ public class LoginController implements ILoginController {
         }
         IDatabase database = DatabaseFactory.getDatabase();
 
-        if (database.getUser(usernameBox.getText()) != null) {
+        String username = usernameBox.getText();
+        String password = passwordBox.getText();
 
-            if (database.getUser(usernameBox.getText()).PASS_HASH == passwordBox.getText().hashCode()) {
-                try {
+        if (database.validate(username, password)) {
 
-                    Stage stage = (Stage) usernameBox.getScene().getWindow();
-                    Parent root = FXMLLoader.load(getClass().getResource("/view/MainScreen.fxml"));
+            try {
 
-                    Scene scene = new Scene(root);
-                    scene.getStylesheets().add("css/stylesheet.css");
-                    stage.setScene(scene);
-                    stage.show();
+                Stage stage = (Stage) usernameBox.getScene().getWindow();
+                Parent root = FXMLLoader.load(getClass().getResource("/view/MainScreen.fxml"));
 
-                    LocalSession.currentUsername = usernameBox.getText();
+                Scene scene = new Scene(root);
+                scene.getStylesheets().add("css/stylesheet.css");
+                stage.setScene(scene);
+                stage.show();
 
-                } catch(Exception e) {
-                    e.printStackTrace();
-                }
-            } else {
-                sendLoginAlert("Password incorrect. Attempted logins left: " + (2 - attemptCount));
-                attemptCount++;
+                LocalSession.currentUsername = usernameBox.getText();
+
+            } catch(Exception e) {
+                e.printStackTrace();
             }
+
         } else {
-            sendLoginAlert("User doesn't exist.");
+            sendLoginAlert("Invalid username or password. Attempts left: " + (2 - attemptCount));
+            attemptCount++;
         }
     }
 

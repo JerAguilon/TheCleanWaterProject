@@ -1,6 +1,7 @@
 package database.sqlite;
 
 import database.IDatabase;
+import exceptions.UserException;
 import model.AuthorizationLevel;
 import model.Profile;
 import model.Report;
@@ -32,8 +33,8 @@ public class SqliteDatabaseWrapper implements IDatabase {
     }
 
     @Override
-    public boolean addUser(String username, int passHash, AuthorizationLevel auth, Profile profile) {
-        return false;
+    public void addUser(User user) throws UserException {
+
     }
 
     @Override

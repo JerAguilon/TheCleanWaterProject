@@ -1,6 +1,8 @@
 package database.mock;
 
 import database.IDatabase;
+import exceptions.UserException;
+import exceptions.UserExceptionType;
 import model.*;
 
 import java.util.*;
@@ -16,7 +18,13 @@ public class MockDatabaseWrapper implements IDatabase {
     private MockDatabaseWrapper(){
 
         Profile profile = new Profile("Test@test.com", "1234", "Sr.");
-        User user = new User("user", "pass".hashCode(), AuthorizationLevel.ADMINISTRATOR, profile);
+        User user = null;
+        try {
+            user = new User("user", "pass", AuthorizationLevel.ADMINISTRATOR, profile);
+        } catch (UserException e) {
+            e.printStackTrace();
+            return;
+        }
         database.put("user", user);
     }
 
@@ -26,21 +34,27 @@ public class MockDatabaseWrapper implements IDatabase {
     }
 
     @Override
-    public boolean addUser(String username, int passHash, AuthorizationLevel auth, Profile profile) {
-
-        User newUser =  new User(username, passHash, auth, profile);
-
-        if (getUser(username) != null) {
-            return false;
+    public void addUser(User user) throws UserException {
+        User test = getUser(user.USERNAME);
+        if (getUser(user.USERNAME) != null) {
+            throw new UserException("User already exists", UserExceptionType.USEREXISTS);
         }
 
-        database.put(username, newUser);
-
-        return true;
+        database.put(user.USERNAME, user);
     }
 
     @Override
     public boolean validate(String username, String pass) {
+        User user = getUser(username);
+
+        if (user == null) {
+            return false;
+        }
+
+        if (user.PASSWORD.equals(pass)) {
+            return true;
+        }
+
         return false;
     }
 

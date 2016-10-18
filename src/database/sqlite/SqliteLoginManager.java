@@ -23,12 +23,6 @@ public class SqliteLoginManager {
         return false;
     }
 
-    public static void main(String[] args) throws SQLException {
-        SqliteLoginManager lm = new SqliteLoginManager();
-
-        System.out.println(lm.validate("user", "pass"));
-    }
-
     public boolean validate(String username, String pass) throws SQLException {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
