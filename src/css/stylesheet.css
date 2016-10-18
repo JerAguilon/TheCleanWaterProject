@@ -1,0 +1,23 @@
+.root{
+    -fx-font-size: 13pt;
+    -fx-font-family: Georgia, serif;
+    -fx-background: rgb(54, 161, 193);
+    -fx-base:rgb(204, 235, 255);
+}
+
+.button {
+    -fx-text-fill: rgb(0, 0, 0);
+    -fx-border-color: rgb(0, 0, 0);
+    -fx-border-radius: 2;
+    -fx-padding: 5 5 5 5;
+    -fx-effect: dropshadow(one-pass-box , black , 1 , 1 , 1 , 1);
+}
+
+.passwordField {
+
+}
+
+.textField {
+
+}
+
