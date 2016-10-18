@@ -17,6 +17,14 @@ public class User {
 
     public Profile PROFILE;
 
+    public User() {
+        this.ID = -1;
+        this.USERNAME = "test";
+        this.PASSWORD = "test";
+        this.AUTH = AuthorizationLevel.USER;
+        this.PROFILE = new Profile("test", "test", "test");
+    }
+
     public User(String username, String password, AuthorizationLevel auth, Profile profile) throws UserException {
         if (username == null || password == null || auth == null || profile == null) {
 

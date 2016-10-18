@@ -8,8 +8,8 @@ import java.sql.*;
  */
 public class SqliteConnection {
 
-
     public static Connection connect() {
+
         try {
             Class.forName("org.sqlite.JDBC");
             Connection conn = DriverManager.getConnection("jdbc:sqlite:TheCleanWaterProject.sqlite");

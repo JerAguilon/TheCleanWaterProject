@@ -7,6 +7,7 @@ import model.Profile;
 import model.Report;
 import model.User;
 
+import java.sql.SQLException;
 import java.util.Collection;
 
 /**
@@ -36,12 +37,21 @@ public class SqliteDatabaseWrapper implements IDatabase {
 
     @Override
     public void addUser(User user) throws UserException {
-        registrationManager.addUser(user);
+        try {
+            registrationManager.addUser(user);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public boolean validate(String username, String pass) {
-        return false;
+        try {
+            return loginManager.validate(username, pass);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
