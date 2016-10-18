@@ -112,6 +112,7 @@ public class MainScreenController implements IMainScreenController {
     @FXML
     public void populateWaterReportsList() {
         List<Report> reports = getReports();
+        System.out.println(((WaterReport) reports.get(0)).getConditionColumn());
 
         idColumn.setCellValueFactory(new PropertyValueFactory<WaterReport, Long>("idColumn"));
         locationColumn.setCellValueFactory(new PropertyValueFactory<WaterReport, String>("locationColumn"));

@@ -7,11 +7,6 @@ import java.sql.*;
  */
 public class SqliteLoginManager extends Connectable {
 
-    public static void main(String[] args) throws SQLException {
-        SqliteLoginManager lm = new SqliteLoginManager();
-
-    }
-
     public boolean validate(String username, String pass) throws SQLException {
         Connection connection = SqliteConnection.connect();
         PreparedStatement preparedStatement = null;

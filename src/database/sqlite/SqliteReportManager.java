@@ -1,0 +1,110 @@
+package database.sqlite;
+
+import model.Report;
+import model.WaterReport;
+import model.WaterSourceCondition;
+import model.WaterSourceType;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+/**
+ * Created by jeremy on 10/18/16.
+ */
+public class SqliteReportManager extends Connectable {
+
+    public Collection<Report> getReportList() throws SQLException {
+        List<Report> output = new ArrayList<>();
+
+
+        Connection connection = SqliteConnection.connect();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String query = "SELECT * FROM userReports";
+
+        try {
+            preparedStatement = connection.prepareStatement(query);
+
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+
+                String creationDate = resultSet.getString(1);
+                long id  = resultSet.getLong(2);
+                String username = resultSet.getString(3);
+                String location = resultSet.getString(4);
+                String type = resultSet.getString(5);
+                String condition = resultSet.getString(6);
+                System.out.println(type);
+
+                WaterReport report = new WaterReport(creationDate, username,
+                        location, type, condition, id);
+                output.add(report);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            preparedStatement.close();
+            resultSet.close();
+        }
+
+        return output;
+
+
+    }
+
+
+    public boolean addReport(Report report) {
+        try {
+            if (report instanceof WaterReport) {
+                addReport((WaterReport) report);
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return false;
+    }
+
+    public void addReport(WaterReport report) throws SQLException {
+        long  id = report.getIdColumn();
+        String condition = report.getConditionColumn();
+        String type = report.getTypeColumn();
+        String location = report.getLocationColumn();
+        String date = report.getDateColumn();
+        String username = report.getUsernameColumn();
+
+        PreparedStatement preparedStatement = null;
+        String query = "INSERT INTO userReports "
+                + "(creationDate, id, username, location, type, condition) VALUES"
+                + "(?,?,?,?,?,?)";
+        try {
+
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, date);
+            preparedStatement.setLong(2, id);
+            preparedStatement.setString(3, username);
+            preparedStatement.setString(4, location);
+            preparedStatement.setString(5, type);
+            preparedStatement.setString(6, condition);
+
+
+            preparedStatement.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+        }
+
+
+    }
+
+}

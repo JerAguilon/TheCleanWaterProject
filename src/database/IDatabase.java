@@ -1,10 +1,7 @@
 package database;
 
 import exceptions.UserException;
-import model.AuthorizationLevel;
-import model.Profile;
-import model.Report;
-import model.User;
+import model.*;
 
 import java.util.Collection;
 import java.util.List;
@@ -25,7 +22,6 @@ public interface IDatabase {
     Collection<Report> getReportList();
     boolean deleteReport(long id);
     boolean deleteReport(Report report);
-
     boolean modifyReport(Report report, Report newReport);
 
 }

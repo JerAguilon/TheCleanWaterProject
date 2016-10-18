@@ -2,6 +2,7 @@ package model;
 
 import javafx.beans.property.SimpleStringProperty;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -14,6 +15,17 @@ public class WaterReport extends Report {
 
     private final SimpleStringProperty typeColumnProperty = new SimpleStringProperty();
     private final SimpleStringProperty conditionColumnProperty = new SimpleStringProperty();
+
+    public WaterReport(String time, String reporterName,
+                       String location, String type, String condition, long id) {
+        super(time, reporterName, location, id);
+
+        this.type = WaterSourceType.match(type);
+        this.condition = WaterSourceCondition.match(condition);
+
+        this.typeColumnProperty.set(type.toString());
+        this.conditionColumnProperty.set(condition.toString());
+    }
 
     public WaterReport(String reporterName, String location, WaterSourceType type, WaterSourceCondition condition) {
         super(reporterName, location);

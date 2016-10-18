@@ -15,13 +15,6 @@ public class SqliteRegistrationManager extends Connectable {
         throw new NotImplementedException();
     }
 
-    public static void main(String[] args) throws SQLException {
-        User user = new User();
-        SqliteRegistrationManager rm = new SqliteRegistrationManager();
-
-        rm.addUser(user);
-    }
-
     public void addUser(User user) throws SQLException {
 
 

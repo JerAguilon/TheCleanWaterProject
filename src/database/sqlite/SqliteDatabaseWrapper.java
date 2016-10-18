@@ -21,11 +21,13 @@ public class SqliteDatabaseWrapper implements IDatabase {
 
     private SqliteRegistrationManager registrationManager;
 
+    private SqliteReportManager reportManager;
     //TODO: Implement dependency injection
 
     private SqliteDatabaseWrapper() {
         loginManager = new SqliteLoginManager();
         registrationManager = new SqliteRegistrationManager();
+        reportManager = new SqliteReportManager();
     }
 
 
@@ -66,11 +68,17 @@ public class SqliteDatabaseWrapper implements IDatabase {
 
     @Override
     public boolean addReport(Report report) {
-        return false;
+        return reportManager.addReport(report);
     }
 
     @Override
     public Collection<Report> getReportList() {
+        try {
+            return reportManager.getReportList();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         return null;
     }
 
