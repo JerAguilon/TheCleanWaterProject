@@ -2,8 +2,8 @@ Extra Credit
 ====================
 
 COMPLETE
-1 - Singleton
-3 - Factory
+1 - Singleton: Mock database
+3 - Factory: Database selector
 
 ONGOING
 5 - Dependency Injection

@@ -15,3 +15,9 @@ Set-Up (IntelliJ)
 7. Modules (on left pane of project structure) --> paths --> SELECT `inherit project output`
 8. Navigate to src/tests/ and click on any test file. Hover over an @Test annotation, click on the light bulb and `import
     JUnit 4`.
+9. File --> Project Structure --> Dependencies --> `+ symbol` --> jar --> dependencies/sqlite-jdbc-3.14.2.1.jar
+
+Configuring Database
+========
+For testing purposes, use `database=test` in the config.properties file. We are currently using
+SQLite for data persistence, and you can turn it on with `database=sqlite`
