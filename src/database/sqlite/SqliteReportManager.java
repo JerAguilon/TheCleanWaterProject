@@ -94,7 +94,6 @@ public class SqliteReportManager extends Connectable {
         } finally {
             if (preparedStatement != null) {
                 preparedStatement.close();
-                System.out.println("FOO");
             }
         }
 
