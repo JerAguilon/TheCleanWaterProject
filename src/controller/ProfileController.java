@@ -98,11 +98,6 @@ public class ProfileController {
 
         DatabaseFactory.getDatabase().getUser(LocalSession.currentUsername).setProfile(new Profile(em, homeAddress, personTitle));
 
-        //System.out.println("Username: " + username);
-        System.out.println("Email: " + em);
-        System.out.println("Title: " + personTitle);
-        System.out.println("Address: " + homeAddress);
-
         try {
             Stage stage = (Stage) home.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/view/MainScreen.fxml"));

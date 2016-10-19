@@ -35,12 +35,11 @@ public class SqliteReportManager extends Connectable {
                 long id  = resultSet.getLong(2);
                 String username = resultSet.getString(3);
                 String location = resultSet.getString(4);
-                String type = resultSet.getString(5);
-                String condition = resultSet.getString(6);
-                System.out.println(type);
+                int type = resultSet.getInt(5);
+                int condition = resultSet.getInt(6);
 
                 WaterReport report = new WaterReport(creationDate, username,
-                        location, type, condition, id);
+                        location, WaterSourceType.values()[type], WaterSourceCondition.values()[condition], id);
                 output.add(report);
             }
         } catch (Exception e) {
@@ -51,8 +50,6 @@ public class SqliteReportManager extends Connectable {
         }
 
         return output;
-
-
     }
 
 
@@ -71,36 +68,33 @@ public class SqliteReportManager extends Connectable {
     }
 
     public void addReport(WaterReport report) throws SQLException {
-        long  id = report.getIdColumn();
-        String condition = report.getConditionColumn();
-        String type = report.getTypeColumn();
+        int condition = report.getCondition().ordinal();
+        int type = report.getType().ordinal();
         String location = report.getLocationColumn();
         String date = report.getDateColumn();
         String username = report.getUsernameColumn();
 
         PreparedStatement preparedStatement = null;
         String query = "INSERT INTO userReports "
-                + "(creationDate, id, username, location, type, condition) VALUES"
-                + "(?,?,?,?,?,?)";
+                + "(creationDate, username, location, type, condition) VALUES"
+                + "(?,?,?,?,?)";
         try {
-
             preparedStatement = connection.prepareStatement(query);
+
+
             preparedStatement.setString(1, date);
-            preparedStatement.setLong(2, id);
-            preparedStatement.setString(3, username);
-            preparedStatement.setString(4, location);
-            preparedStatement.setString(5, type);
-            preparedStatement.setString(6, condition);
-
-
+            preparedStatement.setString(2, username);
+            preparedStatement.setString(3, location);
+            preparedStatement.setInt(4, type);
+            preparedStatement.setInt(5, condition);
             preparedStatement.executeUpdate();
 
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-
             if (preparedStatement != null) {
                 preparedStatement.close();
+                System.out.println("FOO");
             }
         }
 
