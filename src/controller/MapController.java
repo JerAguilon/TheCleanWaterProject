@@ -1,3 +1,4 @@
+/*
 package controller;
 
 import com.lynden.gmapsfx.GoogleMapView;
@@ -166,3 +167,4 @@ public class MapController implements Initializable, MapComponentInitializedList
         return filteredList;
     }
 }
+*/
