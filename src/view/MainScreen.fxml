@@ -15,12 +15,22 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import com.lynden.gmapsfx.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import com.lynden.gmapsfx.GoogleMapView?>
+
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainScreenController">
    <children>
       <TabPane prefHeight="400.0" prefWidth="600.0">
          <tabs>
-            
+
             <Tab text="Profile Options">
                <content>
                   <GridPane>
@@ -51,19 +61,26 @@
                      </bottom>
                      <center>
                         <TableView fx:id="userReportTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                          <columns>
-                            <TableColumn fx:id="dateColumn" prefWidth="75.0" text="Date" />
-                            <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
+                           <columns>
+                              <TableColumn fx:id="dateColumn" prefWidth="75.0" text="Date" />
+                              <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
                               <TableColumn fx:id="locationColumn" prefWidth="184.0" text="Location" />
                               <TableColumn fx:id="typeColumn" minWidth="0.0" prefWidth="64.0" text="Type" />
                               <TableColumn fx:id="conditionColumn" minWidth="7.0" prefWidth="86.0" text="Condition" />
                               <TableColumn fx:id="usernameColumn" minWidth="0.0" prefWidth="112.0" text="Username" />
-                          </columns>
+                           </columns>
                         </TableView>
                      </center></BorderPane>
                </content></Tab>
 
             <Tab text="Water Availability Map">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <center>
+                        <Button fx:id="mapButton" mnemonicParsing="false" text="Go to Map" BorderPane.alignment="CENTER" onAction="#openMap" />
+                     </center>
+                  </BorderPane>
+               </content>
             </Tab>
 
          </tabs>

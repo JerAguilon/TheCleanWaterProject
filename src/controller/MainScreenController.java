@@ -95,6 +95,21 @@ public class MainScreenController implements IMainScreenController {
     }
 
     @FXML
+    public void openMap() throws Exception {
+        try {
+            Stage stage = (Stage) profileedit.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/MapScreen.fxml"));
+
+            Scene scene = new Scene(root);
+            //scene.getStylesheets().add("css/stylesheet.css");
+            stage.setScene(scene);
+            stage.show();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     public void submitWaterReport() {
         try {
             Stage stage = (Stage) logout.getScene().getWindow();

@@ -18,8 +18,8 @@ public enum WaterSourceCondition {
 
     public static WaterSourceCondition match(String value) {
         if (value.equals("Waste")) return WASTE;
-        if (value.equals("Clear (Treatable")) return TREATABLE_CLEAR;
-        if (value.equals("Muddy (Treatable")) return TREATABLE_MUDDY;
+        if (value.equals("Clear (Treatable)")) return TREATABLE_CLEAR;
+        if (value.equals("Muddy (Treatable)")) return TREATABLE_MUDDY;
         if (value.equals("Potable")) return POTABLE;
 
         return null;
