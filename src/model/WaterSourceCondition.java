@@ -4,7 +4,7 @@ package model;
  * Created by jeremy on 10/6/16.
  */
 public enum WaterSourceCondition {
-    WASTE("Waste"), TREATABLE_CLEAR("Clear (Treatable"), TREATABLE_MUDDY("Muddy (Treatable"), POTABLE("Potable");
+    WASTE("Waste"), TREATABLE_CLEAR("Clear (Treatable)"), TREATABLE_MUDDY("Muddy (Treatable)"), POTABLE("Potable");
 
     private String condition;
 

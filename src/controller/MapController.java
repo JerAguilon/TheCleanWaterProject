@@ -121,7 +121,7 @@ public class MapController implements Initializable, MapComponentInitializedList
             Parent root = FXMLLoader.load(getClass().getResource("/view/MainScreen.fxml"));
 
             Scene scene = new Scene(root);
-            //scene.getStylesheets().add("css/stylesheet.css");
+            scene.getStylesheets().add("css/stylesheet.css");
             stage.setScene(scene);
             stage.show();
         } catch(Exception e) {
