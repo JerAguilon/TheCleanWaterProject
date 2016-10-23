@@ -78,15 +78,13 @@ public class MapController implements Initializable, MapComponentInitializedList
         String type;
         String condition;
 
-        /*line that's supposed to work*/
-        /*for (Report r: markerList) {*/
-            /*line that works rn*/
-            Report r = markerList.get(3);
+        for (Report r : markerList) {
+
             dateTime = r.getDateColumn();
             reporterName = r.getUsernameColumn();
             location = r.getLocationColumn();
-            type = ((WaterReport)r).getType().toString();
-            condition = ((WaterReport)r).getCondition().toString();
+            type = ((WaterReport) r).getType().toString();
+            condition = ((WaterReport) r).getCondition().toString();
 
             List<String> coordinateList = Arrays.asList(location.split(","));
 
@@ -95,10 +93,10 @@ public class MapController implements Initializable, MapComponentInitializedList
             markerOptions1.position(newLoc);
 
             Marker newLocMarker = new Marker(markerOptions1);
-            map.addMarker( newLocMarker );
+            map.addMarker(newLocMarker);
 
             InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
-            infoWindowOptions.content("<h2>Info</h2>"
+            infoWindowOptions.content("<h2>Report Info</h2>"
                     + "Date/Time: + " + dateTime + "<br>"
                     + "Reporter:" + reporterName + "<br>"
                     + "Type:" + type + "<br>"
@@ -107,8 +105,7 @@ public class MapController implements Initializable, MapComponentInitializedList
             InfoWindow newLocInfoWindow = new InfoWindow(infoWindowOptions);
             newLocInfoWindow.open(map, newLocMarker);
 
-        /*line that's supposed to work*/
-        //}
+    }
 
 
 
