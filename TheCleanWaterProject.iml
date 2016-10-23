@@ -27,5 +27,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="com.lynden:GMapsFX:2.0.9" level="project" />
   </component>
 </module>
