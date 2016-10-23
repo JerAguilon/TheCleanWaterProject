@@ -9,6 +9,7 @@ import com.lynden.gmapsfx.service.geocoding.GeocodingService;
 import java.net.URL;
 import java.util.*;
 
+
 import database.DatabaseFactory;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -97,10 +98,10 @@ public class MapController implements Initializable, MapComponentInitializedList
 
             InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
             infoWindowOptions.content("<h2>Report Info</h2>"
-                    + "Date/Time: + " + dateTime + "<br>"
-                    + "Reporter:" + reporterName + "<br>"
-                    + "Type:" + type + "<br>"
-                    + "Condition:" + condition + "<br>");
+                    + "Date/Time: " + dateTime + "<br>"
+                    + "Reporter: " + reporterName + "<br>"
+                    + "Type: " + type + "<br>"
+                    + "Condition: " + condition + "<br>");
 
             InfoWindow newLocInfoWindow = new InfoWindow(infoWindowOptions);
             newLocInfoWindow.open(map, newLocMarker);
