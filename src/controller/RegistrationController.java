@@ -1,6 +1,7 @@
 package controller;
 
 import database.DatabaseFactory;
+import database.responses.DatabaseException;
 import exceptions.UserException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -69,13 +70,19 @@ public class RegistrationController {
         String email = this.email.getText();
 
 
+        if (!password.equals(confirmPassword)) {
+            sendAlert("Password fields don't match");
+            return;
+        }
+
         Profile profile = new Profile(email, address, title);
 
         try {
             User user = new User(username, password, auth, profile);
             DatabaseFactory.getDatabase().addUser(user);
-
-
+        } catch (DatabaseException e) {
+            sendAlert(e.getMessage());
+            return;
         } catch (UserException e) {
             sendAlert(e.getMessage());
             return;

@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by jeremy on 10/6/16.
  */
-public class WaterReport extends Report {
+public class UserReport extends Report {
 
     private WaterSourceType type;
     private WaterSourceCondition condition;
@@ -16,8 +16,8 @@ public class WaterReport extends Report {
     private final SimpleStringProperty typeColumnProperty = new SimpleStringProperty();
     private final SimpleStringProperty conditionColumnProperty = new SimpleStringProperty();
 
-    public WaterReport(String time, String reporterName,
-                       String location, WaterSourceType type, WaterSourceCondition condition, long id) {
+    public UserReport(String time, String reporterName,
+                      String location, WaterSourceType type, WaterSourceCondition condition, long id) {
         super(time, reporterName, location, id);
 
         this.type = type;
@@ -35,7 +35,7 @@ public class WaterReport extends Report {
         return this.type;
     }
 
-    public WaterReport(String reporterName, String location, WaterSourceType type, WaterSourceCondition condition) {
+    public UserReport(String reporterName, String location, WaterSourceType type, WaterSourceCondition condition) {
         super(reporterName, location);
         this.type = type;
         this.condition = condition;

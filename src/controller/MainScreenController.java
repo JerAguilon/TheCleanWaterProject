@@ -3,6 +3,7 @@ package controller;
 import apploader.LocalSession;
 import controller.interfaces.IMainScreenController;
 import database.DatabaseFactory;
+import database.responses.DatabaseException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,12 +14,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Report;
-import model.WaterReport;
+import model.UserReport;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.StringJoiner;
 
 /**
  * Created by Janki on 9/21/2016.
@@ -126,26 +126,31 @@ public class MainScreenController implements IMainScreenController {
 
     @FXML
     public void populateWaterReportsList() {
-        List<Report> reports = getReports();
+        List<UserReport> reports = getReports();
 
-        idColumn.setCellValueFactory(new PropertyValueFactory<WaterReport, Long>("idColumn"));
-        locationColumn.setCellValueFactory(new PropertyValueFactory<WaterReport, String>("locationColumn"));
-        dateColumn.setCellValueFactory(new PropertyValueFactory<WaterReport, String>("dateColumn"));
-        typeColumn.setCellValueFactory(new PropertyValueFactory<WaterReport, String>("typeColumn"));
-        conditionColumn.setCellValueFactory(new PropertyValueFactory<WaterReport, String>("conditionColumn"));
-        usernameColumn.setCellValueFactory(new PropertyValueFactory<WaterReport, String>("usernameColumn"));
+        idColumn.setCellValueFactory(new PropertyValueFactory<UserReport, Long>("idColumn"));
+        locationColumn.setCellValueFactory(new PropertyValueFactory<UserReport, String>("locationColumn"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<UserReport, String>("dateColumn"));
+        typeColumn.setCellValueFactory(new PropertyValueFactory<UserReport, String>("typeColumn"));
+        conditionColumn.setCellValueFactory(new PropertyValueFactory<UserReport, String>("conditionColumn"));
+        usernameColumn.setCellValueFactory(new PropertyValueFactory<UserReport, String>("usernameColumn"));
 
         userReportTable.getItems().setAll(reports);
     }
 
-    private List<Report> getReports() {
-        Collection<Report> fullList = DatabaseFactory.getDatabase().getReportList();
-        List<Report> filteredList = new ArrayList<>();
+    private List<UserReport> getReports() {
+        Collection<UserReport> fullList = null;
+        try {
+            fullList = DatabaseFactory.getDatabase().getReportList();
+        } catch (DatabaseException e) {
+            e.printStackTrace();
+            fullList = new ArrayList<>();
+        }
+        List<UserReport> filteredList = new ArrayList<>();
 
-        for (Report report : fullList) {
-            if (report instanceof WaterReport) {
-                filteredList.add(report);
-            }
+        for (UserReport report : fullList) {
+            filteredList.add(report);
+
         }
 
         return filteredList;

@@ -1,7 +1,7 @@
 package database.sqlite;
 
 import model.Report;
-import model.WaterReport;
+import model.UserReport;
 import model.WaterSourceCondition;
 import model.WaterSourceType;
 
@@ -15,8 +15,8 @@ import java.util.List;
  */
 public class SqliteReportManager extends Connectable {
 
-    public Collection<Report> getReportList() throws SQLException {
-        List<Report> output = new ArrayList<>();
+    public Collection<UserReport> getReportList() throws SQLException {
+        List<UserReport> output = new ArrayList<>();
 
 
         Connection connection = SqliteConnection.connect();
@@ -38,7 +38,7 @@ public class SqliteReportManager extends Connectable {
                 int type = resultSet.getInt(5);
                 int condition = resultSet.getInt(6);
 
-                WaterReport report = new WaterReport(creationDate, username,
+                UserReport report = new UserReport(creationDate, username,
                         location, WaterSourceType.values()[type], WaterSourceCondition.values()[condition], id);
                 output.add(report);
             }
@@ -55,8 +55,8 @@ public class SqliteReportManager extends Connectable {
 
     public boolean addReport(Report report) {
         try {
-            if (report instanceof WaterReport) {
-                addReport((WaterReport) report);
+            if (report instanceof UserReport) {
+                addReport((UserReport) report);
                 return true;
             }
         } catch (SQLException e) {
@@ -67,7 +67,7 @@ public class SqliteReportManager extends Connectable {
         return false;
     }
 
-    public void addReport(WaterReport report) throws SQLException {
+    public void addReport(UserReport report) throws SQLException {
         int condition = report.getCondition().ordinal();
         int type = report.getType().ordinal();
         String location = report.getLocationColumn();

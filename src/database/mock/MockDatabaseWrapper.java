@@ -2,7 +2,6 @@ package database.mock;
 
 import database.IDatabase;
 import exceptions.UserException;
-import exceptions.UserExceptionType;
 import model.*;
 
 import java.util.*;
@@ -37,7 +36,7 @@ public class MockDatabaseWrapper implements IDatabase {
     public void addUser(User user) throws UserException {
         User test = getUser(user.USERNAME);
         if (getUser(user.USERNAME) != null) {
-            throw new UserException("User already exists", UserExceptionType.USEREXISTS);
+            throw new UserException("User already exists");
         }
 
         database.put(user.USERNAME, user);
@@ -69,12 +68,12 @@ public class MockDatabaseWrapper implements IDatabase {
     }
 
     @Override
-    public boolean addReport(Report report) {
+    public boolean addUserReport(UserReport report) {
         return MockDatabaseReportManager.addReport(report);
     }
 
     @Override
-    public Collection<Report> getReportList() {
+    public Collection<UserReport> getReportList() {
         return MockDatabaseReportManager.getReportList();
     }
 
@@ -89,7 +88,7 @@ public class MockDatabaseWrapper implements IDatabase {
     }
 
     @Override
-    public boolean modifyReport(Report report, Report newReport) {
+    public boolean modifyUserReport(UserReport report, UserReport newReport) {
         return MockDatabaseReportManager.modifyReport(report, newReport);
     }
 }

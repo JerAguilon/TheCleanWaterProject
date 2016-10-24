@@ -1,4 +1,3 @@
-/*
 package controller;
 
 import com.lynden.gmapsfx.GoogleMapView;
@@ -12,6 +11,7 @@ import java.util.*;
 
 
 import database.DatabaseFactory;
+import database.responses.DatabaseException;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
@@ -25,7 +25,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Report;
-import model.WaterReport;
+import model.UserReport;
 
 public class MapController implements Initializable, MapComponentInitializedListener {
 
@@ -85,8 +85,8 @@ public class MapController implements Initializable, MapComponentInitializedList
             dateTime = r.getDateColumn();
             reporterName = r.getUsernameColumn();
             location = r.getLocationColumn();
-            type = ((WaterReport) r).getType().toString();
-            condition = ((WaterReport) r).getCondition().toString();
+            type = ((UserReport) r).getType().toString();
+            condition = ((UserReport) r).getCondition().toString();
 
             List<String> coordinateList = Arrays.asList(location.split(","));
 
@@ -156,11 +156,19 @@ public class MapController implements Initializable, MapComponentInitializedList
     }
 
     private List<Report> getReports() {
-        Collection<Report> fullList = DatabaseFactory.getDatabase().getReportList();
+        Collection<UserReport> fullList = null;
+        try {
+            fullList = DatabaseFactory.getDatabase().getReportList();
+        } catch (DatabaseException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Database error upon retrieving report list.");
+            alert.show();
+            return null;
+        }
         List<Report> filteredList = new ArrayList<>();
 
         for (Report report : fullList) {
-            if (report instanceof WaterReport) {
+            if (report instanceof UserReport) {
                 filteredList.add(report);
             }
         }
@@ -168,4 +176,3 @@ public class MapController implements Initializable, MapComponentInitializedList
         return filteredList;
     }
 }
-*/

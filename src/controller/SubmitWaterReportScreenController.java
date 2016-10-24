@@ -3,6 +3,7 @@ package controller;
 import apploader.LocalSession;
 import apploader.logger.SecurityLogger;
 import database.DatabaseFactory;
+import database.responses.DatabaseException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -58,11 +59,16 @@ public class SubmitWaterReportScreenController {
         WaterSourceCondition wsc = WaterSourceCondition.match(sourceCondition.getSelectionModel().getSelectedItem().toString());
 
 
-        Report report = new WaterReport(author.getText(), purityLocation.getText(), wst, wsc);
+        UserReport report = new UserReport(author.getText(), purityLocation.getText(), wst, wsc);
 
-        if (DatabaseFactory.getDatabase().addReport(report)) {
-            sendAlert("Thank you for your submission", Alert.AlertType.CONFIRMATION);
-        } else {
+        try {
+            if (DatabaseFactory.getDatabase().addUserReport(report)) {
+                sendAlert("Thank you for your submission", Alert.AlertType.CONFIRMATION);
+            } else {
+                sendAlert("Something went wrong in adding to the database", Alert.AlertType.ERROR);
+            }
+        } catch (DatabaseException e) {
+            e.printStackTrace();
             sendAlert("Something went wrong in adding to the database", Alert.AlertType.ERROR);
         }
 

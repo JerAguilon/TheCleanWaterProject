@@ -1,6 +1,7 @@
 package database.mock;
 
 import model.Report;
+import model.UserReport;
 
 import java.util.*;
 
@@ -10,7 +11,7 @@ import java.util.*;
 public class MockDatabaseReportManager {
     private static long reportNumber = 0;
 
-    private static Map<Long, Report> reports = new HashMap<>();
+    private static Map<Long, UserReport> reports = new HashMap<>();
     private static Set<String> locations = new HashSet<>();
 
 
@@ -28,7 +29,7 @@ public class MockDatabaseReportManager {
         return null;
     }
 
-    public static boolean addReport(Report report) {
+    public static boolean addReport(UserReport report) {
         if (locations.contains(report.getLocationColumn())) {
             return false;
         } else {
@@ -39,7 +40,7 @@ public class MockDatabaseReportManager {
         }
     }
 
-    public static Collection<Report> getReportList() {
+    public static Collection<UserReport> getReportList() {
         return reports.values();
     }
 
@@ -57,7 +58,7 @@ public class MockDatabaseReportManager {
         return true;
     }
 
-    public static boolean modifyReport(Report report, Report newReport) {
+    public static boolean modifyReport(UserReport report, UserReport newReport) {
         if (!reports.containsKey(report.getIdColumn())) return false;
 
         newReport.setIdColumn(report.getIdColumn());

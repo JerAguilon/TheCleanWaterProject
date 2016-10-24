@@ -5,7 +5,6 @@ package exceptions;
  */
 public class UserException extends Exception {
     String message;
-    UserExceptionType type;
 
 
     public UserException() {
@@ -13,14 +12,8 @@ public class UserException extends Exception {
     }
 
     public UserException(String message) {
-        this.type = UserExceptionType.DEFAULT;
 
         this.message = message;
-    }
-
-    public UserException(String message, UserExceptionType type) {
-        this.message = message;
-        this.type = type;
     }
 
     @Override

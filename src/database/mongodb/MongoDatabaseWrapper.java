@@ -1,10 +1,14 @@
 package database.mongodb;
 
 import database.IDatabase;
+import database.responses.DatabaseException;
 import exceptions.UserException;
 import model.Report;
 import model.User;
+import model.UserReport;
+import org.json.JSONException;
 
+import java.io.IOException;
 import java.util.Collection;
 
 /**
@@ -13,8 +17,14 @@ import java.util.Collection;
 public class MongoDatabaseWrapper implements IDatabase {
     private final String QUERYADDRESS;
 
+    private MongoUserManager userManager;
+    private MongoUserReportManager userReportManager;
+
     public MongoDatabaseWrapper(String queryAddress) {
         this.QUERYADDRESS = queryAddress;
+
+        userManager = new MongoUserManager(queryAddress + "/api/users");
+        userReportManager = new MongoUserReportManager(queryAddress + "/api/userreports");
     }
 
 
@@ -24,13 +34,31 @@ public class MongoDatabaseWrapper implements IDatabase {
     }
 
     @Override
-    public void addUser(User user) throws UserException {
-
+    public void addUser(User user) throws UserException, DatabaseException {
+        try {
+            userManager.addUser(user);
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new DatabaseException(e.getMessage());
+        } catch (JSONException e) {
+            e.printStackTrace();
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
     @Override
-    public boolean validate(String username, String pass) {
-        return false;
+    public boolean validate(String username, String pass) throws DatabaseException {
+        try {
+            userManager.authenticate(username, pass);
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new DatabaseException(e.getMessage());
+        } catch (JSONException e) {
+            e.printStackTrace();
+            throw new DatabaseException(e.getMessage());
+        }
+
+        return true;
     }
 
     @Override
@@ -44,13 +72,31 @@ public class MongoDatabaseWrapper implements IDatabase {
     }
 
     @Override
-    public boolean addReport(Report report) {
-        return false;
+    public boolean addUserReport(UserReport report) throws DatabaseException {
+        try {
+            userReportManager.addUserReport(report);
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new DatabaseException(e.getMessage());
+        } catch (JSONException e) {
+            e.printStackTrace();
+            throw new DatabaseException(e.getMessage());
+        }
+        return true;
     }
 
     @Override
-    public Collection<Report> getReportList() {
-        return null;
+    public Collection<UserReport> getReportList() throws DatabaseException {
+        try {
+            return userReportManager.getReports();
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new DatabaseException(e.getMessage());
+        } catch (JSONException e) {
+            e.printStackTrace();
+            throw new DatabaseException(e.getMessage());
+        }
+        //should never get here
     }
 
     @Override
@@ -64,7 +110,7 @@ public class MongoDatabaseWrapper implements IDatabase {
     }
 
     @Override
-    public boolean modifyReport(Report report, Report newReport) {
+    public boolean modifyUserReport(UserReport report, UserReport newReport) {
         return false;
     }
 }

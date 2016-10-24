@@ -1,10 +1,10 @@
 package database;
 
+import database.responses.DatabaseException;
 import exceptions.UserException;
 import model.*;
 
 import java.util.Collection;
-import java.util.List;
 
 /**
  * Created by jeremy on 9/21/16.
@@ -12,16 +12,16 @@ import java.util.List;
 public interface IDatabase {
     User getUser(String name);
 
-    void addUser(User user) throws UserException;
+    void addUser(User user) throws UserException, DatabaseException;
 
-    boolean validate(String username, String pass);
+    boolean validate(String username, String pass) throws DatabaseException;
 
     Report getReport(long id);
     Report getReport(Report report);
-    boolean addReport(Report report);
-    Collection<Report> getReportList();
+    boolean addUserReport(UserReport report) throws DatabaseException;
+    Collection<UserReport> getReportList() throws DatabaseException;
     boolean deleteReport(long id);
     boolean deleteReport(Report report);
-    boolean modifyReport(Report report, Report newReport);
+    boolean modifyUserReport(UserReport report, UserReport newReport);
 
 }

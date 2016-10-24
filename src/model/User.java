@@ -1,7 +1,6 @@
 package model;
 
 import exceptions.UserException;
-import exceptions.UserExceptionType;
 
 /**
  * Created by jeremy on 9/27/16.
@@ -19,9 +18,9 @@ public class User {
 
     public User() {
         this.ID = -1;
-        this.USERNAME = "test";
+        this.USERNAME = "testadmin";
         this.PASSWORD = "test";
-        this.AUTH = AuthorizationLevel.USER;
+        this.AUTH = AuthorizationLevel.ADMINISTRATOR;
         this.PROFILE = new Profile("test", "test", "test");
     }
 
@@ -33,7 +32,7 @@ public class User {
 
         if (username.isEmpty() || password.isEmpty() || profile.HOME_ADDRESS.isEmpty()
                 || profile.TITLE.isEmpty() || profile.EMAIL.isEmpty()) {
-            throw new UserException("Please complete all fields before registration", UserExceptionType.INVALIDFIELDS);
+            throw new UserException("Please complete all fields before registration");
         }
 
         this.ID = idCount++;

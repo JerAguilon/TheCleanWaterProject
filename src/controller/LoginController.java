@@ -4,6 +4,7 @@ import apploader.LocalSession;
 import controller.interfaces.ILoginController;
 import database.DatabaseFactory;
 import database.IDatabase;
+import database.responses.DatabaseException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -45,27 +46,32 @@ public class LoginController implements ILoginController {
         String username = usernameBox.getText();
         String password = passwordBox.getText();
 
-        if (database.validate(username, password)) {
+        try {
+            if (database.validate(username, password)) {
 
-            try {
+                try {
 
-                Stage stage = (Stage) usernameBox.getScene().getWindow();
-                Parent root = FXMLLoader.load(getClass().getResource("/view/MainScreen.fxml"));
+                    Stage stage = (Stage) usernameBox.getScene().getWindow();
+                    Parent root = FXMLLoader.load(getClass().getResource("/view/MainScreen.fxml"));
 
-                Scene scene = new Scene(root);
-                scene.getStylesheets().add("css/stylesheet.css");
-                stage.setScene(scene);
-                stage.show();
+                    Scene scene = new Scene(root);
+                    scene.getStylesheets().add("css/stylesheet.css");
+                    stage.setScene(scene);
+                    stage.show();
 
-                LocalSession.currentUsername = usernameBox.getText();
+                    LocalSession.currentUsername = usernameBox.getText();
 
-            } catch(Exception e) {
-                e.printStackTrace();
+                } catch(Exception e) {
+                    e.printStackTrace();
+                }
+
+            } else {
+                sendLoginAlert("Invalid username or password. Attempts left: " + (2 - attemptCount));
+                attemptCount++;
             }
-
-        } else {
-            sendLoginAlert("Invalid username or password. Attempts left: " + (2 - attemptCount));
-            attemptCount++;
+        } catch (DatabaseException e) {
+            e.printStackTrace();
+            sendLoginAlert(e.getMessage());
         }
     }
 

@@ -2,10 +2,7 @@ package database.sqlite;
 
 import database.IDatabase;
 import exceptions.UserException;
-import model.AuthorizationLevel;
-import model.Profile;
-import model.Report;
-import model.User;
+import model.*;
 
 import java.sql.SQLException;
 import java.util.Collection;
@@ -67,12 +64,18 @@ public class SqliteDatabaseWrapper implements IDatabase {
     }
 
     @Override
-    public boolean addReport(Report report) {
-        return reportManager.addReport(report);
+    public boolean addUserReport(UserReport report) {
+        try {
+            reportManager.addReport(report);
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
-    public Collection<Report> getReportList() {
+    public Collection<UserReport> getReportList() {
         try {
             return reportManager.getReportList();
         } catch (SQLException e) {
@@ -93,8 +96,7 @@ public class SqliteDatabaseWrapper implements IDatabase {
     }
 
     @Override
-    public boolean modifyReport(Report report, Report newReport) {
+    public boolean modifyUserReport(UserReport report, UserReport newReport) {
         return false;
     }
-
 }
