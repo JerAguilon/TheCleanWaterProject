@@ -21,3 +21,11 @@ Configuring Database
 ========
 For testing purposes, use `database=test` in the config.properties file. We are currently using
 SQLite for data persistence, and you can turn it on with `database=sqlite`
+
+Adding GMaps Dependency
+========
+1. Copy the Gmaps xml file from dependencies into the libraries folder of the project
+2. Navigate to Project Structure under File
+3. Click on the '+' in the right hand corner and Add a Library
+4. Navigate to Add a New Library and add the dependency file.
+5. Apply Changes
