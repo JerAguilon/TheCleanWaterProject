@@ -32,7 +32,7 @@ public class SqliteReportManager extends Connectable {
             while (resultSet.next()) {
 
                 String creationDate = resultSet.getString(1);
-                long id  = resultSet.getLong(2);
+                String id  = resultSet.getString(2);
                 String username = resultSet.getString(3);
                 String location = resultSet.getString(4);
                 int type = resultSet.getInt(5);

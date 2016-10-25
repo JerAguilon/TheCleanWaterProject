@@ -2,6 +2,8 @@ package database.mongodb;
 
 import database.responses.DatabaseException;
 import model.UserReport;
+import model.WaterSourceCondition;
+import model.WaterSourceType;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -11,6 +13,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -60,6 +63,15 @@ public class MongoUserReportManager {
         }
     }
 
+    public static void main(String[] args) throws JSONException, DatabaseException, IOException {
+        MongoUserManager usermanager = new MongoUserManager("http://localhost:8080/api/users");
+        usermanager.authenticate("user", "pass");
+        MongoUserReportManager manager = new MongoUserReportManager("http://localhost:8080/api/userreports");
+
+        manager.getReports();
+
+    }
+
     public Collection<UserReport> getReports() throws IOException, JSONException, DatabaseException {
         String url = this.url + "/view";
         HttpClient client = HttpClientBuilder.create().build();
@@ -68,17 +80,19 @@ public class MongoUserReportManager {
         request.addHeader("x-access-token", TokenKeeper.getToken());
 
         HttpResponse resp = client.execute(request);
+        String output = EntityUtils.toString(resp.getEntity(), "UTF-8");
 
-        JSONObject object = new JSONObject(EntityUtils.toString(resp.getEntity(), "UTF-8"));
+        JSONArray objectArray = new JSONArray(output.trim());
 
-        String message = object.getString("message");
-        boolean result = object.getBoolean("result");
+        for (int i = 0; i < objectArray.length(); i++) {
+            JSONObject object = objectArray.getJSONObject(i);
 
-        if (!result) {
-            throw new DatabaseException(message);
+            String location = object.getString("location");
+            WaterSourceType type = WaterSourceType.values()[object.getInt("waterSourceType")];
+            WaterSourceCondition condition = WaterSourceCondition.values()[object.getInt("waterSourceCondition")];
+            String id = object.getString("_id");
+            String name = object.getString("reporterName");
         }
-
-
         return null;
     }
 }

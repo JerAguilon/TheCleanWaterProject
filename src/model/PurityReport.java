@@ -17,7 +17,7 @@ public class PurityReport extends Report {
     private final SimpleStringProperty conditionColumnProperty = new SimpleStringProperty();
 
     public PurityReport(String time, String reporterName,
-                      String location, WaterPurityCondition condition, long id) {
+                      String location, WaterPurityCondition condition, String id) {
         super(time, reporterName, location, id);
 
         this.condition = condition;

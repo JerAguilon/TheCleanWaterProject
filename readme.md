@@ -29,3 +29,9 @@ Adding GMaps Dependency
 3. Click on the '+' in the right hand corner and Add a Library
 4. Navigate to Add a New Library and add the dependency file.
 5. Apply Changes
+
+Adding Apache Http Components Dependency
+=======
+1. Go to project structure
+2. Go to global libraries
+3. Add dependencies/httpcomponents-client-4.5.2/lib

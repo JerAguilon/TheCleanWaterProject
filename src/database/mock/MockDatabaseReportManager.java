@@ -33,7 +33,7 @@ public class MockDatabaseReportManager {
         if (locations.contains(report.getLocationColumn())) {
             return false;
         } else {
-            report.setIdColumn(reportNumber);
+            report.setIdColumn(Long.toString(reportNumber));
             reports.put(reportNumber, report);
             reportNumber++;
             return true;
@@ -63,7 +63,7 @@ public class MockDatabaseReportManager {
 
         newReport.setIdColumn(report.getIdColumn());
         newReport.setDateColumn(report.getDateTime());
-        reports.put(report.getIdColumn(), newReport);
+        reports.put(Long.parseLong(report.getIdColumn()), newReport);
 
         return true;
     }

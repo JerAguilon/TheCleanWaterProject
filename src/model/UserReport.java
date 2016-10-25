@@ -17,7 +17,7 @@ public class UserReport extends Report {
     private final SimpleStringProperty conditionColumnProperty = new SimpleStringProperty();
 
     public UserReport(String time, String reporterName,
-                      String location, WaterSourceType type, WaterSourceCondition condition, long id) {
+                      String location, WaterSourceType type, WaterSourceCondition condition, String id) {
         super(time, reporterName, location, id);
 
         this.type = type;

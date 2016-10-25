@@ -16,11 +16,11 @@ public abstract class Report implements Loggable {
 
     private LocalDateTime dateTime;
     private final SimpleStringProperty dateColumnProperty = new SimpleStringProperty();
-    private final SimpleLongProperty idColumnProperty = new SimpleLongProperty();
+    private final SimpleStringProperty idColumnProperty = new SimpleStringProperty();
     private final SimpleStringProperty usernameColumnProperty = new SimpleStringProperty();
     private final SimpleStringProperty locationColumnProperty = new SimpleStringProperty();
 
-    public Report(String dateTimeStr, String reporterName, String location, long id) {
+    public Report(String dateTimeStr, String reporterName, String location, String id) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         this.dateTime = LocalDateTime.parse(dateTimeStr, formatter);
         dateColumnProperty.set(dateTime.format(formatter));
@@ -40,7 +40,7 @@ public abstract class Report implements Loggable {
     }
 
     //used for lookup in mockdatabase
-    public Report(long ID) {
+    public Report(String ID) {
         this.idColumnProperty.set(ID);
     }
 
@@ -58,11 +58,11 @@ public abstract class Report implements Loggable {
         dateColumnProperty.set(dateTime.format(formatter));
     }
 
-    public long getIdColumn() {
+    public String getIdColumn() {
         return idColumnProperty.get();
     }
 
-    public void setIdColumn(long reportID) {
+    public void setIdColumn(String reportID) {
         this.idColumnProperty.set(reportID);
     }
 
@@ -95,13 +95,13 @@ public abstract class Report implements Loggable {
     }
 
     public int hashCode() {
-        return (int) this.idColumnProperty.get();
+        return this.idColumnProperty.get().hashCode();
     }
 
     public List<String> toLogList() {
         List<String> output = new ArrayList<>();
 
-        String ID = String.format("\tReport ID:  %d", getIdColumn());
+        String ID = String.format("\tReport ID:  %s", getIdColumn());
         String username = String.format("\tUsername: %s", getUsernameColumn());
         String location = String.format("\tLocation: %s", getLocationColumn());
 
