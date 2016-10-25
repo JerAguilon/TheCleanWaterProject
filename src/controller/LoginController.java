@@ -1,16 +1,13 @@
 package controller;
 
-import apploader.LocalSession;
 import controller.interfaces.ILoginController;
 import database.DatabaseFactory;
 import database.IDatabase;
-import database.responses.DatabaseException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -18,11 +15,9 @@ import javafx.stage.Stage;
  * Created by jeremy on 9/21/16.
  */
 public class LoginController implements ILoginController {
-    @FXML
     private TextField usernameBox;
 
-    @FXML
-    private PasswordField passwordBox;
+    private TextField passwordBox;
 
     private int attemptCount = 0;
 
@@ -30,7 +25,6 @@ public class LoginController implements ILoginController {
         return false;
     }
 
-    @FXML
     public void validate() {
         if (!validateBoxes()) {
             sendLoginAlert("Please fill in fields appropriately.");
@@ -43,45 +37,37 @@ public class LoginController implements ILoginController {
         }
         IDatabase database = DatabaseFactory.getDatabase();
 
-        String username = usernameBox.getText();
-        String password = passwordBox.getText();
+        if (database.getUser(usernameBox.getText()) != null) {
 
-        try {
-            if (database.validate(username, password)) {
-
+            if (database.getUser(usernameBox.getText()).PASS_HASH == passwordBox.getText().hashCode()) {
                 try {
 
                     Stage stage = (Stage) usernameBox.getScene().getWindow();
-                    Parent root = FXMLLoader.load(getClass().getResource("/view/MainScreen.fxml"));
+                    Parent root = (Parent) FXMLLoader.load(getClass().getResource("/view/MainScreen.fxml"));
 
                     Scene scene = new Scene(root);
-                    scene.getStylesheets().add("css/stylesheet.css");
+
                     stage.setScene(scene);
                     stage.show();
-
-                    LocalSession.currentUsername = usernameBox.getText();
 
                 } catch(Exception e) {
                     e.printStackTrace();
                 }
-
             } else {
-                sendLoginAlert("Invalid username or password. Attempts left: " + (2 - attemptCount));
+                sendLoginAlert("Password incorrect. Attempted logins left: " + (2 - attemptCount));
                 attemptCount++;
             }
-        } catch (DatabaseException e) {
-            e.printStackTrace();
-            sendLoginAlert(e.getMessage());
+        } else {
+            sendLoginAlert("User doesn't exist.");
         }
     }
 
-    @FXML
     public void cancel() {
         try {
             Stage stage = (Stage) usernameBox.getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource("/view/WelcomeScreen.fxml"));
+            Parent root = (Parent) FXMLLoader.load(getClass().getResource("/view/WelcomeScreen.fxml"));
             Scene scene = new Scene(root);
-            scene.getStylesheets().add("css/stylesheet.css");
+
             stage.setScene(scene);
             stage.show();
         } catch(Exception e) {
