@@ -2,10 +2,15 @@ package controller;
 
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
+import com.lynden.gmapsfx.javascript.JavascriptObject;
+import com.lynden.gmapsfx.javascript.event.UIEventHandler;
+import com.lynden.gmapsfx.javascript.event.UIEventType;
 import com.lynden.gmapsfx.javascript.object.*;
 import com.lynden.gmapsfx.service.geocoding.GeocoderStatus;
 import com.lynden.gmapsfx.service.geocoding.GeocodingResult;
 import com.lynden.gmapsfx.service.geocoding.GeocodingService;
+
+import java.awt.event.ActionListener;
 import java.net.URL;
 import java.util.*;
 
@@ -25,6 +30,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Report;
+import model.WaterReport;
+import netscape.javascript.JSObject;
 import model.UserReport;
 
 public class MapController implements Initializable, MapComponentInitializedListener {
@@ -105,15 +112,27 @@ public class MapController implements Initializable, MapComponentInitializedList
                     + "Condition: " + condition + "<br>");
 
             InfoWindow newLocInfoWindow = new InfoWindow(infoWindowOptions);
-            newLocInfoWindow.open(map, newLocMarker);
+            //newLocInfoWindow.open(map, newLocMarker);
+
+            map.addUIEventHandler(newLocMarker, UIEventType.click, new UIEventHandler() {
+                @Override
+                public void handle(JSObject jsObject) {
+                    if(!newLocInfoWindow.getContent().equals("")) {
+                        newLocInfoWindow.close();
+                        newLocInfoWindow.setContent("");
+                    } else {
+                        newLocInfoWindow.setOptions(infoWindowOptions);
+                        newLocInfoWindow.open(map, newLocMarker);
+                    }
+
+                }
+            });
 
     }
 
 
 
     }
-
-
 
     @FXML
     public void returnToMain() throws Exception {
