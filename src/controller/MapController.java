@@ -30,7 +30,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Report;
-import model.WaterReport;
 import netscape.javascript.JSObject;
 import model.UserReport;
 
@@ -113,6 +112,7 @@ public class MapController implements Initializable, MapComponentInitializedList
 
             InfoWindow newLocInfoWindow = new InfoWindow(infoWindowOptions);
             //newLocInfoWindow.open(map, newLocMarker);
+            newLocInfoWindow.setContent("");
 
             map.addUIEventHandler(newLocMarker, UIEventType.click, new UIEventHandler() {
                 @Override
