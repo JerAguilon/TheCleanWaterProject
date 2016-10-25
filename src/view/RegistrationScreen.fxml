@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -12,7 +15,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane xmlns="http://javafx.com/javafx/8.0.102-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistrationController">
+<GridPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistrationController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
    </columnConstraints>
@@ -44,7 +47,7 @@
                               <TextField fx:id="username" GridPane.columnIndex="1" />
                               <Label text="Username" />
                               <Label text="Password" GridPane.rowIndex="1" />
-                              <Label alignment="TOP_LEFT" prefWidth="255.0" text="Confirm password" GridPane.rowIndex="2" />
+                              <Label alignment="TOP_LEFT" prefWidth="255.0" text="Confirm Password" GridPane.rowIndex="2" />
                            </children>
                         </GridPane>
                      </children>
@@ -78,7 +81,7 @@
                               <Label text="Authorization Level" />
                               <Label text="Home Address" GridPane.rowIndex="2" />
                               <Label text="Title" GridPane.rowIndex="3" />
-                              <Label prefHeight="16.0" prefWidth="39.0" text="Email" GridPane.rowIndex="1" />
+                              <Label prefHeight="16.0" prefWidth="110.0" text="Email" GridPane.rowIndex="1" />
                               <TextField fx:id="email" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
@@ -89,8 +92,8 @@
       </Accordion>
       <AnchorPane prefHeight="38.0" prefWidth="600.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
          <children>
-            <Button fx:id="submit" layoutX="524.0" layoutY="11.0" mnemonicParsing="false" onAction="#register" text="submit" />
-            <Button layoutX="14.0" layoutY="6.0" mnemonicParsing="false" onAction="#returnToWelcomeScreen" text="cancel" />
+            <Button fx:id="Submit" layoutX="525.0" layoutY="6.0" mnemonicParsing="false" onAction="#register" text="Submit" />
+            <Button layoutX="14.0" layoutY="6.0" mnemonicParsing="false" onAction="#returnToWelcomeScreen" text="Cancel" />
          </children></AnchorPane>
    </children>
 </GridPane>

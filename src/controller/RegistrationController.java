@@ -1,6 +1,8 @@
 package controller;
 
 import database.DatabaseFactory;
+import database.responses.DatabaseException;
+import exceptions.UserException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -68,36 +70,26 @@ public class RegistrationController {
         String email = this.email.getText();
 
 
-
-
-
-        if (username == null || password == null ||
-                confirmPassword == null || address == null ||
-                title == null || email == null) {
-            sendAlert("Please complete all fields before registration");
-
-            return;
-        }
-
-        if (username.isEmpty() || password.isEmpty() ||
-            address.isEmpty() || title.isEmpty() || email.isEmpty()) {
-            sendAlert("Please complete all fields before registration");
-
-            return;
-        }
-
         if (!password.equals(confirmPassword)) {
-            sendAlert("Passwords don't match");
+            sendAlert("Password fields don't match");
             return;
         }
 
         Profile profile = new Profile(email, address, title);
 
-        //returns false if a use has already been added
-        if (!DatabaseFactory.getDatabase().addUser(username, password.hashCode(), auth, profile)) {
-            sendAlert("Username already exists. Please select a new username");
+        try {
+            User user = new User(username, password, auth, profile);
+            DatabaseFactory.getDatabase().addUser(user);
+        } catch (DatabaseException e) {
+            sendAlert(e.getMessage());
+            return;
+        } catch (UserException e) {
+            sendAlert(e.getMessage());
             return;
         }
+
+
+
 
 
         returnToWelcomeScreen();
@@ -124,11 +116,13 @@ public class RegistrationController {
             Parent root = FXMLLoader.load(getClass().getResource("/view/WelcomeScreen.fxml"));
 
             Scene scene = new Scene(root);
-
+            scene.getStylesheets().add("css/stylesheet.css");
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+
 }

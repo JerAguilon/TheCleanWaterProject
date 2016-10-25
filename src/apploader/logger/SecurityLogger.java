@@ -43,6 +43,7 @@ public class SecurityLogger {
             BufferedWriter bw = new BufferedWriter(fw);
 
             bw.write(currentTime);
+            bw.newLine();
 
             for (String item : result) {
                 bw.write("\t" + item);

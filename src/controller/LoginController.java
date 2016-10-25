@@ -1,13 +1,16 @@
 package controller;
 
+import apploader.LocalSession;
 import controller.interfaces.ILoginController;
 import database.DatabaseFactory;
 import database.IDatabase;
+import database.responses.DatabaseException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -19,7 +22,7 @@ public class LoginController implements ILoginController {
     private TextField usernameBox;
 
     @FXML
-    private TextField passwordBox;
+    private PasswordField passwordBox;
 
     private int attemptCount = 0;
 
@@ -40,28 +43,35 @@ public class LoginController implements ILoginController {
         }
         IDatabase database = DatabaseFactory.getDatabase();
 
-        if (database.getUser(usernameBox.getText()) != null) {
+        String username = usernameBox.getText();
+        String password = passwordBox.getText();
 
-            if (database.getUser(usernameBox.getText()).PASS_HASH == passwordBox.getText().hashCode()) {
+        try {
+            if (database.validate(username, password)) {
+
                 try {
 
                     Stage stage = (Stage) usernameBox.getScene().getWindow();
                     Parent root = FXMLLoader.load(getClass().getResource("/view/MainScreen.fxml"));
 
                     Scene scene = new Scene(root);
-
+                    scene.getStylesheets().add("css/stylesheet.css");
                     stage.setScene(scene);
                     stage.show();
+
+                    LocalSession.currentUsername = usernameBox.getText();
 
                 } catch(Exception e) {
                     e.printStackTrace();
                 }
+
             } else {
-                sendLoginAlert("Password incorrect. Attempted logins left: " + (2 - attemptCount));
+                sendLoginAlert("Invalid username or password. Attempts left: " + (2 - attemptCount));
                 attemptCount++;
             }
-        } else {
-            sendLoginAlert("User doesn't exist.");
+        } catch (DatabaseException e) {
+            e.printStackTrace();
+            sendLoginAlert(e.getMessage());
         }
     }
 
@@ -71,7 +81,7 @@ public class LoginController implements ILoginController {
             Stage stage = (Stage) usernameBox.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/view/WelcomeScreen.fxml"));
             Scene scene = new Scene(root);
-
+            scene.getStylesheets().add("css/stylesheet.css");
             stage.setScene(scene);
             stage.show();
         } catch(Exception e) {

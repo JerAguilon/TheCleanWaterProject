@@ -1,5 +1,7 @@
 package model;
 
+import exceptions.UserException;
+
 /**
  * Created by jeremy on 9/27/16.
  */
@@ -9,24 +11,44 @@ public class User {
     public final int ID;
 
     public final String USERNAME;
-    public final int PASS_HASH;
-
+    public final String PASSWORD;
     public final AuthorizationLevel AUTH;
 
     public Profile PROFILE;
 
-    public User(String username, int passHash, AuthorizationLevel auth, Profile profile) {
-        this.ID = idCount;
-        this.PASS_HASH = passHash;
+    public User() {
+        this.ID = -1;
+        this.USERNAME = "testadmin";
+        this.PASSWORD = "test";
+        this.AUTH = AuthorizationLevel.ADMINISTRATOR;
+        this.PROFILE = new Profile("test", "test", "test");
+    }
+
+    public User(String username, String password, AuthorizationLevel auth, Profile profile) throws UserException {
+        if (username == null || password == null || auth == null || profile == null) {
+
+            throw new UserException("Please complete all fields before registration");
+        }
+
+        if (username.isEmpty() || password.isEmpty() || profile.HOME_ADDRESS.isEmpty()
+                || profile.TITLE.isEmpty() || profile.EMAIL.isEmpty()) {
+            throw new UserException("Please complete all fields before registration");
+        }
+
+        this.ID = idCount++;
+
+        this.USERNAME = username;
+        this.PASSWORD = password;
         this.AUTH = auth;
         this.PROFILE = profile;
-        this.USERNAME = username;
-
-        idCount++;
     }
 
     public void setProfile(Profile newProfile) {
         this.PROFILE = newProfile;
+    }
+
+    public void setAuthorizationLevel(AuthorizationLevel auth) {
+        //this.AUTH = auth;
     }
 
     @Override
