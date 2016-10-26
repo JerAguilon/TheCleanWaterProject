@@ -38,6 +38,9 @@ public class SubmitWaterReportScreenController {
     ComboBox sourceType;
 
     @FXML
+    /**
+     * initializes the water report screen
+     */
     public void initialize() {
 
         setValues(sourceCondition, WaterSourceCondition.values());
@@ -49,6 +52,9 @@ public class SubmitWaterReportScreenController {
     }
 
     @FXML
+    /**
+     * submits the water report screen provided it is filled
+     */
     public void submit() {
         if (purityLocation.getText().isEmpty()) {
             sendAlert("Please fill in a location", Alert.AlertType.ERROR);
@@ -77,6 +83,11 @@ public class SubmitWaterReportScreenController {
         returnToMainScreen();
     }
 
+    /**
+     * sets the values in the ComboBox
+     * @param cb the ComboBox in which we are changing values
+     * @param values the values we want in the ComboBox
+     */
     private void setValues(ComboBox cb, Object[] values) {
         cb.getItems().clear();
         List<String> list = new ArrayList<>();
@@ -90,6 +101,11 @@ public class SubmitWaterReportScreenController {
 
     }
 
+    /**
+     * sends the submission error message
+     * @param message the message that should be printed as a String
+     * @param type the type of alert
+     */
     private void sendAlert(String message, Alert.AlertType type) {
         Alert alert = new Alert(type);
         alert.setTitle("Submission Error");
@@ -99,6 +115,9 @@ public class SubmitWaterReportScreenController {
     }
 
     @FXML
+    /**
+     * returns the user to the main screen
+     */
     public void returnToMainScreen() {
         try {
             Stage stage = (Stage) reportType.getScene().getWindow();

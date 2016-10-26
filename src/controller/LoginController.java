@@ -26,11 +26,18 @@ public class LoginController implements ILoginController {
 
     private int attemptCount = 0;
 
+    /**
+     * tells whether or not the user is locked out
+     * @return the boolean value true if lockedout, and false if not
+     */
     public boolean isLockedOut() {
         return false;
     }
 
     @FXML
+    /**
+     * validates the user
+     */
     public void validate() {
         if (!validateBoxes()) {
             sendLoginAlert("Please fill in fields appropriately.");
@@ -76,6 +83,9 @@ public class LoginController implements ILoginController {
     }
 
     @FXML
+    /**
+     * allows the user to return back to the welcome screen
+     */
     public void cancel() {
         try {
             Stage stage = (Stage) usernameBox.getScene().getWindow();
@@ -89,6 +99,10 @@ public class LoginController implements ILoginController {
         }
     }
 
+    /**
+     * sends an alert if there is a login error
+     * @param message the message that the user sees
+     */
     private void sendLoginAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Login Error");
@@ -97,6 +111,10 @@ public class LoginController implements ILoginController {
         alert.showAndWait();
     }
 
+    /**
+     * validates the user information
+     * @return true if the user is a registered user, false if not
+     */
     private boolean validateBoxes() {
         return !(usernameBox.getText().equals("") && passwordBox.getText().equals(""));
     }

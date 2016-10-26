@@ -42,6 +42,9 @@ public class RegistrationController {
     TextField title;
 
     @FXML
+    /**
+     * initializes the registration screen
+     */
     public void initialize() {
         List<String> values = new ArrayList<>();
 
@@ -97,6 +100,10 @@ public class RegistrationController {
 
     }
 
+    /**
+     * sends the alert if there is a registration error
+     * @param message the message that the user sees if there is an error
+     */
     private void sendAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Registration Error");

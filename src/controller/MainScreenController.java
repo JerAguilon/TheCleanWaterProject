@@ -56,7 +56,6 @@ public class MainScreenController implements IMainScreenController {
      * allow the user to logout and go to the welcome screen again
      *
      * */
-
     @Override
     public void logout() throws Exception {
         try {
@@ -95,6 +94,9 @@ public class MainScreenController implements IMainScreenController {
     }
 
     @FXML
+    /**
+     * allows the user to open the MapScreen
+     */
     public void openMap() throws Exception {
         try {
             Stage stage = (Stage) profileedit.getScene().getWindow();
@@ -110,6 +112,9 @@ public class MainScreenController implements IMainScreenController {
     }
 
     @FXML
+    /**
+     * allows the user to view the SubmitWaterReportScreen
+     */
     public void submitWaterReport() {
         try {
             Stage stage = (Stage) logout.getScene().getWindow();
@@ -125,6 +130,9 @@ public class MainScreenController implements IMainScreenController {
     }
 
     @FXML
+    /**
+     * populates the list of water reports
+     */
     public void populateWaterReportsList() {
         List<UserReport> reports = getReports();
 
@@ -138,6 +146,10 @@ public class MainScreenController implements IMainScreenController {
         userReportTable.getItems().setAll(reports);
     }
 
+    /**
+     * get method for the water reports
+     * @return a list of the UserReports
+     */
     private List<UserReport> getReports() {
         Collection<UserReport> fullList = null;
         try {
