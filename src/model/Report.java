@@ -20,6 +20,13 @@ public abstract class Report implements Loggable {
     private final SimpleStringProperty usernameColumnProperty = new SimpleStringProperty();
     private final SimpleStringProperty locationColumnProperty = new SimpleStringProperty();
 
+    /**
+     * Constructor for a Report
+     * @param dateTimeStr a string that has the date and the time
+     * @param reporterName the name of the reporter
+     * @param location the location of the reporter
+     * @param id the id of the reporter
+     */
     public Report(String dateTimeStr, String reporterName, String location, String id) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         this.dateTime = LocalDateTime.parse(dateTimeStr, formatter);
@@ -30,6 +37,11 @@ public abstract class Report implements Loggable {
     }
 
 
+    /**
+     * Creates a report with the reporter name and the location
+     * @param reporterName the name of the reporter
+     * @param location the location of the reporter
+     */
     public Report(String reporterName, String location) {
         this.dateTime = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");

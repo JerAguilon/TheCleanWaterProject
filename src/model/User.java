@@ -16,6 +16,9 @@ public class User {
 
     public Profile PROFILE;
 
+    /**
+     * Test case
+     */
     public User() {
         this.ID = -1;
         this.USERNAME = "testadmin";
@@ -24,6 +27,14 @@ public class User {
         this.PROFILE = new Profile("test", "test", "test");
     }
 
+    /**
+     * Constructor class for the User
+     * @param username the username of the user as a string
+     * @param password the password of the user as a string
+     * @param auth the authorizationLevel of the user as an enum
+     * @param profile the users profile
+     * @throws UserException if there are empty fields
+     */
     public User(String username, String password, AuthorizationLevel auth, Profile profile) throws UserException {
         if (username == null || password == null || auth == null || profile == null) {
 
@@ -43,10 +54,18 @@ public class User {
         this.PROFILE = profile;
     }
 
+    /**
+     * Set method for the profile of the user
+     * @param newProfile the Profile that we want to set
+     */
     public void setProfile(Profile newProfile) {
         this.PROFILE = newProfile;
     }
 
+    /**
+     * Set method for the authorization level of the user
+     * @param auth the AuthorizationLevel that we want to set
+     */
     public void setAuthorizationLevel(AuthorizationLevel auth) {
         //this.AUTH = auth;
     }
