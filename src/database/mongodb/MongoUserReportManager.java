@@ -83,6 +83,7 @@ public class MongoUserReportManager {
         for (int i = 0; i < objectArray.length(); i++) {
             JSONObject object = objectArray.getJSONObject(i);
 
+
             String location = object.getString("location");
             WaterSourceType type = WaterSourceType.values()[object.getInt("waterSourceType")];
             WaterSourceCondition condition = WaterSourceCondition.values()[object.getInt("waterSourceCondition")];

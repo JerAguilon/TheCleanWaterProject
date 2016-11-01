@@ -10,6 +10,7 @@ import java.sql.SQLException;
 /**
  * Created by jeremy on 10/17/16.
  */
+@Deprecated
 public class SqliteRegistrationManager extends Connectable {
     public User getUser(String name) {
         throw new NotImplementedException();

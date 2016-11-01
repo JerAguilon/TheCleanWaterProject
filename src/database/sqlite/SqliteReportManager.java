@@ -13,6 +13,7 @@ import java.util.List;
 /**
  * Created by jeremy on 10/18/16.
  */
+@Deprecated
 public class SqliteReportManager extends Connectable {
 
     public Collection<UserReport> getReportList() throws SQLException {
