@@ -2,6 +2,7 @@ package database;
 
 import apploader.ConfigLoader;
 import database.mock.MockDatabaseWrapper;
+import database.mongodb.MongoDatabaseWrapper;
 import database.sqlite.SqliteDatabaseWrapper;
 
 /**
@@ -11,13 +12,17 @@ public class DatabaseFactory {
 
     public static IDatabase getDatabase() {
 
-
-        if (ConfigLoader.CONFIG.getProperty("database").equals("mock")) {
+        String database = ConfigLoader.CONFIG.getProperty("database");
+        if (database.equals("mock")) {
             return MockDatabaseWrapper.mockDatabase;
         }
 
-        if (ConfigLoader.CONFIG.getProperty("database").equals("sqlite")) {
+        if (database.equals("sqlite")) {
             return SqliteDatabaseWrapper.database;
+        }
+
+        if (database.equals("mongo")) {
+            return new MongoDatabaseWrapper("http://localhost:8080");
         }
 
         //should never get here

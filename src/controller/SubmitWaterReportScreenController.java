@@ -75,7 +75,7 @@ public class SubmitWaterReportScreenController {
             }
         } catch (DatabaseException e) {
             e.printStackTrace();
-            sendAlert("Something went wrong in adding to the database", Alert.AlertType.ERROR);
+            sendAlert(e.getMessage(), Alert.AlertType.ERROR);
         }
 
         SecurityLogger.log(report.toLogList());

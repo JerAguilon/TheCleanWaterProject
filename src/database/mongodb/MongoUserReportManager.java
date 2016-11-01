@@ -18,8 +18,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -56,20 +61,11 @@ public class MongoUserReportManager {
 
         String message = object.getString("message");
 
-        boolean result = object.getBoolean("result");
+        boolean result = object.getBoolean("success");
 
         if (!result) {
             throw new DatabaseException(message);
         }
-    }
-
-    public static void main(String[] args) throws JSONException, DatabaseException, IOException {
-        MongoUserManager usermanager = new MongoUserManager("http://localhost:8080/api/users");
-        usermanager.authenticate("user", "pass");
-        MongoUserReportManager manager = new MongoUserReportManager("http://localhost:8080/api/userreports");
-
-        manager.getReports();
-
     }
 
     public Collection<UserReport> getReports() throws IOException, JSONException, DatabaseException {
@@ -83,7 +79,7 @@ public class MongoUserReportManager {
         String output = EntityUtils.toString(resp.getEntity(), "UTF-8");
 
         JSONArray objectArray = new JSONArray(output.trim());
-
+        ArrayList<UserReport> resultList = new ArrayList<>();
         for (int i = 0; i < objectArray.length(); i++) {
             JSONObject object = objectArray.getJSONObject(i);
 
@@ -92,7 +88,24 @@ public class MongoUserReportManager {
             WaterSourceCondition condition = WaterSourceCondition.values()[object.getInt("waterSourceCondition")];
             String id = object.getString("_id");
             String name = object.getString("reporterName");
+
+            String time = object.getString("createdAt");
+            SimpleDateFormat pulledFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSSXXX");
+            SimpleDateFormat javaFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+            Date date = null;
+            try {
+                date = pulledFormat.parse(time);
+            } catch (ParseException e) {
+                e.printStackTrace();
+                throw new DatabaseException("Unable to parse the date from the mongo database");
+            }
+
+            time = javaFormat.format(date);
+
+            UserReport report = new UserReport(time, name, location, type, condition, id);
+            resultList.add(report);
         }
-        return null;
+        return resultList;
     }
 }
