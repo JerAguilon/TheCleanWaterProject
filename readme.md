@@ -20,7 +20,8 @@ Set-Up (IntelliJ)
 Configuring Database
 ========
 For testing purposes, use `database=test` in the config.properties file. We are currently using
-SQLite for data persistence, and you can turn it on with `database=sqlite`
+MongoDB for data persistence, and you can turn it on with `database=mongo`. Make sure to run [TheCleanWaterAPI](http://github.com/jeraguilon/thecleanwaterapi)
+to use this functionality.
 
 Adding GMaps Dependency
 ========
