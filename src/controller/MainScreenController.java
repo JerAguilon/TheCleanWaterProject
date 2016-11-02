@@ -14,6 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import model.AuthorizationLevel;
 import model.Report;
 import model.UserReport;
 import model.WorkerReport;
@@ -71,6 +72,9 @@ public class MainScreenController implements IMainScreenController {
 
     @FXML
     TableColumn usernameCol;
+
+    @FXML
+    Button submitWorkerReport;
 
     /**
      * allow the user to logout and go to the welcome screen again
@@ -176,16 +180,20 @@ public class MainScreenController implements IMainScreenController {
      * allows the user to view the SubmitPurityReportScreen
      */
     public void submitPurityReport() {
-        try {
-            Stage stage = (Stage) logout.getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource("/view/SubmitWorkerReportScreen.fxml"));
+        if(LocalSession.currentAuth.equals(AuthorizationLevel.USER)) {
+            submitWorkerReport.setText("Users do not have access");
+        } else {
+            try {
+                Stage stage = (Stage) logout.getScene().getWindow();
+                Parent root = FXMLLoader.load(getClass().getResource("/view/SubmitWorkerReportScreen.fxml"));
 
-            Scene scene = new Scene(root);
-            scene.getStylesheets().add("css/stylesheet.css");
-            stage.setScene(scene);
-            stage.show();
-        } catch(Exception e) {
-            e.printStackTrace();
+                Scene scene = new Scene(root);
+                scene.getStylesheets().add("css/stylesheet.css");
+                stage.setScene(scene);
+                stage.show();
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 

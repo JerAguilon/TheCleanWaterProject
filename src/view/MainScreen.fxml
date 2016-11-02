@@ -65,7 +65,7 @@
                      <bottom>
                         <FlowPane BorderPane.alignment="CENTER">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#submitPurityReport" text="Submit Water Purity Report" />
+                              <Button fx:id="submitWorkerReport" mnemonicParsing="false" onAction="#submitPurityReport" text="Submit Water Purity Report" />
                            </children>
                         </FlowPane>
                      </bottom>
