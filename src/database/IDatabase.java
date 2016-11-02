@@ -19,7 +19,9 @@ public interface IDatabase {
     Report getReport(long id);
     Report getReport(Report report);
     boolean addUserReport(UserReport report) throws DatabaseException;
-    Collection<UserReport> getReportList() throws DatabaseException;
+    boolean addWorkerReport(WorkerReport report) throws DatabaseException;
+    Collection<UserReport> getUserReportList() throws DatabaseException;
+    Collection<WorkerReport> getPurityReportList() throws DatabaseException;
     boolean deleteReport(long id);
     boolean deleteReport(Report report);
     boolean modifyUserReport(UserReport report, UserReport newReport);

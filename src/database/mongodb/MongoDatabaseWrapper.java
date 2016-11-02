@@ -3,6 +3,7 @@ package database.mongodb;
 import database.IDatabase;
 import database.responses.DatabaseException;
 import exceptions.UserException;
+import model.WorkerReport;
 import model.Report;
 import model.User;
 import model.UserReport;
@@ -86,7 +87,12 @@ public class MongoDatabaseWrapper implements IDatabase {
     }
 
     @Override
-    public Collection<UserReport> getReportList() throws DatabaseException {
+    public boolean addWorkerReport(WorkerReport report) throws DatabaseException {
+        return false;
+    }
+
+    @Override
+    public Collection<UserReport> getUserReportList() throws DatabaseException {
         try {
             return userReportManager.getReports();
         } catch (IOException e) {
@@ -97,6 +103,11 @@ public class MongoDatabaseWrapper implements IDatabase {
             throw new DatabaseException(e.getMessage());
         }
         //should never get here
+    }
+
+    @Override
+    public Collection<WorkerReport> getPurityReportList() throws DatabaseException {
+        return null;
     }
 
     @Override

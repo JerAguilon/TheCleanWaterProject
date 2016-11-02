@@ -2,7 +2,6 @@ package controller;
 
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
-import com.lynden.gmapsfx.javascript.JavascriptObject;
 import com.lynden.gmapsfx.javascript.event.UIEventHandler;
 import com.lynden.gmapsfx.javascript.event.UIEventType;
 import com.lynden.gmapsfx.javascript.object.*;
@@ -10,7 +9,6 @@ import com.lynden.gmapsfx.service.geocoding.GeocoderStatus;
 import com.lynden.gmapsfx.service.geocoding.GeocodingResult;
 import com.lynden.gmapsfx.service.geocoding.GeocodingService;
 
-import java.awt.event.ActionListener;
 import java.net.URL;
 import java.util.*;
 
@@ -177,7 +175,7 @@ public class MapController implements Initializable, MapComponentInitializedList
     private List<Report> getReports() {
         Collection<UserReport> fullList = null;
         try {
-            fullList = DatabaseFactory.getDatabase().getReportList();
+            fullList = DatabaseFactory.getDatabase().getUserReportList();
         } catch (DatabaseException e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR, "Database error upon retrieving report list.");

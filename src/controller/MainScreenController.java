@@ -153,7 +153,7 @@ public class MainScreenController implements IMainScreenController {
     private List<UserReport> getReports() {
         Collection<UserReport> fullList = null;
         try {
-            fullList = DatabaseFactory.getDatabase().getReportList();
+            fullList = DatabaseFactory.getDatabase().getUserReportList();
         } catch (DatabaseException e) {
             e.printStackTrace();
             fullList = new ArrayList<>();

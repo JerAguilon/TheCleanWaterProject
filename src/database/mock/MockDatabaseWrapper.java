@@ -1,6 +1,7 @@
 package database.mock;
 
 import database.IDatabase;
+import database.responses.DatabaseException;
 import exceptions.UserException;
 import model.*;
 
@@ -73,8 +74,18 @@ public class MockDatabaseWrapper implements IDatabase {
     }
 
     @Override
-    public Collection<UserReport> getReportList() {
+    public boolean addWorkerReport(WorkerReport report) throws DatabaseException {
+        return false;
+    }
+
+    @Override
+    public Collection<UserReport> getUserReportList() {
         return MockDatabaseReportManager.getReportList();
+    }
+
+    @Override
+    public Collection<WorkerReport> getPurityReportList() throws DatabaseException {
+        return null;
     }
 
     @Override

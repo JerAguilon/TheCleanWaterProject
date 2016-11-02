@@ -75,7 +75,7 @@ public class SqliteDatabaseWrapper implements IDatabase {
     }
 
     @Override
-    public Collection<UserReport> getReportList() {
+    public Collection<UserReport> getUserReportList() {
         try {
             return reportManager.getReportList();
         } catch (SQLException e) {

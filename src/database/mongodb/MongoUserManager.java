@@ -13,6 +13,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -101,6 +102,6 @@ public class MongoUserManager {
         System.out.println(EntityUtils.toString(resp.getEntity(), "UTF-8"));
         //TODO: Implement this
 
-        return null;
+        throw new NotImplementedException();
     }
 }

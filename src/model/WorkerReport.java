@@ -7,22 +7,22 @@ import java.util.List;
 /**
  * Created by jeremy on 10/6/16.
  */
-public class PurityReport extends Report {
+public class WorkerReport extends Report {
 
     private WaterPurityCondition condition;
 
     private final SimpleStringProperty conditionColumnProperty = new SimpleStringProperty();
 
     /**
-     * Constructor for PurityReport class
+     * Constructor for WorkerReport class
      * @param time the time the report was made
      * @param reporterName the name of the person making the report
      * @param location the location at which the report was made
      * @param condition the WaterPurityCondition
      * @param id the id of the person making the report
      */
-    public PurityReport(String time, String reporterName,
-                      String location, WaterPurityCondition condition, String id) {
+    public WorkerReport(String time, String reporterName,
+                        String location, WaterPurityCondition condition, String id) {
         super(time, reporterName, location, id);
 
         this.condition = condition;
@@ -39,12 +39,12 @@ public class PurityReport extends Report {
     }
 
     /**
-     * creates a PurityReport with the reporterName, location, and condition
+     * creates a WorkerReport with the reporterName, location, and condition
      * @param reporterName the name of the person making the report
      * @param location the location at which the report was made
      * @param condition the WaterPurityCondition
      */
-    public PurityReport(String reporterName, String location, WaterPurityCondition condition) {
+    public WorkerReport(String reporterName, String location, WaterPurityCondition condition) {
         super(reporterName, location);
 
         this.condition = condition;
