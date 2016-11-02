@@ -1,11 +1,17 @@
 package database.sqlite;
 
-import model.User;
+import model.*;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Exchanger;
+
+import model.AuthorizationLevel;
 
 /**
  * Created by jeremy on 10/17/16.
@@ -13,7 +19,40 @@ import java.sql.SQLException;
 @Deprecated
 public class SqliteRegistrationManager extends Connectable {
     public User getUser(String name) {
-        throw new NotImplementedException();
+        User user = new User();
+
+        Connection connection = SqliteConnection.connect();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String query = "SELECT * FROM userlist WHERE username = ?";
+
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, name);
+
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+
+                String username = resultSet.getString(1);
+                String password  = resultSet.getString(2);
+                String authorization = resultSet.getString(3);
+                String email = resultSet.getString(4);
+                String address = resultSet.getString(5);
+                String title= resultSet.getString(6);
+
+                Profile prof = new Profile(email, address, title);
+                AuthorizationLevel auth = AuthorizationLevel.match(authorization);
+                user = new User(username, password, auth, prof);
+
+                preparedStatement.close();
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+                return user;
     }
 
     public void addUser(User user) throws SQLException {

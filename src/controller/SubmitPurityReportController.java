@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.WorkerReport;
 import model.WaterPurityCondition;
+import model.AuthorizationLevel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +54,11 @@ public class SubmitPurityReportController {
      * submits the water report screen provided it is filled
      */
     public void submit() {
+        if (DatabaseFactory.getDatabase().getUser(author.getText()).getAuthorizationLevel().equals(AuthorizationLevel.USER)) {
+            sendAlert("You are not authorized to submit a report", Alert.AlertType.ERROR);
+            return;
+        }
+
         if (purityLocation.getText().isEmpty()) {
             sendAlert("Please fill in a location", Alert.AlertType.ERROR);
             return;

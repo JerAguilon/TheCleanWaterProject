@@ -70,6 +70,10 @@ public class User {
         //this.AUTH = auth;
     }
 
+    public AuthorizationLevel getAuthorizationLevel() {
+        return AUTH;
+    }
+
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof User)) {
