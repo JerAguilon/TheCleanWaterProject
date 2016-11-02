@@ -15,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Report;
 import model.UserReport;
+import model.WorkerReport;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -146,6 +147,41 @@ public class MainScreenController implements IMainScreenController {
         userReportTable.getItems().setAll(reports);
     }
 
+    @FXML
+    /**
+     * allows the user to view the SubmitPurityReportScreen
+     */
+    public void submitPurityReport() {
+        try {
+            Stage stage = (Stage) logout.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/SubmitWorkerReportScreen.fxml"));
+
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add("css/stylesheet.css");
+            stage.setScene(scene);
+            stage.show();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    /**
+     * populates the list of water purity reports
+     */
+    public void populateWaterPurityReportsList() {
+        List<UserReport> reports = getPurityReports();
+
+        idColumn.setCellValueFactory(new PropertyValueFactory<UserReport, Long>("idColumn"));
+        locationColumn.setCellValueFactory(new PropertyValueFactory<UserReport, String>("locationColumn"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<UserReport, String>("dateColumn"));
+        typeColumn.setCellValueFactory(new PropertyValueFactory<UserReport, String>("typeColumn"));
+        conditionColumn.setCellValueFactory(new PropertyValueFactory<UserReport, String>("conditionColumn"));
+        usernameColumn.setCellValueFactory(new PropertyValueFactory<UserReport, String>("usernameColumn"));
+
+        userReportTable.getItems().setAll(reports);
+    }
+
     /**
      * get method for the water reports
      * @return a list of the UserReports
@@ -169,5 +205,27 @@ public class MainScreenController implements IMainScreenController {
 
     }
 
+    /**
+     * get method for the water purity reports
+     * @return a list of the PurityReports
+     */
+    private List<UserReport> getPurityReports() {
+        Collection<WorkerReport> fullList = null;
+        try {
+            fullList = DatabaseFactory.getDatabase().getWorkerReportList();
+        } catch (DatabaseException e) {
+            e.printStackTrace();
+            fullList = new ArrayList<>();
+        }
+        List<WorkerReport> filteredList = new ArrayList<>();
+
+        for (WorkerReport report : fullList) {
+            filteredList.add(report);
+
+        }
+
+        return filteredList;
+
+    }
 
 }
