@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * Created by jeremy on 10/11/16.
  */
-public class SubmitWaterReportScreenController {
+public class SubmitUserReportScreenController {
     @FXML
     Label author;
 

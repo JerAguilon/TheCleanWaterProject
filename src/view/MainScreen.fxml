@@ -35,7 +35,7 @@
                </content>
             </Tab>
 
-            <Tab onSelectionChanged="#populateWaterReportsList" text="User Water Reports">
+            <Tab onSelectionChanged="#populateWaterReports" text="User Water Reports">
                <content>
                   <BorderPane prefHeight="125.0" prefWidth="555.0">
                      <bottom>

@@ -23,7 +23,7 @@ import java.util.List;
 /**
  * Created by Ashima on 11/01/16.
  */
-public class SubmitPurityReportController {
+public class SubmitWorkerReportScreenController {
     @FXML
     Label author;
 

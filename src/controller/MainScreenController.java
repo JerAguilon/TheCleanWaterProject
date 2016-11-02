@@ -138,7 +138,7 @@ public class MainScreenController implements IMainScreenController {
     public void submitWaterReport() {
         try {
             Stage stage = (Stage) logout.getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource("/view/SubmitWaterReportScreen.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/view/SubmitUserReportScreen.fxml"));
 
             Scene scene = new Scene(root);
             scene.getStylesheets().add("css/stylesheet.css");
@@ -150,11 +150,16 @@ public class MainScreenController implements IMainScreenController {
     }
 
     @FXML
+    public void populateWaterReports() {
+        populateWaterReportsList();
+        populateWaterPurityReportsList();
+    }
+
     /**
      * populates the list of water reports
      */
     public void populateWaterReportsList() {
-        List<UserReport> reports = getReports();
+        Collection<UserReport> reports = getReports();
 
         idColumn.setCellValueFactory(new PropertyValueFactory<UserReport, Long>("idColumn"));
         locationColumn.setCellValueFactory(new PropertyValueFactory<UserReport, String>("locationColumn"));
@@ -184,26 +189,28 @@ public class MainScreenController implements IMainScreenController {
         }
     }
 
-    @FXML
     /**
      * populates the list of water purity reports
      */
     public void populateWaterPurityReportsList() {
         Collection<WorkerReport> reports = getPurityReports();
-        idColumn.setCellValueFactory(new PropertyValueFactory<UserReport, Long>("idCol"));
-        locationColumn.setCellValueFactory(new PropertyValueFactory<UserReport, String>("locationCol"));
-        dateColumn.setCellValueFactory(new PropertyValueFactory<UserReport, String>("dateCol"));
-        conditionColumn.setCellValueFactory(new PropertyValueFactory<UserReport, String>("conditionCol"));
-        usernameColumn.setCellValueFactory(new PropertyValueFactory<UserReport, String>("usernameCol"));
+
+        System.out.println(reports);
+        idCol.setCellValueFactory(new PropertyValueFactory<WorkerReport, Long>("idColumn"));
+        locationCol.setCellValueFactory(new PropertyValueFactory<WorkerReport, String>("locationColumn"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<WorkerReport, String>("dateColumn"));
+        conditionCol.setCellValueFactory(new PropertyValueFactory<WorkerReport, String>("conditionColumn"));
+        usernameCol.setCellValueFactory(new PropertyValueFactory<WorkerReport, String>("usernameColumn"));
 
         workerReportTable.getItems().setAll(reports);
+        System.out.println(workerReportTable.getItems());
     }
 
     /**
      * get method for the water reports
      * @return a list of the UserReports
      */
-    private List<UserReport> getReports() {
+    private Collection<UserReport> getReports() {
         Collection<UserReport> fullList = null;
         try {
             fullList = DatabaseFactory.getDatabase().getUserReportList();
@@ -211,14 +218,8 @@ public class MainScreenController implements IMainScreenController {
             e.printStackTrace();
             fullList = new ArrayList<>();
         }
-        List<UserReport> filteredList = new ArrayList<>();
 
-        for (UserReport report : fullList) {
-            filteredList.add(report);
-
-        }
-
-        return filteredList;
+        return fullList;
 
     }
 
