@@ -54,6 +54,24 @@ public class MainScreenController implements IMainScreenController {
     @FXML
     TableColumn usernameColumn;
 
+    @FXML
+    TableView<Report> workerReportTable;
+
+    @FXML
+    TableColumn dateCol;
+
+    @FXML
+    TableColumn locationCol;
+
+    @FXML
+    TableColumn idCol;
+
+    @FXML
+    TableColumn conditionCol;
+
+    @FXML
+    TableColumn usernameCol;
+
     /**
      * allow the user to logout and go to the welcome screen again
      *
@@ -173,14 +191,13 @@ public class MainScreenController implements IMainScreenController {
     public void populateWaterPurityReportsList() {
         Collection<WorkerReport> reports = getPurityReports();
 
-        idColumn.setCellValueFactory(new PropertyValueFactory<UserReport, Long>("idColumn"));
-        locationColumn.setCellValueFactory(new PropertyValueFactory<UserReport, String>("locationColumn"));
-        dateColumn.setCellValueFactory(new PropertyValueFactory<UserReport, String>("dateColumn"));
-        typeColumn.setCellValueFactory(new PropertyValueFactory<UserReport, String>("typeColumn"));
-        conditionColumn.setCellValueFactory(new PropertyValueFactory<UserReport, String>("conditionColumn"));
-        usernameColumn.setCellValueFactory(new PropertyValueFactory<UserReport, String>("usernameColumn"));
+        idColumn.setCellValueFactory(new PropertyValueFactory<UserReport, Long>("idCol"));
+        locationColumn.setCellValueFactory(new PropertyValueFactory<UserReport, String>("locationCol"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<UserReport, String>("dateCol"));
+        conditionColumn.setCellValueFactory(new PropertyValueFactory<UserReport, String>("conditionCol"));
+        usernameColumn.setCellValueFactory(new PropertyValueFactory<UserReport, String>("usernameCol"));
 
-        userReportTable.getItems().setAll(reports);
+        workerReportTable.getItems().setAll(reports);
     }
 
     /**

@@ -73,6 +73,29 @@
                      </center></BorderPane>
                </content></Tab>
 
+            <Tab onSelectionChanged="#populateWaterPurityReportsList" text="User Purity Reports">
+               <content>
+                  <BorderPane prefHeight="125.0" prefWidth="555.0">
+                     <bottom>
+                        <FlowPane BorderPane.alignment="CENTER">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#submitPurityReport" text="Submit Water Purity Report" />
+                           </children>
+                        </FlowPane>
+                     </bottom>
+                     <center>
+                        <TableView fx:id="purityReportTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <columns>
+                              <TableColumn fx:id="dateCol" prefWidth="75.0" text="Date" />
+                              <TableColumn fx:id="idCol" prefWidth="75.0" text="ID" />
+                              <TableColumn fx:id="locationCol" prefWidth="184.0" text="Location" />
+                              <TableColumn fx:id="conditionCol" minWidth="7.0" prefWidth="86.0" text="Condition" />
+                              <TableColumn fx:id="usernameCol" minWidth="0.0" prefWidth="112.0" text="Username" />
+                           </columns>
+                        </TableView>
+                     </center></BorderPane>
+               </content></Tab>
+
             <Tab text="Water Availability Map">
                <content>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
