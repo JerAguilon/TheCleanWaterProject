@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -15,18 +11,8 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import com.lynden.gmapsfx.*?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.control.*?>
-<?import com.lynden.gmapsfx.GoogleMapView?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainScreenController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainScreenController">
    <children>
       <TabPane prefHeight="400.0" prefWidth="600.0">
          <tabs>
@@ -73,7 +59,7 @@
                      </center></BorderPane>
                </content></Tab>
 
-            <Tab onSelectionChanged="#populateWaterPurityReportsList" text="User Purity Reports">
+            <Tab onSelectionChanged="#populateWaterPurityReportsList" text="Worker Water Reports">
                <content>
                   <BorderPane prefHeight="125.0" prefWidth="555.0">
                      <bottom>
@@ -84,7 +70,7 @@
                         </FlowPane>
                      </bottom>
                      <center>
-                        <TableView fx:id="purityReportTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                        <TableView fx:id="workerReportTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <columns>
                               <TableColumn fx:id="dateCol" prefWidth="75.0" text="Date" />
                               <TableColumn fx:id="idCol" prefWidth="75.0" text="ID" />
@@ -100,7 +86,7 @@
                <content>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <center>
-                        <Button fx:id="mapButton" mnemonicParsing="false" text="Go to Map" BorderPane.alignment="CENTER" onAction="#openMap" />
+                        <Button fx:id="mapButton" mnemonicParsing="false" onAction="#openMap" text="Go to Map" BorderPane.alignment="CENTER" />
                      </center>
                   </BorderPane>
                </content>

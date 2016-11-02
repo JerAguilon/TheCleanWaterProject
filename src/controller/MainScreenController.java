@@ -190,7 +190,6 @@ public class MainScreenController implements IMainScreenController {
      */
     public void populateWaterPurityReportsList() {
         Collection<WorkerReport> reports = getPurityReports();
-
         idColumn.setCellValueFactory(new PropertyValueFactory<UserReport, Long>("idCol"));
         locationColumn.setCellValueFactory(new PropertyValueFactory<UserReport, String>("locationCol"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<UserReport, String>("dateCol"));

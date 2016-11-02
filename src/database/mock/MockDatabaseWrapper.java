@@ -70,22 +70,22 @@ public class MockDatabaseWrapper implements IDatabase {
 
     @Override
     public boolean addUserReport(UserReport report) {
-        return MockDatabaseReportManager.addReport(report);
+        return MockDatabaseReportManager.addUserReport(report);
     }
 
     @Override
     public boolean addWorkerReport(WorkerReport report) throws DatabaseException {
-        return false;
+        return MockDatabaseReportManager.addWorkerReport(report);
     }
 
     @Override
     public Collection<UserReport> getUserReportList() {
-        return MockDatabaseReportManager.getReportList();
+        return MockDatabaseReportManager.getUserReportList();
     }
 
     @Override
     public Collection<WorkerReport> getWorkerReportList() throws DatabaseException {
-        return null;
+        return MockDatabaseReportManager.getWorkerReportList();
     }
 
     @Override
