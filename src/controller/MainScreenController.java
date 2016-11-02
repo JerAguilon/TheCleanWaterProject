@@ -4,6 +4,7 @@ import apploader.LocalSession;
 import controller.interfaces.IMainScreenController;
 import database.DatabaseFactory;
 import database.responses.DatabaseException;
+import javafx.concurrent.Worker;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -170,7 +171,7 @@ public class MainScreenController implements IMainScreenController {
      * populates the list of water purity reports
      */
     public void populateWaterPurityReportsList() {
-        List<UserReport> reports = getPurityReports();
+        Collection<WorkerReport> reports = getPurityReports();
 
         idColumn.setCellValueFactory(new PropertyValueFactory<UserReport, Long>("idColumn"));
         locationColumn.setCellValueFactory(new PropertyValueFactory<UserReport, String>("locationColumn"));
@@ -209,7 +210,7 @@ public class MainScreenController implements IMainScreenController {
      * get method for the water purity reports
      * @return a list of the PurityReports
      */
-    private List<UserReport> getPurityReports() {
+    private Collection<WorkerReport> getPurityReports() {
         Collection<WorkerReport> fullList = null;
         try {
             fullList = DatabaseFactory.getDatabase().getWorkerReportList();
@@ -217,14 +218,9 @@ public class MainScreenController implements IMainScreenController {
             e.printStackTrace();
             fullList = new ArrayList<>();
         }
-        List<WorkerReport> filteredList = new ArrayList<>();
 
-        for (WorkerReport report : fullList) {
-            filteredList.add(report);
 
-        }
-
-        return filteredList;
+        return fullList;
 
     }
 

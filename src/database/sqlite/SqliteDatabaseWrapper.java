@@ -1,6 +1,7 @@
 package database.sqlite;
 
 import database.IDatabase;
+import database.responses.DatabaseException;
 import exceptions.UserException;
 import model.*;
 
@@ -75,6 +76,11 @@ public class SqliteDatabaseWrapper implements IDatabase {
     }
 
     @Override
+    public boolean addWorkerReport(WorkerReport report) throws DatabaseException {
+        return false;
+    }
+
+    @Override
     public Collection<UserReport> getUserReportList() {
         try {
             return reportManager.getReportList();
@@ -82,6 +88,11 @@ public class SqliteDatabaseWrapper implements IDatabase {
             e.printStackTrace();
         }
 
+        return null;
+    }
+
+    @Override
+    public Collection<WorkerReport> getWorkerReportList() throws DatabaseException {
         return null;
     }
 

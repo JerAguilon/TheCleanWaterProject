@@ -84,7 +84,7 @@ public class MockDatabaseWrapper implements IDatabase {
     }
 
     @Override
-    public Collection<WorkerReport> getPurityReportList() throws DatabaseException {
+    public Collection<WorkerReport> getWorkerReportList() throws DatabaseException {
         return null;
     }
 
