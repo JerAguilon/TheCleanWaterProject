@@ -54,7 +54,8 @@ public class SubmitWorkerReportScreenController {
      * submits the water report screen provided it is filled
      */
     public void submit() {
-        if (DatabaseFactory.getDatabase().getUser(author.getText()).getAuthorizationLevel().equals(AuthorizationLevel.USER)) {
+        if (DatabaseFactory.getDatabase().getUser(author.getText()).getAuthorizationLevel().equals(AuthorizationLevel.USER)
+                || DatabaseFactory.getDatabase().getUser(author.getText()).getAuthorizationLevel().equals(AuthorizationLevel.ADMINISTRATOR)) {
             sendAlert("You are not authorized to submit a report", Alert.AlertType.ERROR);
             return;
         }

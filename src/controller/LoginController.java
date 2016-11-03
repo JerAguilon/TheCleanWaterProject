@@ -38,7 +38,7 @@ public class LoginController implements ILoginController {
     /**
      * validates the user
      */
-    public void validate() {
+    public void validateLogin() {
         if (!validateBoxes()) {
             sendLoginAlert("Please fill in fields appropriately.");
             return;
