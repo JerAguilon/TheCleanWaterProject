@@ -157,6 +157,7 @@ public class MainScreenController implements IMainScreenController {
         populateWaterPurityReportsList();
     }
 
+    @FXML
     /**
      * populates the list of water reports
      */
@@ -195,6 +196,7 @@ public class MainScreenController implements IMainScreenController {
         }
     }
 
+    @FXML
     /**
      * populates the list of water purity reports
      */
