@@ -38,8 +38,8 @@ public class SubmitUserReportScreenController {
     ComboBox sourceType;
 
     @FXML
-    /**
-     * initializes the water report screen
+    /*
+      initializes the water report screen
      */
     public void initialize() {
 
@@ -52,8 +52,8 @@ public class SubmitUserReportScreenController {
     }
 
     @FXML
-    /**
-     * submits the water report screen provided it is filled
+    /*
+      submits the water report screen provided it is filled
      */
     public void submit() {
         if (purityLocation.getText().isEmpty()) {
@@ -115,8 +115,8 @@ public class SubmitUserReportScreenController {
     }
 
     @FXML
-    /**
-     * returns the user to the main screen
+    /*
+      returns the user to the main screen
      */
     public void returnToMainScreen() {
         try {

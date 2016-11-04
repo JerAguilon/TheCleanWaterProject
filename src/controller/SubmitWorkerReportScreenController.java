@@ -37,8 +37,8 @@ public class SubmitWorkerReportScreenController {
     ComboBox purityCondition;
 
     @FXML
-    /**
-     * initializes the water report screen
+    /*
+      initializes the water report screen
      */
     public void initialize() {
 
@@ -50,8 +50,8 @@ public class SubmitWorkerReportScreenController {
     }
 
     @FXML
-    /**
-     * submits the water report screen provided it is filled
+    /*
+      submits the water report screen provided it is filled
      */
     public void submit() {
         if (DatabaseFactory.getDatabase().getUser(author.getText()).getAuthorizationLevel().equals(AuthorizationLevel.USER)
@@ -118,8 +118,8 @@ public class SubmitWorkerReportScreenController {
     }
 
     @FXML
-    /**
-     * returns the user to the main screen
+    /*
+      returns the user to the main screen
      */
     public void returnToMainScreen() {
         try {

@@ -10,10 +10,10 @@ public enum WaterSourceType {
 
     /**
      * Constructor method for the WaterSourceType enum class
-     * @param sourceTye
+     * @param sourceType the source type of the water
      */
-    private WaterSourceType(String sourceTye) {
-        this.sourceType = sourceTye;
+    private WaterSourceType(String sourceType) {
+        this.sourceType = sourceType;
     }
 
     /**

@@ -35,8 +35,8 @@ public class LoginController implements ILoginController {
     }
 
     @FXML
-    /**
-     * validates the user
+    /*
+      validates the user
      */
     public void validateLogin() {
         if (!validateBoxes()) {
@@ -84,7 +84,7 @@ public class LoginController implements ILoginController {
     }
 
     @FXML
-    /**
+    /*
      * allows the user to return back to the welcome screen
      */
     public void cancel() {

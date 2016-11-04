@@ -42,8 +42,8 @@ public class RegistrationController {
     TextField title;
 
     @FXML
-    /**
-     * initializes the registration screen
+    /*
+      initializes the registration screen
      */
     public void initialize() {
         List<String> values = new ArrayList<>();

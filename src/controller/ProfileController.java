@@ -46,8 +46,8 @@ public class ProfileController {
     Label name;
 
     @FXML
-    /**
-     * initializes the screen
+    /*
+      initializes the screen
      */
     public void initialize() {
         List<String> values = new ArrayList<>();

@@ -116,8 +116,8 @@ public class MainScreenController implements IMainScreenController {
     }
 
     @FXML
-    /**
-     * allows the user to open the MapScreen
+    /*
+      allows the user to open the MapScreen
      */
     public void openMap() throws Exception {
         try {
@@ -134,8 +134,8 @@ public class MainScreenController implements IMainScreenController {
     }
 
     @FXML
-    /**
-     * allows the user to view the SubmitWaterReportScreen
+    /*
+      allows the user to view the SubmitWaterReportScreen
      */
     public void submitWaterReport() {
         try {
@@ -174,8 +174,8 @@ public class MainScreenController implements IMainScreenController {
     }
 
     @FXML
-    /**
-     * allows the user to view the SubmitPurityReportScreen
+    /*
+      allows the user to view the SubmitPurityReportScreen
      */
     public void submitPurityReport() {
         if(LocalSession.currentAuth.equals(AuthorizationLevel.USER)) {
