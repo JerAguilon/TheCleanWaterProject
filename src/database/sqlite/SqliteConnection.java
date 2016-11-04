@@ -13,9 +13,10 @@ class SqliteConnection {
 
         try {
             Class.forName("org.sqlite.JDBC");
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:TheCleanWaterProject.sqlite");
-            return conn;
-        } catch (ClassNotFoundException | SQLException e) {
+            return DriverManager.getConnection("jdbc:sqlite:TheCleanWaterProject.sqlite");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 

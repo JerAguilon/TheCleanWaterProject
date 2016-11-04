@@ -12,7 +12,7 @@ public enum WaterPurityCondition {
      * Constructor method for the WaterPurityCondition enum class
      * @param condition the condition of the water
      */
-    private WaterPurityCondition(String condition) {
+    WaterPurityCondition(String condition) {
         this.condition = condition;
     }
 
