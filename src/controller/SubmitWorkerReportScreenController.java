@@ -20,7 +20,7 @@ import model.AuthorizationLevel;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
+/*
  * Created by Ashima on 11/01/16.
  */
 public class SubmitWorkerReportScreenController {

@@ -7,7 +7,7 @@ import model.*;
 
 import java.util.*;
 
-/**
+/*
  * Created by jeremy on 9/21/16.
  */
 public class MockDatabaseWrapper implements IDatabase {

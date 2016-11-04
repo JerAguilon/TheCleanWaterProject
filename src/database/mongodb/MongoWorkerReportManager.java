@@ -4,7 +4,7 @@ import model.WorkerReport;
 
 import java.util.Collection;
 
-/**
+/*
  * Created by jeremy on 10/28/16.
  */
 public class MongoWorkerReportManager {

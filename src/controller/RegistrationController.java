@@ -16,7 +16,7 @@ import model.User;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
+/*
  * Created by AshimaGauba on 10/7/16.
  */
 public class RegistrationController {

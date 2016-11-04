@@ -8,7 +8,7 @@ import model.*;
 import java.sql.SQLException;
 import java.util.Collection;
 
-/**
+/*
  * Created by jeremy on 10/17/16.
  */
 public class SqliteDatabaseWrapper implements IDatabase {

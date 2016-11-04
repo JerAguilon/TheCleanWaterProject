@@ -12,7 +12,7 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.util.Collection;
 
-/**
+/*
  * Created by jeremy on 10/23/16.
  */
 public class MongoDatabaseWrapper implements IDatabase {

@@ -21,7 +21,7 @@ import model.WorkerReport;
 import java.util.ArrayList;
 import java.util.Collection;
 
-/**
+/*
  * Created by Janki on 9/21/2016.
  */
 public class MainScreenController implements IMainScreenController {

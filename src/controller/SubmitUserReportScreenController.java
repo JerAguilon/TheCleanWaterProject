@@ -18,7 +18,7 @@ import model.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
+/*
  * Created by jeremy on 10/11/16.
  */
 public class SubmitUserReportScreenController {

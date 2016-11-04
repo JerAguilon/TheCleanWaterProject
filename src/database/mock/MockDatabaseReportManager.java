@@ -6,7 +6,7 @@ import model.WorkerReport;
 
 import java.util.*;
 
-/**
+/*
  * Created by jeremy on 10/11/16.
  */
 public class MockDatabaseReportManager {

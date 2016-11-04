@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-/**
+/*
  * Created by jeremy on 10/23/16.
  */
 public class MongoUserReportManager {

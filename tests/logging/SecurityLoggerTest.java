@@ -13,7 +13,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-/**
+/*
  * Created by jeremy on 10/10/16.
  */
 public class SecurityLoggerTest {

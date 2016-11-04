@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-/**
+/*
  * Created by jeremy on 10/9/16.
  */
 public class ConfigLoader {

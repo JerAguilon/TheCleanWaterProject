@@ -2,7 +2,7 @@ package model;
 
 import exceptions.UserException;
 
-/**
+/*
  * Created by jeremy on 9/27/16.
  */
 public class User {

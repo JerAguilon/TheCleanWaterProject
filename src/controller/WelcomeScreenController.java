@@ -9,7 +9,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import apploader.Main;
 
-/**
+/*
  * Created by Ben Radock on 9/21/2016.
  */
 public class WelcomeScreenController {

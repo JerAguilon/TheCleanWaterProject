@@ -1,6 +1,6 @@
 package model;
 
-/**
+/*
  * Created by jeremy on 9/27/16.
  */
 public class Profile {

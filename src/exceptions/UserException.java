@@ -1,6 +1,6 @@
 package exceptions;
 
-/**
+/*
  * Created by jeremy on 10/17/16.
  */
 public class UserException extends Exception {

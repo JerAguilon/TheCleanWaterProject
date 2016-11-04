@@ -4,7 +4,7 @@ import javafx.beans.property.SimpleStringProperty;
 
 import java.util.List;
 
-/**
+/*
  * Created by jeremy on 10/6/16.
  */
 public class WorkerReport extends Report {
