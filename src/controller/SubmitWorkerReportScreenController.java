@@ -25,12 +25,15 @@ import java.util.List;
  */
 public class SubmitWorkerReportScreenController {
     @FXML
+    private
     Label author;
 
     @FXML
+    private
     Label reportType;
 
     @FXML
+    private
     TextField purityLocation;
 
     @FXML
@@ -120,8 +123,7 @@ public class SubmitWorkerReportScreenController {
     @FXML
     /*
       returns the user to the main screen
-     */
-    public void returnToMainScreen() {
+     */ private void returnToMainScreen() {
         try {
             Stage stage = (Stage) reportType.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/view/MainScreen.fxml"));

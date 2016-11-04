@@ -28,8 +28,8 @@ import java.util.List;
 /*
  * Created by jeremy on 10/23/16.
  */
-public class MongoUserReportManager {
-    private String url;
+class MongoUserReportManager {
+    private final String url;
     public MongoUserReportManager(String url) {
         this.url = url;
     }

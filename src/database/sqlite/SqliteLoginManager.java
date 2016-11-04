@@ -6,7 +6,7 @@ import java.sql.*;
  * Created by jeremy on 10/17/16.
  */
 @Deprecated
-public class SqliteLoginManager extends Connectable {
+class SqliteLoginManager extends Connectable {
 
     public boolean validate(String username, String pass) throws SQLException {
         Connection connection = SqliteConnection.connect();

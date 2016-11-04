@@ -6,11 +6,11 @@ import java.sql.SQLException;
 /*
  * Created by jeremy on 10/17/16.
  */
-public class Connectable {
+class Connectable {
 
-    Connection connection;
+    final Connection connection;
 
-    public Connectable () {
+    Connectable() {
         connection = SqliteConnection.connect();
         if (connection == null) System.exit(1);
     }

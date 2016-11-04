@@ -160,7 +160,7 @@ public class MainScreenController implements IMainScreenController {
     /**
      * populates the list of water reports
      */
-    public void populateWaterReportsList() {
+    private void populateWaterReportsList() {
         Collection<UserReport> reports = getReports();
 
         idColumn.setCellValueFactory(new PropertyValueFactory<UserReport, Long>("idColumn"));
@@ -198,7 +198,7 @@ public class MainScreenController implements IMainScreenController {
     /**
      * populates the list of water purity reports
      */
-    public void populateWaterPurityReportsList() {
+    private void populateWaterPurityReportsList() {
         Collection<WorkerReport> reports = getPurityReports();
 
         System.out.println(reports);

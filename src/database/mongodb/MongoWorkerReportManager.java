@@ -7,7 +7,7 @@ import java.util.Collection;
 /*
  * Created by jeremy on 10/28/16.
  */
-public class MongoWorkerReportManager {
+class MongoWorkerReportManager {
     public Collection<WorkerReport> getWorkerReports() {
         return null;
     }

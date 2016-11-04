@@ -27,12 +27,4 @@ public class ConfigLoader {
         return config;
     }
 
-    public static void generateTestingConfig() {
-        //TODO: implement config generation for testing purposes
-
-    }
-    public static void generateProductionConfig() {
-        //TODO: implement config generation for deployment
-    }
-
 }

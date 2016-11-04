@@ -26,7 +26,7 @@ public abstract class Report implements Loggable {
      * @param location the location of the reporter
      * @param id the id of the reporter
      */
-    public Report(String dateTimeStr, String reporterName, String location, String id) {
+    Report(String dateTimeStr, String reporterName, String location, String id) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         this.dateTime = LocalDateTime.parse(dateTimeStr, formatter);
         dateColumnProperty.set(dateTime.format(formatter));
@@ -41,7 +41,7 @@ public abstract class Report implements Loggable {
      * @param reporterName the name of the reporter
      * @param location the location of the reporter
      */
-    public Report(String reporterName, String location) {
+    Report(String reporterName, String location) {
         this.dateTime = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         dateColumnProperty.set(dateTime.format(formatter));

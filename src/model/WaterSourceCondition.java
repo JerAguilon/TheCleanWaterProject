@@ -6,7 +6,7 @@ package model;
 public enum WaterSourceCondition {
     WASTE("Waste"), TREATABLE_CLEAR("Clear (Treatable)"), TREATABLE_MUDDY("Muddy (Treatable)"), POTABLE("Potable");
 
-    private String condition;
+    private final String condition;
     /**
      * Constructor method for the WaterSourceCondition enum class
      * @param condition the condition of the water

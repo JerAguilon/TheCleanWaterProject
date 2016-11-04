@@ -43,7 +43,7 @@ public class MapController implements Initializable, MapComponentInitializedList
 
     private GeocodingService geocodingService;
 
-    private StringProperty address = new SimpleStringProperty();
+    private final StringProperty address = new SimpleStringProperty();
 
     @FXML
     Button doneButton;

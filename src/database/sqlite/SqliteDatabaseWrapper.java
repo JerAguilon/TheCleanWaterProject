@@ -15,11 +15,11 @@ public class SqliteDatabaseWrapper implements IDatabase {
     public static SqliteDatabaseWrapper database = new SqliteDatabaseWrapper();
 
     //FIELDS
-    private SqliteLoginManager loginManager;
+    private final SqliteLoginManager loginManager;
 
-    private SqliteRegistrationManager registrationManager;
+    private final SqliteRegistrationManager registrationManager;
 
-    private SqliteReportManager reportManager;
+    private final SqliteReportManager reportManager;
     //TODO: Implement dependency injection
 
     private SqliteDatabaseWrapper() {

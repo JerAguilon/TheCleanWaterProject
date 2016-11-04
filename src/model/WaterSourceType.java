@@ -6,7 +6,7 @@ package model;
 public enum WaterSourceType {
     BOTTLED("Bottled"), WELL("Well"), STREAM("Stream"), LAKE("Lake"), SPRING("Spring"), OTHER("Other");
 
-    private String sourceType;
+    private final String sourceType;
 
     /**
      * Constructor method for the WaterSourceType enum class

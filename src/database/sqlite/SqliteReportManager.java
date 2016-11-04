@@ -11,7 +11,7 @@ import java.util.List;
  * Created by jeremy on 10/18/16.
  */
 @Deprecated
-public class SqliteReportManager extends Connectable {
+class SqliteReportManager extends Connectable {
 
     public Collection<UserReport> getReportList() throws SQLException {
         List<UserReport> output = new ArrayList<>();
@@ -149,7 +149,7 @@ public class SqliteReportManager extends Connectable {
         return false;
     }
 
-    public void addWorkerReport(WorkerReport report) throws SQLException {
+    private void addWorkerReport(WorkerReport report) throws SQLException {
         int condition = report.getCondition().ordinal();
         String location = report.getLocationColumn();
         String date = report.getDateColumn();

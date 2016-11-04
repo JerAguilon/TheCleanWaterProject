@@ -22,8 +22,8 @@ import java.util.List;
 /*
  * Created by jeremy on 10/23/16.
  */
-public class MongoUserManager {
-    private String baseUrl;
+class MongoUserManager {
+    private final String baseUrl;
     public MongoUserManager(String url) {
         this.baseUrl = url;
     }

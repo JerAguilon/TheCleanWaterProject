@@ -6,7 +6,7 @@ package model;
 public enum WaterPurityCondition {
     SAFE("Safe"), TREATABLE("Treatable"), UNSAFE("Unsafe");
 
-    private String condition;
+    private final String condition;
 
     /**
      * Constructor method for the WaterPurityCondition enum class

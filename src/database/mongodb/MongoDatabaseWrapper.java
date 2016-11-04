@@ -17,8 +17,8 @@ import java.util.Collection;
  */
 public class MongoDatabaseWrapper implements IDatabase {
 
-    private MongoUserManager userManager;
-    private MongoUserReportManager userReportManager;
+    private final MongoUserManager userManager;
+    private final MongoUserReportManager userReportManager;
 
     public MongoDatabaseWrapper(String queryAddress) {
         //String QUERYADDRESS = queryAddress;

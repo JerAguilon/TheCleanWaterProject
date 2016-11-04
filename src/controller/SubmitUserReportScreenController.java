@@ -117,8 +117,7 @@ public class SubmitUserReportScreenController {
     @FXML
     /*
       returns the user to the main screen
-     */
-    public void returnToMainScreen() {
+     */ private void returnToMainScreen() {
         try {
             Stage stage = (Stage) reportType.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/view/MainScreen.fxml"));

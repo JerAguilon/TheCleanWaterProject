@@ -6,9 +6,9 @@ import exceptions.UserException;
  * Created by jeremy on 9/27/16.
  */
 public class User {
-    public static int idCount = 0;
+    private static int idCount = 0;
 
-    public final int ID;
+    private final int ID;
 
     public final String USERNAME;
     public final String PASSWORD;

@@ -30,15 +30,19 @@ public class RegistrationController {
     PasswordField confirmPassword;
 
     @FXML
+    private
     TextField email;
 
     @FXML
+    private
     ComboBox auth;
 
     @FXML
+    private
     TextField address;
 
     @FXML
+    private
     TextField title;
 
     @FXML
@@ -117,7 +121,7 @@ public class RegistrationController {
      *
      * */
     @FXML
-    public void returnToWelcomeScreen() {
+    private void returnToWelcomeScreen() {
         try {
             Stage stage = (Stage) confirmPassword.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/view/WelcomeScreen.fxml"));

@@ -9,14 +9,14 @@ import java.util.*;
 /*
  * Created by jeremy on 10/11/16.
  */
-public class MockDatabaseReportManager {
+class MockDatabaseReportManager {
     private static long reportNumber = 0;
 
-    private static Map<Long, UserReport> reports = new HashMap<>();
-    private static Set<String> locations = new HashSet<>();
+    private static final Map<Long, UserReport> reports = new HashMap<>();
+    private static final Set<String> locations = new HashSet<>();
 
-    private static Map<Long, WorkerReport> workerReports = new HashMap<>();
-    private static Set<String> workerLocations = new HashSet<>();
+    private static final Map<Long, WorkerReport> workerReports = new HashMap<>();
+    private static final Set<String> workerLocations = new HashSet<>();
 
     public static Report getReport(long id) {
         return reports.get(id);

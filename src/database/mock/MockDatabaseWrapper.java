@@ -11,9 +11,9 @@ import java.util.*;
  * Created by jeremy on 9/21/16.
  */
 public class MockDatabaseWrapper implements IDatabase {
-    public Map<String, User> database = new HashMap<>();
+    private final Map<String, User> database = new HashMap<>();
 
-    public static MockDatabaseWrapper mockDatabase = new MockDatabaseWrapper();
+    public static final MockDatabaseWrapper mockDatabase = new MockDatabaseWrapper();
 
     private MockDatabaseWrapper(){
 

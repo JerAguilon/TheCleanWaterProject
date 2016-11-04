@@ -73,7 +73,7 @@ public class UserReport extends Report {
      * Get method for the TypeColumn
      * @return String that is what the user has inputted in as the water source type
      */
-    public String getTypeColumn() {
+    private String getTypeColumn() {
         return typeColumnProperty.get();
     }
 
@@ -93,7 +93,7 @@ public class UserReport extends Report {
      * Get method for the ConditionColumn
      * @return String that is what the user has inputted in as the water source condition
      */
-    public String getConditionColumn() {
+    private String getConditionColumn() {
         return conditionColumnProperty.get();
     }
 
