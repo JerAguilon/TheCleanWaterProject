@@ -1,6 +1,5 @@
 package model;
 
-import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 import model.interfaces.Loggable;
 

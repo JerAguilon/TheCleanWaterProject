@@ -4,7 +4,6 @@ import apploader.LocalSession;
 import controller.interfaces.IMainScreenController;
 import database.DatabaseFactory;
 import database.responses.DatabaseException;
-import javafx.concurrent.Worker;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,7 +20,6 @@ import model.WorkerReport;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 /**
  * Created by Janki on 9/21/2016.

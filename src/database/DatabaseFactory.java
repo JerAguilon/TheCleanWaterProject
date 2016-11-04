@@ -3,7 +3,6 @@ package database;
 import apploader.ConfigLoader;
 import database.mock.MockDatabaseWrapper;
 import database.mongodb.MongoDatabaseWrapper;
-import database.sqlite.SqliteDatabaseWrapper;
 
 /**
  * Created by jeremy on 10/9/16.

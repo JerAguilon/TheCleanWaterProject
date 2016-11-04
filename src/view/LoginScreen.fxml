@@ -8,7 +8,7 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <children>
       <Button fx:id="cancelButton" layoutX="13.0" layoutY="360.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
-      <Button fx:id="validationButton" layoutX="535.0" layoutY="360.0" mnemonicParsing="false" onAction="#validate" text="Login" />
+      <Button fx:id="validationButton" layoutX="535.0" layoutY="360.0" mnemonicParsing="false" onAction="#validateLogin" text="Login" />
       <TextField fx:id="usernameBox" layoutX="355.0" layoutY="145.0" />
       <Label layoutX="118.0" layoutY="256.0" text="Password" />
       <Label layoutX="117.0" layoutY="150.0" text="Username" />

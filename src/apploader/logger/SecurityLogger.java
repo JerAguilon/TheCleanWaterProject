@@ -4,11 +4,9 @@ import apploader.ConfigLoader;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Properties;
 
 /**
  * Created by jeremy on 10/10/16.

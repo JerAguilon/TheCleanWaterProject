@@ -1,17 +1,13 @@
 package database.sqlite;
 
 import model.*;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Exchanger;
 
-import model.AuthorizationLevel;
+
 
 /**
  * Created by jeremy on 10/17/16.
