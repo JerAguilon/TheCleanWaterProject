@@ -61,14 +61,11 @@ class SqliteRegistrationManager extends Connectable {
         String address = user.PROFILE.HOME_ADDRESS;
         String title = user.PROFILE.TITLE;
 
-        PreparedStatement preparedStatement = null;
         String query = "INSERT INTO userlist "
                 + "(username, password, authorization, email, address, title) VALUES"
                 + "(?,?,?,?,?,?)";
 
-        try {
-
-            preparedStatement = connection.prepareStatement(query);
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
             preparedStatement.setInt(3, authorization);
@@ -81,8 +78,6 @@ class SqliteRegistrationManager extends Connectable {
 
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            preparedStatement.close();
         }
 
     }

@@ -11,6 +11,7 @@ import com.lynden.gmapsfx.service.geocoding.GeocodingService;
 
 import java.net.URL;
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 import database.DatabaseFactory;
@@ -112,18 +113,15 @@ public class MapController implements Initializable, MapComponentInitializedList
             //newLocInfoWindow.open(map, newLocMarker);
             newLocInfoWindow.setContent("");
 
-            map.addUIEventHandler(newLocMarker, UIEventType.click, new UIEventHandler() {
-                @Override
-                public void handle(JSObject jsObject) {
-                    if(!newLocInfoWindow.getContent().equals("")) {
-                        newLocInfoWindow.close();
-                        newLocInfoWindow.setContent("");
-                    } else {
-                        newLocInfoWindow.setOptions(infoWindowOptions);
-                        newLocInfoWindow.open(map, newLocMarker);
-                    }
-
+            map.addUIEventHandler(newLocMarker, UIEventType.click, jsObject -> {
+                if(!newLocInfoWindow.getContent().equals("")) {
+                    newLocInfoWindow.close();
+                    newLocInfoWindow.setContent("");
+                } else {
+                    newLocInfoWindow.setOptions(infoWindowOptions);
+                    newLocInfoWindow.open(map, newLocMarker);
                 }
+
             });
 
     }
@@ -182,13 +180,7 @@ public class MapController implements Initializable, MapComponentInitializedList
             alert.show();
             return null;
         }
-        List<Report> filteredList = new ArrayList<>();
-
-        for (Report report : fullList) {
-            if (report instanceof UserReport) {
-                filteredList.add(report);
-            }
-        }
+        List<Report> filteredList = fullList.stream().filter(report -> report instanceof UserReport).collect(Collectors.toList());
 
         return filteredList;
     }

@@ -18,19 +18,13 @@ class SqliteReportManager extends Connectable {
 
 
         Connection connection = SqliteConnection.connect();
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
         String query = "SELECT * FROM userReports";
 
-        try {
-            preparedStatement = connection.prepareStatement(query);
-
-            resultSet = preparedStatement.executeQuery();
-
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query); ResultSet resultSet = preparedStatement.executeQuery()) {
             while (resultSet.next()) {
 
                 String creationDate = resultSet.getString(1);
-                String id  = resultSet.getString(2);
+                String id = resultSet.getString(2);
                 String username = resultSet.getString(3);
                 String location = resultSet.getString(4);
                 int type = resultSet.getInt(5);
@@ -42,9 +36,6 @@ class SqliteReportManager extends Connectable {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            preparedStatement.close();
-            resultSet.close();
         }
 
         return output;
@@ -103,19 +94,13 @@ class SqliteReportManager extends Connectable {
 
 
         Connection connection = SqliteConnection.connect();
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
         String query = "SELECT * FROM purityReports";
 
-        try {
-            preparedStatement = connection.prepareStatement(query);
-
-            resultSet = preparedStatement.executeQuery();
-
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query); ResultSet resultSet = preparedStatement.executeQuery()) {
             while (resultSet.next()) {
 
                 String creationDate = resultSet.getString(1);
-                String id  = resultSet.getString(2);
+                String id = resultSet.getString(2);
                 String username = resultSet.getString(3);
                 String location = resultSet.getString(4);
                 int condition = resultSet.getInt(6);
@@ -126,9 +111,6 @@ class SqliteReportManager extends Connectable {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            preparedStatement.close();
-            resultSet.close();
         }
 
         return output;

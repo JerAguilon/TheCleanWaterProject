@@ -45,7 +45,7 @@ class MongoUserReportManager {
         HttpClient client= HttpClientBuilder.create().build();
         HttpPost request = new HttpPost(url);
 
-        List<NameValuePair> pairs = new ArrayList<NameValuePair>();
+        List<NameValuePair> pairs = new ArrayList<>();
         pairs.add(new BasicNameValuePair("reporterName", username));
         pairs.add(new BasicNameValuePair("waterSourceType", type));
         pairs.add(new BasicNameValuePair("waterSourceCondition", condition));

@@ -37,10 +37,7 @@ public class MongoDatabaseWrapper implements IDatabase {
     public void addUser(User user) throws UserException, DatabaseException {
         try {
             userManager.addUser(user);
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new DatabaseException(e.getMessage());
-        } catch (JSONException e) {
+        } catch (IOException | JSONException e) {
             e.printStackTrace();
             throw new DatabaseException(e.getMessage());
         }
@@ -50,10 +47,7 @@ public class MongoDatabaseWrapper implements IDatabase {
     public boolean validate(String username, String pass) throws DatabaseException {
         try {
             userManager.authenticate(username, pass);
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new DatabaseException(e.getMessage());
-        } catch (JSONException e) {
+        } catch (IOException | JSONException e) {
             e.printStackTrace();
             throw new DatabaseException(e.getMessage());
         }
@@ -75,10 +69,7 @@ public class MongoDatabaseWrapper implements IDatabase {
     public boolean addUserReport(UserReport report) throws DatabaseException {
         try {
             userReportManager.addUserReport(report);
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new DatabaseException(e.getMessage());
-        } catch (JSONException e) {
+        } catch (IOException | JSONException e) {
             e.printStackTrace();
             throw new DatabaseException(e.getMessage());
         }
@@ -94,10 +85,7 @@ public class MongoDatabaseWrapper implements IDatabase {
     public Collection<UserReport> getUserReportList() throws DatabaseException {
         try {
             return userReportManager.getReports();
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new DatabaseException(e.getMessage());
-        } catch (JSONException e) {
+        } catch (IOException | JSONException e) {
             e.printStackTrace();
             throw new DatabaseException(e.getMessage());
         }

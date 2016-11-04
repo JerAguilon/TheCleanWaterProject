@@ -13,9 +13,6 @@ import javafx.scene.control.Button;
 import model.Profile;
 import model.User;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /*
  * Created by Ashima on 09/30/16.
  */

@@ -10,16 +10,11 @@ class SqliteLoginManager extends Connectable {
 
     public boolean validate(String username, String pass) throws SQLException {
         Connection connection = SqliteConnection.connect();
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
         String query = "SELECT * FROM userlist WHERE username = ? and password = ?";
 
-        try {
-            preparedStatement = connection.prepareStatement(query);
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query); ResultSet resultSet = preparedStatement.executeQuery()) {
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, pass);
-
-            resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
                 return true;
@@ -27,9 +22,6 @@ class SqliteLoginManager extends Connectable {
 
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            preparedStatement.close();
-            resultSet.close();
         }
 
         return false;

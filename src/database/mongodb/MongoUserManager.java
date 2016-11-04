@@ -33,7 +33,7 @@ class MongoUserManager {
         HttpClient client= HttpClientBuilder.create().build();
         HttpPost request = new HttpPost(url);
 
-        List<NameValuePair> pairs = new ArrayList<NameValuePair>();
+        List<NameValuePair> pairs = new ArrayList<>();
         pairs.add(new BasicNameValuePair("username", username));
         pairs.add(new BasicNameValuePair("password", password));
 
@@ -66,7 +66,7 @@ class MongoUserManager {
         HttpClient client= HttpClientBuilder.create().build();
         HttpPost request = new HttpPost(url);
 
-        List<NameValuePair> pairs = new ArrayList<NameValuePair>();
+        List<NameValuePair> pairs = new ArrayList<>();
         pairs.add(new BasicNameValuePair("username", username));
         pairs.add(new BasicNameValuePair("password", password));
         pairs.add(new BasicNameValuePair("email", email));

@@ -47,11 +47,8 @@ public class MockDatabaseWrapper implements IDatabase {
     public boolean validate(String username, String pass) {
         User user = getUser(username);
 
-        if (user == null) {
-            return false;
-        }
+        return user != null && user.PASSWORD.equals(pass);
 
-        return user.PASSWORD.equals(pass);
     }
 
     @Override
