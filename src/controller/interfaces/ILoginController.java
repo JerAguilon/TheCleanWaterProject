@@ -8,5 +8,5 @@ import javafx.event.*;
  */
 public interface ILoginController {
     boolean isLockedOut();
-    void validate();
+    void validateLogin();
 }
