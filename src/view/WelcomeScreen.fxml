@@ -13,9 +13,9 @@
     <rowConstraints>
         <RowConstraints />
     </rowConstraints>
-    <children>
+    <!--<children>-->
         <Pane prefHeight="400.0" prefWidth="600.0">
-            <children>
+            <!--<children>-->
                 <Button fx:id="loginButton" layoutX="192.0" layoutY="322.0" mnemonicParsing="false" onAction="#login" text="Login" />
                 <Button fx:id="registerButton" layoutX="333.0" layoutY="322.0" mnemonicParsing="false" onAction="#register" text="Register" />
                 <Label layoutX="187.0" layoutY="246.0" text="Please click on a button to proceed:" />
@@ -24,7 +24,7 @@
                   <Font size="45.0" />
                </font>
             </Text>
-            </children>
+            <!--</children>-->
       </Pane>
-    </children>
+    <!--</children>-->
 </GridPane>

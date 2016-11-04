@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SubmitWorkerReportScreenController">
-   <children>
+   <!--<children>-->
       <Label layoutX="87.0" layoutY="98.0" text="Report Type" />
       <Label layoutX="87.0" layoutY="57.0" text="Report Author" />
       <Label fx:id="author" layoutX="360.0" layoutY="57.0" prefHeight="27.0" prefWidth="150.0" text="Label" />
@@ -18,5 +18,5 @@
       <ComboBox fx:id="purityCondition" layoutX="350.0" layoutY="200.0" prefWidth="150.0" />
       <Label fx:id="reportType" layoutX="360.0" layoutY="106.0" text="Label" />
       <Button cancelButton="true" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#returnToMainScreen" text="Cancel" />
-   </children>
+   <!--</children>-->
 </Pane>

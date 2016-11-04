@@ -13,12 +13,12 @@
 <?import javafx.scene.layout.RowConstraints?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainScreenController">
-   <children>
+   <!--<children>-->
       <TabPane prefHeight="400.0" prefWidth="600.0">
-         <tabs>
+         <!--<tabs>-->
 
             <Tab text="Profile Options">
-               <content>
+               <!--<content>-->
                   <GridPane>
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
@@ -27,22 +27,22 @@
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
-                     <children>
+                     <!--<children>-->
                         <Button fx:id="profileedit" mnemonicParsing="false" onAction="#profile" text="Edit Profile" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                         <Button fx:id="logout" mnemonicParsing="false" onAction="#logout" text="Logout" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                     </children>
+                     <!--</children>-->
                   </GridPane>
-               </content>
+               <!--</content>-->
             </Tab>
 
             <Tab onSelectionChanged="#populateWaterReports" text="User Water Reports">
-               <content>
+               <!--<content>-->
                   <BorderPane prefHeight="125.0" prefWidth="555.0">
                      <bottom>
                         <FlowPane BorderPane.alignment="CENTER">
-                           <children>
+                           <!--<children>-->
                               <Button mnemonicParsing="false" onAction="#submitWaterReport" text="Submit Water Report" />
-                           </children>
+                           <!--</children>-->
                         </FlowPane>
                      </bottom>
                      <center>
@@ -57,30 +57,33 @@
                            </columns>
                         </TableView>
                      </center></BorderPane>
-               </content></Tab>
+               <!--</content>-->
+      </Tab>
 
-            <Tab onSelectionChanged="#populateWaterPurityReportsList" text="Worker Water Reports">
-               <content>
-                  <BorderPane prefHeight="125.0" prefWidth="555.0">
-                     <bottom>
-                        <FlowPane BorderPane.alignment="CENTER">
-                           <children>
-                              <Button fx:id="submitWorkerReport" mnemonicParsing="false" onAction="#submitPurityReport" text="Submit Water Purity Report" />
-                           </children>
-                        </FlowPane>
-                     </bottom>
-                     <center>
-                        <TableView fx:id="workerReportTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                           <columns>
-                              <TableColumn fx:id="dateCol" prefWidth="75.0" text="Date" />
-                              <TableColumn fx:id="idCol" prefWidth="75.0" text="ID" />
-                              <TableColumn fx:id="locationCol" prefWidth="184.0" text="Location" />
-                              <TableColumn fx:id="conditionCol" minWidth="7.0" prefWidth="86.0" text="Condition" />
-                              <TableColumn fx:id="usernameCol" minWidth="0.0" prefWidth="112.0" text="Username" />
-                           </columns>
-                        </TableView>
-                     </center></BorderPane>
-               </content></Tab>
+         <Tab onSelectionChanged="#populateWaterPurityReportsList" text="Worker Water Reports">
+            <BorderPane prefHeight="125.0" prefWidth="555.0">
+               <bottom>
+                  <FlowPane BorderPane.alignment="CENTER">
+                     <children>
+                        <Button fx:id="submitWorkerReport" mnemonicParsing="false" onAction="#submitPurityReport"
+                                text="Submit Water Purity Report"/>
+                     </children>
+                  </FlowPane>
+               </bottom>
+               <center>
+                  <TableView fx:id="workerReportTable" prefHeight="200.0" prefWidth="200.0"
+                             BorderPane.alignment="CENTER">
+                     <columns>
+                        <TableColumn fx:id="dateCol" prefWidth="75.0" text="Date"/>
+                        <TableColumn fx:id="idCol" prefWidth="75.0" text="ID"/>
+                        <TableColumn fx:id="locationCol" prefWidth="184.0" text="Location"/>
+                        <TableColumn fx:id="conditionCol" minWidth="7.0" prefWidth="86.0" text="Condition"/>
+                        <TableColumn fx:id="usernameCol" minWidth="0.0" prefWidth="112.0" text="Username"/>
+                     </columns>
+                  </TableView>
+               </center>
+            </BorderPane>
+         </Tab>
 
             <Tab text="Water Availability Map">
                <content>
@@ -92,7 +95,7 @@
                </content>
             </Tab>
 
-         </tabs>
+         <!--</tabs>-->
       </TabPane>
-   </children>
+   <!--</children>-->
 </Pane>
