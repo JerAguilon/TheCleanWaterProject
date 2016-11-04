@@ -20,16 +20,14 @@ public class WelcomeScreenController {
     @FXML
     Button registerButton;
 
-    /** reference back to mainApplication if needed */
-    private Main mainApplication;
-
 
     /**
      * allow for calling back to the main application code if necessary
      * @param main   the reference to the FX Application instance
      * */
     public void setMainApp(Main main) {
-        mainApplication = main;
+        /* reference back to mainApplication if needed */
+        Main mainApplication = main;
     }
 
     /**

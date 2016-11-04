@@ -16,13 +16,12 @@ import java.util.Collection;
  * Created by jeremy on 10/23/16.
  */
 public class MongoDatabaseWrapper implements IDatabase {
-    private final String QUERYADDRESS;
 
     private MongoUserManager userManager;
     private MongoUserReportManager userReportManager;
 
     public MongoDatabaseWrapper(String queryAddress) {
-        this.QUERYADDRESS = queryAddress;
+        String QUERYADDRESS = queryAddress;
 
         userManager = new MongoUserManager(queryAddress + "/api/users");
         userReportManager = new MongoUserReportManager(queryAddress + "/api/userreports");
