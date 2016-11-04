@@ -92,7 +92,7 @@ public class MongoUserReportManager {
             SimpleDateFormat pulledFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSSXXX");
             SimpleDateFormat javaFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-            Date date = null;
+            Date date;
             try {
                 date = pulledFormat.parse(time);
             } catch (ParseException e) {

@@ -54,7 +54,7 @@ public class LoginController implements ILoginController {
         String password = passwordBox.getText();
 
         try {
-            if (database.validate(username, password)) {
+            if (database != null && database.validate(username, password)) {
 
                 try {
 

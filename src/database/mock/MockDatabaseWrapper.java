@@ -18,7 +18,7 @@ public class MockDatabaseWrapper implements IDatabase {
     private MockDatabaseWrapper(){
 
         Profile profile = new Profile("Test@test.com", "1234", "Sr.");
-        User user = null;
+        User user;
         try {
             user = new User("user", "pass", AuthorizationLevel.ADMINISTRATOR, profile);
         } catch (UserException e) {
@@ -35,7 +35,7 @@ public class MockDatabaseWrapper implements IDatabase {
 
     @Override
     public void addUser(User user) throws UserException {
-        User test = getUser(user.USERNAME);
+        //User test = getUser(user.USERNAME);
         if (getUser(user.USERNAME) != null) {
             throw new UserException("User already exists");
         }
@@ -51,11 +51,7 @@ public class MockDatabaseWrapper implements IDatabase {
             return false;
         }
 
-        if (user.PASSWORD.equals(pass)) {
-            return true;
-        }
-
-        return false;
+        return user.PASSWORD.equals(pass);
     }
 
     @Override

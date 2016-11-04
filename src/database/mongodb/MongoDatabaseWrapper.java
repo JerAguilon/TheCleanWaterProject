@@ -21,7 +21,7 @@ public class MongoDatabaseWrapper implements IDatabase {
     private MongoUserReportManager userReportManager;
 
     public MongoDatabaseWrapper(String queryAddress) {
-        String QUERYADDRESS = queryAddress;
+        //String QUERYADDRESS = queryAddress;
 
         userManager = new MongoUserManager(queryAddress + "/api/users");
         userReportManager = new MongoUserReportManager(queryAddress + "/api/userreports");

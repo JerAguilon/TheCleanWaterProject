@@ -141,9 +141,7 @@ public abstract class Report implements Loggable {
 
         Report that = (Report) other;
 
-        if (this.idColumnProperty.get() == that.idColumnProperty.get()) return true;
-
-        return false;
+        return (this.idColumnProperty.get().equals(that.idColumnProperty.get()));
     }
 
     /**

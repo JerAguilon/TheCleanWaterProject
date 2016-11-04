@@ -18,8 +18,8 @@ public class SqliteRegistrationManager extends Connectable {
         User user = new User();
 
         Connection connection = SqliteConnection.connect();
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
+        PreparedStatement preparedStatement;
+        ResultSet resultSet;
         String query = "SELECT * FROM userlist WHERE username = ?";
 
         try {

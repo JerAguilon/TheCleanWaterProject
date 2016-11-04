@@ -173,7 +173,7 @@ public class MapController implements Initializable, MapComponentInitializedList
     }
 
     private List<Report> getReports() {
-        Collection<UserReport> fullList = null;
+        Collection<UserReport> fullList;
         try {
             fullList = DatabaseFactory.getDatabase().getUserReportList();
         } catch (DatabaseException e) {

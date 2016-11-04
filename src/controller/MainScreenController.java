@@ -217,7 +217,7 @@ public class MainScreenController implements IMainScreenController {
      * @return a list of the UserReports
      */
     private Collection<UserReport> getReports() {
-        Collection<UserReport> fullList = null;
+        Collection<UserReport> fullList;
         try {
             fullList = DatabaseFactory.getDatabase().getUserReportList();
         } catch (DatabaseException e) {
@@ -234,7 +234,7 @@ public class MainScreenController implements IMainScreenController {
      * @return a list of the PurityReports
      */
     private Collection<WorkerReport> getPurityReports() {
-        Collection<WorkerReport> fullList = null;
+        Collection<WorkerReport> fullList;
         try {
             fullList = DatabaseFactory.getDatabase().getWorkerReportList();
         } catch (DatabaseException e) {

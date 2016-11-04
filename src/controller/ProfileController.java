@@ -50,7 +50,7 @@ public class ProfileController {
       initializes the screen
      */
     public void initialize() {
-        List<String> values = new ArrayList<>();
+        //List<String> values = new ArrayList<>();
 
         /*auth.getItems().clear();
         for (AuthorizationLevel auth : AuthorizationLevel.values()) {
