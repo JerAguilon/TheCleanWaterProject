@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.text.*?>
-<?import java.lang.*?>
+
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
-   <children>
+   <!--<children>-->
       <Button fx:id="cancelButton" layoutX="13.0" layoutY="360.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
       <Button fx:id="validationButton" layoutX="535.0" layoutY="360.0" mnemonicParsing="false" onAction="#validateLogin" text="Login" />
       <TextField fx:id="usernameBox" layoutX="355.0" layoutY="145.0" />
@@ -18,5 +18,5 @@
          </font>
       </Text>
       <PasswordField fx:id="passwordBox" layoutX="355.0" layoutY="251.0" />
-   </children>
+   <!--</children>-->
 </Pane>
