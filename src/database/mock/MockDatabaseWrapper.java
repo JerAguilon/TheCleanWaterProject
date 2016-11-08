@@ -71,6 +71,10 @@ public class MockDatabaseWrapper implements IDatabase {
         return MockDatabaseReportManager.addWorkerReport(report);
     }
 
+    public boolean addHistoricalReport(HistoricalReport report) throws DatabaseException {
+        return MockDatabaseReportManager.addHistoricalReport(report);
+    }
+
     @Override
     public Collection<UserReport> getUserReportList() {
         return MockDatabaseReportManager.getUserReportList();
@@ -79,6 +83,10 @@ public class MockDatabaseWrapper implements IDatabase {
     @Override
     public Collection<WorkerReport> getWorkerReportList() throws DatabaseException {
         return MockDatabaseReportManager.getWorkerReportList();
+    }
+
+    public Collection<HistoricalReport> getHistoricalReportList() throws DatabaseException {
+        return MockDatabaseReportManager.getHistoricalReportList();
     }
 
     @Override

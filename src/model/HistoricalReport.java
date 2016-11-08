@@ -10,16 +10,18 @@ public class HistoricalReport {
     private String location;
     private HistoricalReportType hrt;
     private Date date;
+    private long ppm;
 
 
     private final SimpleStringProperty locationColumnProperty = new SimpleStringProperty();
     private final SimpleStringProperty hrtColumnProperty = new SimpleStringProperty();
     private final SimpleStringProperty dateColumnProperty = new SimpleStringProperty();
 
-    public HistoricalReport(String location, HistoricalReportType hrt, Date date) {
+    public HistoricalReport(String location, HistoricalReportType hrt, Date date, long ppm) {
         this.location = location;
         this.hrt = hrt;
         this.date = date;
+        this.ppm = ppm;
 
         this.locationColumnProperty.set(location.toString());
         this.hrtColumnProperty.set(hrt.toString());
@@ -30,13 +32,15 @@ public class HistoricalReport {
         return this.location;
     }
 
-    private HistoricalReportType getHistoricalReportType() {
+    public HistoricalReportType getHistoricalReportType() {
         return this.hrt;
     }
 
-    private Date getDate() {
+    public Date getDate() {
         return this.date;
     }
+
+    public long getPPM() {return this.ppm; }
 
     private String getLocationColumn() {
         return locationColumnProperty.get();

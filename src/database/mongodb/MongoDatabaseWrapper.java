@@ -3,10 +3,7 @@ package database.mongodb;
 import database.IDatabase;
 import database.responses.DatabaseException;
 import exceptions.UserException;
-import model.WorkerReport;
-import model.Report;
-import model.User;
-import model.UserReport;
+import model.*;
 import org.json.JSONException;
 
 import java.io.IOException;
@@ -111,4 +108,10 @@ public class MongoDatabaseWrapper implements IDatabase {
     public boolean modifyUserReport(UserReport report, UserReport newReport) {
         return false;
     }
+
+    @Override
+    public boolean addHistoricalReport(HistoricalReport report) throws DatabaseException { return false; }
+
+    @Override
+    public Collection<HistoricalReport> getHistoricalReportList() throws DatabaseException {return null;}
 }

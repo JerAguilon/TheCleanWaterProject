@@ -25,5 +25,6 @@ public interface IDatabase {
     boolean deleteReport(long id);
     boolean deleteReport(Report report);
     boolean modifyUserReport(UserReport report, UserReport newReport);
-
+    boolean addHistoricalReport(HistoricalReport report) throws DatabaseException;
+    Collection<HistoricalReport> getHistoricalReportList() throws DatabaseException;
 }

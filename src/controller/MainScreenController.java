@@ -8,18 +8,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import model.AuthorizationLevel;
-import model.Report;
-import model.UserReport;
-import model.WorkerReport;
+import model.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /*
  * Created by Janki on 9/21/2016.
@@ -74,6 +70,21 @@ public class MainScreenController implements IMainScreenController {
     @FXML
     Button submitWorkerReport;
 
+    @FXML
+    TextField graphYear;
+
+    @FXML
+    TextField graphLocation;
+
+    @FXML
+    ComboBox graphVirusContam;
+
+    @FXML
+    Button displayGraph;
+
+    @FXML
+    Button histReportButton;
+
     /**
      * allow the user to logout and go to the welcome screen again
      *
@@ -117,6 +128,55 @@ public class MainScreenController implements IMainScreenController {
 
     @FXML
     /*
+      initializes the registration screen
+     */
+    public void initialize() {
+        List<String> values = new ArrayList<>();
+
+        graphVirusContam.getItems().clear();
+        for (HistoricalReportType hrt : HistoricalReportType.values()) {
+            values.add(hrt.toString());
+        }
+        graphVirusContam.getItems().addAll(values);
+
+        graphVirusContam.getSelectionModel().select(0);
+    }
+
+    @FXML
+    public void displayGraph() {
+        /*if(graphYear.getText().equals("") || graphLocation.getText().equals("")) {
+
+        }*/
+        if(LocalSession.currentAuth != AuthorizationLevel.MANAGER && LocalSession.currentAuth != AuthorizationLevel.ADMINISTRATOR) {
+            displayGraph.setText("Must be a manager to create graph.");
+        } else if(graphLocation.getText().equals("") && graphYear.getText().equals("")) {
+            sendAlert("Multiple fields empty. Please fill in fields to proceed.", Alert.AlertType.ERROR);
+        } else if(graphLocation.getText().equals("")) {
+            sendAlert("Location field is empty. Please fill in field to proceed.", Alert.AlertType.ERROR);
+        } else if (graphYear.getText().equals("")) {
+            sendAlert("Year field is empty. Please fill in field to proceed.", Alert.AlertType.ERROR);
+        }
+        else
+        {
+            LocalSession.currentGraphLocation = graphLocation.getText();
+            LocalSession.currentGraphYear = Integer.parseInt(graphYear.getText());
+            LocalSession.currentHrtType = HistoricalReportType.match(graphVirusContam.getSelectionModel().getSelectedItem().toString());
+            try {
+                Stage stage = (Stage) profileedit.getScene().getWindow();
+                Parent root = FXMLLoader.load(getClass().getResource("/view/GraphScreen.fxml"));
+
+                Scene scene = new Scene(root);
+                scene.getStylesheets().add("css/stylesheet.css");
+                stage.setScene(scene);
+                stage.show();
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @FXML
+    /*
       allows the user to open the MapScreen
      */
     public void openMap() throws Exception {
@@ -130,6 +190,28 @@ public class MainScreenController implements IMainScreenController {
             stage.show();
         } catch(Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    @FXML
+    /*
+        allows the user to view the SubmitHistoricalReportScreen
+     */
+    public void submitHistoricalReport() {
+        if(LocalSession.currentAuth != AuthorizationLevel.ADMINISTRATOR && LocalSession.currentAuth != AuthorizationLevel.MANAGER) {
+            histReportButton.setText("Must be a manager to create graph.");
+        } else {
+            try {
+                Stage stage = (Stage) logout.getScene().getWindow();
+                Parent root = FXMLLoader.load(getClass().getResource("/view/SubmitHistoricalReportScreen.fxml"));
+
+                Scene scene = new Scene(root);
+                scene.getStylesheets().add("css/stylesheet.css");
+                stage.setScene(scene);
+                stage.show();
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -158,7 +240,7 @@ public class MainScreenController implements IMainScreenController {
     }
 
     @FXML
-    /**
+    /*
      * populates the list of water reports
      */
     private void populateWaterReportsList() {
@@ -197,7 +279,7 @@ public class MainScreenController implements IMainScreenController {
     }
 
     @FXML
-    /**
+    /*
      * populates the list of water purity reports
      */
     private void populateWaterPurityReportsList() {
@@ -247,6 +329,19 @@ public class MainScreenController implements IMainScreenController {
 
         return fullList;
 
+    }
+
+    /**
+     * sends the submission error message
+     * @param message the message that should be printed as a String
+     * @param type the type of alert
+     */
+    private void sendAlert(String message, Alert.AlertType type) {
+        Alert alert = new Alert(type);
+        alert.setTitle("Submission Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
 }

@@ -1,5 +1,6 @@
 package database.mock;
 
+import model.HistoricalReport;
 import model.Report;
 import model.UserReport;
 import model.WorkerReport;
@@ -17,6 +18,9 @@ class MockDatabaseReportManager {
 
     private static final Map<Long, WorkerReport> workerReports = new HashMap<>();
     private static final Set<String> workerLocations = new HashSet<>();
+
+    private static final Map<Long, HistoricalReport> histReports = new HashMap<>();
+
 
     public static Report getReport(long id) {
         return reports.get(id);
@@ -55,6 +59,12 @@ class MockDatabaseReportManager {
         }
     }
 
+    public static boolean addHistoricalReport(HistoricalReport report) {
+        histReports.put(reportNumber, report);
+        reportNumber++;
+        return true;
+    }
+
     public static Collection<UserReport> getUserReportList() {
         return reports.values();
     }
@@ -62,6 +72,8 @@ class MockDatabaseReportManager {
     public static Collection<WorkerReport> getWorkerReportList() {
         return workerReports.values();
     }
+
+    public static Collection<HistoricalReport> getHistoricalReportList() {return histReports.values();}
 
     public static boolean deleteReport(long id) {
         if (!reports.containsKey(id)) return false;

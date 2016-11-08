@@ -110,4 +110,10 @@ public class SqliteDatabaseWrapper implements IDatabase {
     public boolean modifyUserReport(UserReport report, UserReport newReport) {
         return false;
     }
+
+    @Override
+    public boolean addHistoricalReport(HistoricalReport report) throws DatabaseException {return false;}
+
+    @Override
+    public Collection<HistoricalReport> getHistoricalReportList() throws DatabaseException {return null;}
 }

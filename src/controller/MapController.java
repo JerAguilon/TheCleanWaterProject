@@ -178,8 +178,6 @@ public class MapController implements Initializable, MapComponentInitializedList
             alert.show();
             return null;
         }
-        List<Report> filteredList = fullList.stream().filter(report -> report instanceof UserReport).collect(Collectors.toList());
-
-        return filteredList;
+        return fullList.stream().filter(report -> report instanceof UserReport).collect(Collectors.toList());
     }
 }
