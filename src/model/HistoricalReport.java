@@ -53,4 +53,9 @@ public class HistoricalReport {
     private String getDateColumn() {
         return dateColumnProperty.get();
     }
+
+    public String toString() {
+        return String.format("Location: %s, ReportType: %s, ppm: %d", location, hrt, ppm);
+    }
+
 }

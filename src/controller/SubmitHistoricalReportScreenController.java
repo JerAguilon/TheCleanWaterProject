@@ -90,7 +90,7 @@ public class SubmitHistoricalReportScreenController {
 
         HistoricalReportType hrt = HistoricalReportType.match(histReportCondition.getSelectionModel().getSelectedItem().toString());
         Date date = new Date(Integer.parseInt(histReportYear.getText()), Integer.parseInt(histReportMonth.getText()) - 1, Integer.parseInt(histReportDay.getText()));
-
+        System.out.println(date.getYear());
         HistoricalReport report = new HistoricalReport(histReportLocation.getText(), hrt, date, Long.parseLong(ppmField.getText()));
 
         try {
@@ -133,7 +133,7 @@ public class SubmitHistoricalReportScreenController {
      */
     private void sendAlert(String message, Alert.AlertType type) {
         Alert alert = new Alert(type);
-        alert.setTitle("Submission Error");
+        alert.setTitle("Submission");
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();

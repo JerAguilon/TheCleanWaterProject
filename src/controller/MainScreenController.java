@@ -147,7 +147,7 @@ public class MainScreenController implements IMainScreenController {
         /*if(graphYear.getText().equals("") || graphLocation.getText().equals("")) {
 
         }*/
-        if(LocalSession.currentAuth != AuthorizationLevel.MANAGER && LocalSession.currentAuth != AuthorizationLevel.ADMINISTRATOR) {
+        if(LocalSession.currentAuth != AuthorizationLevel.MANAGER) {
             displayGraph.setText("Must be a manager to create graph.");
         } else if(graphLocation.getText().equals("") && graphYear.getText().equals("")) {
             sendAlert("Multiple fields empty. Please fill in fields to proceed.", Alert.AlertType.ERROR);
@@ -198,7 +198,7 @@ public class MainScreenController implements IMainScreenController {
         allows the user to view the SubmitHistoricalReportScreen
      */
     public void submitHistoricalReport() {
-        if(LocalSession.currentAuth != AuthorizationLevel.ADMINISTRATOR && LocalSession.currentAuth != AuthorizationLevel.MANAGER) {
+        if(LocalSession.currentAuth != AuthorizationLevel.MANAGER) {
             histReportButton.setText("Must be a manager to create graph.");
         } else {
             try {

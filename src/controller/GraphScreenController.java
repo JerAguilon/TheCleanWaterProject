@@ -76,7 +76,7 @@ public class GraphScreenController {
         yAxis.setLowerBound(0);
         yAxis.setUpperBound(1000000);
         yAxis.setTickUnit(10000);
-
+        System.out.println(histReports);
         for(HistoricalReport report : histReports) {
             if(LocalSession.currentHrtType.toString().equals(report.getHistoricalReportType().toString()) &&
                     LocalSession.currentGraphYear == report.getDate().getYear() &&
