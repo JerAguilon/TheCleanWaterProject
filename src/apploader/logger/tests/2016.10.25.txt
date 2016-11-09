@@ -1,0 +1,35 @@
+03:35:48
+		Report ID:  0
+		Username: user
+		Location: 33.749,-84.388
+		Type: Bottled
+		Condition: Waste
+
+03:43:39
+		Report ID:  0
+		Username: user
+		Location: 33.749,-84.388
+		Type: Bottled
+		Condition: Waste
+
+03:44:55
+		Report ID:  0
+		Username: user
+		Location: 33.749,-84.388
+		Type: Bottled
+		Condition: Waste
+
+03:46:09
+		Report ID:  0
+		Username: user
+		Location: 33.749,-84.388
+		Type: Bottled
+		Condition: Waste
+
+03:55:09
+		Report ID:  0
+		Username: user
+		Location: 33.749,-84.388
+		Type: Bottled
+		Condition: Waste
+
