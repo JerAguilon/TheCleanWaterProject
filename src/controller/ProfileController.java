@@ -2,6 +2,7 @@ package controller;
 
 import apploader.LocalSession;
 import database.DatabaseFactory;
+import database.responses.DatabaseException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -57,7 +58,13 @@ public class ProfileController {
 
         auth.getSelectionModel().select(0);*/
 
-        User user = DatabaseFactory.getDatabase().getUser(LocalSession.currentUsername);
+        User user = null;
+        try {
+            user = DatabaseFactory.getDatabase().getUser(LocalSession.currentUsername);
+        } catch (DatabaseException e) {
+            e.printStackTrace();
+            return;
+        }
         email.setText(user.PROFILE.EMAIL);
         title.setText(user.PROFILE.TITLE);
         address.setText(user.PROFILE.HOME_ADDRESS);
@@ -94,7 +101,11 @@ public class ProfileController {
         String personTitle = title.getText();
         String homeAddress = address.getText();
 
-        DatabaseFactory.getDatabase().getUser(LocalSession.currentUsername).setProfile(new Profile(em, homeAddress, personTitle));
+        try {
+            DatabaseFactory.getDatabase().getUser(LocalSession.currentUsername).setProfile(new Profile(em, homeAddress, personTitle));
+        } catch (DatabaseException e) {
+            e.printStackTrace();
+        }
 
         try {
             Stage stage = (Stage) home.getScene().getWindow();

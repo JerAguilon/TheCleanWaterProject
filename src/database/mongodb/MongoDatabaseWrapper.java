@@ -26,8 +26,16 @@ public class MongoDatabaseWrapper implements IDatabase {
 
 
     @Override
-    public User getUser(String name) {
-        return null;
+    public User getUser(String name) throws DatabaseException {
+        try {
+            return userManager.getUser(name);
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new DatabaseException(e.getMessage());
+        } catch (JSONException e) {
+            e.printStackTrace();
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
     @Override

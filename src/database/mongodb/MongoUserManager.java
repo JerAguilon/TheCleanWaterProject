@@ -1,5 +1,7 @@
 package database.mongodb;
 import database.responses.DatabaseException;
+import exceptions.UserException;
+import model.AuthorizationLevel;
 import model.Profile;
 import model.User;
 import org.apache.http.HttpResponse;
@@ -14,8 +16,10 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import sun.security.x509.AuthorityInfoAccessExtension;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -90,18 +94,46 @@ class MongoUserManager {
 
     }
 
-    public List<User> viewUsers() throws IOException, JSONException, DatabaseException {
-        String url = this.baseUrl + "/viewusers";
+    public User getUser(String username) throws IOException, JSONException, DatabaseException {
+        String url = this.baseUrl + "/me";
+
+
         HttpClient client= HttpClientBuilder.create().build();
         HttpGet request = new HttpGet(url);
 
         request.addHeader("x-access-token", TokenKeeper.getToken());
-
+        request.addHeader("username", username);
         HttpResponse resp = client.execute(request);
 
-        System.out.println(EntityUtils.toString(resp.getEntity(), "UTF-8"));
-        //TODO: Implement this
+        JSONObject object = new JSONObject(EntityUtils.toString(resp.getEntity(), "UTF-8"));
 
-        throw new NotImplementedException();
+        boolean result = object.getBoolean("success");
+        String message = object.getString("message");
+        object = object.getJSONObject("userData");
+        if (!result) {
+            throw new DatabaseException(message);
+        }
+
+        String foundUsername = object.getString("username");
+        String password = object.getString("password");
+        int responsibility = object.getInt("responsibility");
+        JSONObject profile = object.getJSONObject("profile");
+        String email = profile.getString("email");
+        String address = profile.getString("address");
+        String title = profile.getString("title");
+
+        AuthorizationLevel auth = AuthorizationLevel.values()[responsibility - 1];
+        Profile javaProfile = new Profile(email, address, title);
+        User user;
+        try {
+            user = new User(foundUsername, password, auth, javaProfile);
+        } catch (UserException e) {
+            throw new DatabaseException("Unable to convert mongo data to java obect");
+        }
+
+        return user;
+
+
+
     }
 }

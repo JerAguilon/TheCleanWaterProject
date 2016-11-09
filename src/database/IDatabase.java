@@ -3,14 +3,16 @@ package database;
 import database.responses.DatabaseException;
 import exceptions.UserException;
 import model.*;
+import org.json.JSONException;
 
+import java.io.IOException;
 import java.util.Collection;
 
 /*
  * Created by jeremy on 9/21/16.
  */
 public interface IDatabase {
-    User getUser(String name);
+    User getUser(String name) throws DatabaseException;
 
     void addUser(User user) throws UserException, DatabaseException;
 
