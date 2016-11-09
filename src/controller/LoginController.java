@@ -28,7 +28,7 @@ public class LoginController implements ILoginController {
 
     /**
      * tells whether or not the user is locked out
-     * @return the boolean value true if lockedout, and false if not
+     * @return the boolean value true if locked out, and false if not
      */
     public boolean isLockedOut() {
         return false;
