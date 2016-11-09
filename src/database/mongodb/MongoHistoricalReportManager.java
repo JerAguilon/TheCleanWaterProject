@@ -39,7 +39,7 @@ public class MongoHistoricalReportManager {
         String location = report.getLocation();
         String date;
 
-        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSSXXX");
         date = formatter.format(report.getDate());
 
         System.out.println("DATE: " + date);
@@ -77,7 +77,7 @@ public class MongoHistoricalReportManager {
 
         JSONArray objectArray = new JSONArray(output.trim());
         ArrayList<HistoricalReport> resultList = new ArrayList<>();
-
+        System.out.println(objectArray);
         for (int i = 0; i < objectArray.length(); i++) {
             JSONObject object = objectArray.getJSONObject(i);
 
@@ -87,7 +87,7 @@ public class MongoHistoricalReportManager {
             String location = object.getString("location");
 
             String time = object.getString("date");
-            SimpleDateFormat pulledFormat = new SimpleDateFormat("MM/dd/yyyy");
+            SimpleDateFormat pulledFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSSXXX");
 
             Date date;
             try {
@@ -100,6 +100,7 @@ public class MongoHistoricalReportManager {
             HistoricalReport report = new HistoricalReport(location, HistoricalReportType.values()[reportType],date,  ppm);
             resultList.add(report);
         }
+        System.out.println(resultList);
         return resultList;
     }
 

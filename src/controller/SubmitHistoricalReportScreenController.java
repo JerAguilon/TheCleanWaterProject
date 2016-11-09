@@ -15,6 +15,8 @@ import javafx.stage.Stage;
 import model.HistoricalReport;
 import model.HistoricalReportType;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -88,9 +90,28 @@ public class SubmitHistoricalReportScreenController {
             return;
         }
 
+
         HistoricalReportType hrt = HistoricalReportType.match(histReportCondition.getSelectionModel().getSelectedItem().toString());
-        Date date = new Date(Integer.parseInt(histReportYear.getText()), Integer.parseInt(histReportMonth.getText()) - 1, Integer.parseInt(histReportDay.getText()));
-        System.out.println(date.getYear());
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+        String year = histReportYear.getText();
+        String month = histReportMonth.getText();
+        String day = histReportDay.getText();
+
+        if (!year.matches("\\d+") || !month.matches("\\d+") || !day.matches("\\d+")) {
+            sendAlert("Date fields aren't valid", Alert.AlertType.ERROR);
+            return;
+        }
+        String formattedDate  = String.format("%02d/%02d/%04d",
+                Integer.parseInt(month), Integer.parseInt(day), Integer.parseInt(year));
+
+        Date date = null;
+        try {
+            date = formatter.parse(formattedDate);
+        } catch (ParseException e) {
+            sendAlert("Unabled to parse data fields", Alert.AlertType.ERROR);
+            return;
+        }
+        System.out.println(date);
         HistoricalReport report = new HistoricalReport(histReportLocation.getText(), hrt, date, Long.parseLong(ppmField.getText()));
 
         try {

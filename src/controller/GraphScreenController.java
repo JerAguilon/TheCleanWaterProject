@@ -22,10 +22,7 @@ import javafx.stage.Stage;
 import model.HistoricalReport;
 import model.HistoricalReportType;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Ben Radock on 11/8/2016.
@@ -76,12 +73,19 @@ public class GraphScreenController {
         yAxis.setLowerBound(0);
         yAxis.setUpperBound(1000000);
         yAxis.setTickUnit(10000);
-        System.out.println(histReports);
         for(HistoricalReport report : histReports) {
+
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(report.getDate());
+
+
+            int year = cal.get(Calendar.YEAR);
+            int month = cal.get(Calendar.MONTH);
+
             if(LocalSession.currentHrtType.toString().equals(report.getHistoricalReportType().toString()) &&
-                    LocalSession.currentGraphYear == report.getDate().getYear() &&
+                    LocalSession.currentGraphYear == year &&
                     LocalSession.currentGraphLocation.equals(report.getLocation())) {
-                series1.getData().add(new XYChart.Data(months[report.getDate().getMonth()], report.getPPM()));
+                series1.getData().add(new XYChart.Data(months[month - 1], report.getPPM()));
             }
         }
 
