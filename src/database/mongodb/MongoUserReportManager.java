@@ -54,7 +54,7 @@ class MongoUserReportManager {
         request.addHeader("x-access-token", TokenKeeper.getToken());
         request.setEntity(new UrlEncodedFormEntity(pairs ));
         HttpResponse resp = client.execute(request);
-
+        System.out.println(resp);
         JSONObject object = new JSONObject(EntityUtils.toString(resp.getEntity(), "UTF-8"));
 
         String message = object.getString("message");

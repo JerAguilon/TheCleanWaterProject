@@ -16,12 +16,13 @@ public class MongoDatabaseWrapper implements IDatabase {
 
     private final MongoUserManager userManager;
     private final MongoUserReportManager userReportManager;
-
+    private final MongoWorkerReportManager workerReportManager;
     public MongoDatabaseWrapper(String queryAddress) {
         //String QUERYADDRESS = queryAddress;
 
         userManager = new MongoUserManager(queryAddress + "/api/users");
         userReportManager = new MongoUserReportManager(queryAddress + "/api/userreports");
+        workerReportManager = new MongoWorkerReportManager(queryAddress + "/api/workerreports");
     }
 
 
@@ -83,7 +84,13 @@ public class MongoDatabaseWrapper implements IDatabase {
 
     @Override
     public boolean addWorkerReport(WorkerReport report) throws DatabaseException {
-        return false;
+        try {
+            workerReportManager.addReport(report);
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+            throw new DatabaseException(e.getMessage());
+        }
+        return true;
     }
 
     @Override
@@ -99,7 +106,12 @@ public class MongoDatabaseWrapper implements IDatabase {
 
     @Override
     public Collection<WorkerReport> getWorkerReportList() throws DatabaseException {
-        return null;
+        try {
+            return workerReportManager.getReports();
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
     @Override

@@ -113,7 +113,7 @@ class MongoUserManager {
         if (!result) {
             throw new DatabaseException(message);
         }
-
+        
         String foundUsername = object.getString("username");
         String password = object.getString("password");
         int responsibility = object.getInt("responsibility");
@@ -122,7 +122,7 @@ class MongoUserManager {
         String address = profile.getString("address");
         String title = profile.getString("title");
 
-        AuthorizationLevel auth = AuthorizationLevel.values()[responsibility - 1];
+        AuthorizationLevel auth = AuthorizationLevel.values()[responsibility];
         Profile javaProfile = new Profile(email, address, title);
         User user;
         try {
