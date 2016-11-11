@@ -3,9 +3,7 @@ package database;
 import database.responses.DatabaseException;
 import exceptions.UserException;
 import model.*;
-import org.json.JSONException;
 
-import java.io.IOException;
 import java.util.Collection;
 
 /*

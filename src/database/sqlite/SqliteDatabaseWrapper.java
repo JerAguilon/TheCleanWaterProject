@@ -12,7 +12,7 @@ import java.util.Collection;
  * Created by jeremy on 10/17/16.
  */
 public class SqliteDatabaseWrapper implements IDatabase {
-    public static SqliteDatabaseWrapper database = new SqliteDatabaseWrapper();
+    // --Commented out by Inspection (11/10/2016 7:48 PM):public static SqliteDatabaseWrapper database = new SqliteDatabaseWrapper();
 
     //FIELDS
     private final SqliteLoginManager loginManager;

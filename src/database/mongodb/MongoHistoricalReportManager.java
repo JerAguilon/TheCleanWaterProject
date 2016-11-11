@@ -23,10 +23,10 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-/**
+/*
  * Created by jeremy on 11/8/16.
  */
-public class MongoHistoricalReportManager {
+class MongoHistoricalReportManager {
     private final String url;
     public MongoHistoricalReportManager(String url) {
         this.url = url;

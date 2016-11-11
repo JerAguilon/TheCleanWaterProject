@@ -15,7 +15,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.WorkerReport;
 import model.WaterPurityCondition;
-import model.AuthorizationLevel;
 
 import java.util.ArrayList;
 import java.util.List;

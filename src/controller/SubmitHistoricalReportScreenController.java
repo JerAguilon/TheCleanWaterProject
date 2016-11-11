@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
+/*
  * Created by Ben Radock on 11/6/2016.
  */
 public class SubmitHistoricalReportScreenController {

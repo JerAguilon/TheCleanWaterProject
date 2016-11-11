@@ -1,6 +1,6 @@
 package model;
 
-/**
+/*
  * Created by Ragavi on 11/6/2016.
  */
 public enum HistoricalReportType {

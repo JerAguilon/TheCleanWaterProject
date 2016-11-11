@@ -15,11 +15,8 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-import sun.security.x509.AuthorityInfoAccessExtension;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -128,7 +125,7 @@ class MongoUserManager {
         try {
             user = new User(foundUsername, password, auth, javaProfile);
         } catch (UserException e) {
-            throw new DatabaseException("Unable to convert mongo data to java obect");
+            throw new DatabaseException("Unable to convert mongo data to java object");
         }
 
         return user;

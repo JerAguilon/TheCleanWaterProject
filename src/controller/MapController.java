@@ -4,8 +4,6 @@ import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
 import com.lynden.gmapsfx.javascript.event.UIEventType;
 import com.lynden.gmapsfx.javascript.object.*;
-import com.lynden.gmapsfx.service.geocoding.GeocoderStatus;
-import com.lynden.gmapsfx.service.geocoding.GeocodingResult;
 import com.lynden.gmapsfx.service.geocoding.GeocodingService;
 
 import java.net.URL;
@@ -17,16 +15,11 @@ import database.DatabaseFactory;
 import database.responses.DatabaseException;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import model.Report;
 import model.UserReport;
 
@@ -83,7 +76,7 @@ public class MapController implements Initializable, MapComponentInitializedList
         String type;
         String condition;
 
-        for (Report r : markerList) {
+        for (Report r : markerList != null ? markerList : null) {
 
             dateTime = r.getDateColumn();
             reporterName = r.getUsernameColumn();
@@ -128,45 +121,49 @@ public class MapController implements Initializable, MapComponentInitializedList
 
     }
 
-    @FXML
-    public void returnToMain() throws Exception {
-        try {
-            Stage stage = (Stage) doneButton.getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource("/view/MainScreen.fxml"));
+// --Commented out by Inspection START (11/10/2016 7:48 PM):
+//    @FXML
+//    public void returnToMain() throws Exception {
+//        try {
+//            Stage stage = (Stage) doneButton.getScene().getWindow();
+//            Parent root = FXMLLoader.load(getClass().getResource("/view/MainScreen.fxml"));
+//
+//            Scene scene = new Scene(root);
+//            scene.getStylesheets().add("css/stylesheet.css");
+//            stage.setScene(scene);
+//            stage.show();
+//        } catch(Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+// --Commented out by Inspection STOP (11/10/2016 7:48 PM)
 
-            Scene scene = new Scene(root);
-            scene.getStylesheets().add("css/stylesheet.css");
-            stage.setScene(scene);
-            stage.show();
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-    }
 
-
-    @FXML
-    public void addressTextFieldAction(ActionEvent event) {
-        geocodingService.geocode(address.get(), (GeocodingResult[] results, GeocoderStatus status) -> {
-
-            LatLong latLong = null;
-
-            if( status == GeocoderStatus.ZERO_RESULTS) {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "No matching address found");
-                alert.show();
-                return;
-            } else if( results.length > 1 ) {
-                Alert alert = new Alert(Alert.AlertType.WARNING, "Multiple results found, showing the first one.");
-                alert.show();
-                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
-            } else {
-                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
-            }
-
-            map.setCenter(latLong);
-
-        });
-
-    }
+// --Commented out by Inspection START (11/10/2016 7:48 PM):
+//    @FXML
+//    public void addressTextFieldAction() {
+//        geocodingService.geocode(address.get(), (GeocodingResult[] results, GeocoderStatus status) -> {
+//
+//            LatLong latLong = null;
+//
+//            if( status == GeocoderStatus.ZERO_RESULTS) {
+//                Alert alert = new Alert(Alert.AlertType.ERROR, "No matching address found");
+//                alert.show();
+//                return;
+//            } else if( results.length > 1 ) {
+//                Alert alert = new Alert(Alert.AlertType.WARNING, "Multiple results found, showing the first one.");
+//                alert.show();
+//                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+//            } else {
+//                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+//            }
+//
+//            map.setCenter(latLong);
+//
+//        });
+//
+//    }
+// --Commented out by Inspection STOP (11/10/2016 7:48 PM)
 
     private List<Report> getReports() {
         Collection<UserReport> fullList;
@@ -178,6 +175,6 @@ public class MapController implements Initializable, MapComponentInitializedList
             alert.show();
             return null;
         }
-        return fullList.stream().filter(report -> report instanceof UserReport).collect(Collectors.toList());
+        return fullList.stream().filter(report -> report != null).collect(Collectors.toList());
     }
 }

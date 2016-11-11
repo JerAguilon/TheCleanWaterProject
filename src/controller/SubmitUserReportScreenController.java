@@ -23,9 +23,11 @@ import java.util.List;
  */
 public class SubmitUserReportScreenController {
     @FXML
+    private
     Label author;
 
     @FXML
+    private
     Label reportType;
 
     @FXML

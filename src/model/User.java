@@ -62,13 +62,14 @@ public class User {
         this.PROFILE = newProfile;
     }
 
-    /**
-     * Set method for the authorization level of the user
-     * @param auth the AuthorizationLevel that we want to set
-     */
-    public void setAuthorizationLevel(AuthorizationLevel auth) {
-        //this.AUTH = auth;
-    }
+// --Commented out by Inspection START (11/10/2016 7:49 PM):
+//    /**
+//     * Set method for the authorization level of the user
+//     */
+//    public void setAuthorizationLevel() {
+//        //this.AUTH = auth;
+//    }
+// --Commented out by Inspection STOP (11/10/2016 7:49 PM)
 
     public AuthorizationLevel getAuthorizationLevel() {
         return AUTH;

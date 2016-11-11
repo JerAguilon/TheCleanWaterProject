@@ -337,7 +337,7 @@ public class MainScreenController implements IMainScreenController {
      * @param type the type of alert
      */
     private void sendAlert(String message, Alert.AlertType type) {
-        Alert alert = new Alert(type);
+        Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Submission Error");
         alert.setHeaderText(null);
         alert.setContentText(message);

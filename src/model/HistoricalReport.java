@@ -3,14 +3,14 @@ import javafx.beans.property.SimpleStringProperty;
 
 import java.util.Date;
 
-/**
+/*
  * Created by Ragavi on 11/6/2016.
  */
 public class HistoricalReport {
-    private String location;
-    private HistoricalReportType hrt;
-    private Date date;
-    private long ppm;
+    private final String location;
+    private final HistoricalReportType hrt;
+    private final Date date;
+    private final long ppm;
 
 
     private final SimpleStringProperty locationColumnProperty = new SimpleStringProperty();
