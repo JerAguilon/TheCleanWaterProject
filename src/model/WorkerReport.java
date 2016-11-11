@@ -1,5 +1,6 @@
 package model;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.util.List;
@@ -10,11 +11,12 @@ import java.util.List;
 public class WorkerReport extends Report {
 
     private WaterPurityCondition condition;
-    private String virusPPM;
-    private String contaminantPPM;
-    private String location;
+    private int virusPPM;
+    private int contaminantPPM;
 
     private final SimpleStringProperty conditionColumnProperty = new SimpleStringProperty();
+    private final SimpleIntegerProperty virusPPMColumnProperty = new SimpleIntegerProperty();
+    private final SimpleIntegerProperty contaminantPPMColumnProperty = new SimpleIntegerProperty();
 
     /**
      * Constructor for WorkerReport class
@@ -25,11 +27,17 @@ public class WorkerReport extends Report {
      * @param id the id of the person making the report
      */
     public WorkerReport(String time, String reporterName,
-                        String location, WaterPurityCondition condition, String id) {
+                        String location, WaterPurityCondition condition, String id, int virusPPM, int contaminantPPM) {
         super(time, reporterName, location, id);
 
         this.condition = condition;
         this.conditionColumnProperty.set(condition.toString());
+
+        this.virusPPM = virusPPM;
+        this.contaminantPPM = contaminantPPM;
+
+        this.contaminantPPMColumnProperty.set(contaminantPPM);
+        this.virusPPMColumnProperty.set(virusPPM);
     }
 
     /**
@@ -46,8 +54,8 @@ public class WorkerReport extends Report {
      * @param location the location at which the report was made
      * @param condition the WaterPurityCondition
      */
-    public WorkerReport(String reporterName, String location, WaterPurityCondition condition, String virusPPM,
-                        String contaminantPPM) {
+    public WorkerReport(String reporterName, String location, WaterPurityCondition condition, int virusPPM,
+                        int contaminantPPM) {
         super(reporterName, location);
 
         this.condition = condition;
@@ -55,13 +63,16 @@ public class WorkerReport extends Report {
         this.contaminantPPM = contaminantPPM;
         this.conditionColumnProperty.set(condition.toString());
 
+        this.virusPPMColumnProperty.set(virusPPM);
+        this.contaminantPPMColumnProperty.set(contaminantPPM);
+
     }
 
     /**
      * Get method for the ConditionColumn
      * @return String that is what the user has inputted in as the water purity condition
      */
-    private String getConditionColumn() {
+    public String getConditionColumn() {
         return conditionColumnProperty.get();
     }
 
@@ -85,11 +96,30 @@ public class WorkerReport extends Report {
 
     }
 
-    public String getVirusPPM() {
+    public int getVirusPPM() {
         return virusPPM;
     }
 
-    public String getContaminantPPM() {
+    public int getContaminantPPM() {
         return contaminantPPM;
+    }
+
+    public Integer getVirusPPMColumn() {
+        return virusPPMColumnProperty.get();
+    }
+
+    public void setVirusPPMColumn(int value) {
+        this.virusPPMColumnProperty.set(value);
+        this.virusPPM = value;
+    }
+
+    public Integer getContaminantPPMColumn() {
+
+        return contaminantPPMColumnProperty.get();
+    }
+
+    public void setContaminantPPMColumn(int value) {
+        this.contaminantPPMColumnProperty.set(value);
+        this.contaminantPPM = value;
     }
 }

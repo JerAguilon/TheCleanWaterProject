@@ -56,10 +56,12 @@
                            <columns>
                               <TableColumn fx:id="dateColumn" prefWidth="75.0" text="Date" />
                               <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
-                              <TableColumn fx:id="locationColumn" prefWidth="184.0" text="Location" />
+                              <TableColumn fx:id="locationColumn" prefWidth="50.0" text="Location" />
                               <TableColumn fx:id="typeColumn" minWidth="0.0" prefWidth="64.0" text="Type" />
                               <TableColumn fx:id="conditionColumn" minWidth="7.0" prefWidth="86.0" text="Condition" />
                               <TableColumn fx:id="usernameColumn" minWidth="0.0" prefWidth="112.0" text="Username" />
+
+
                            </columns>
                         </TableView>
                      </center></BorderPane>
@@ -83,6 +85,8 @@
                         <TableColumn fx:id="locationCol" prefWidth="184.0" text="Location" />
                         <TableColumn fx:id="conditionCol" minWidth="7.0" prefWidth="86.0" text="Condition" />
                         <TableColumn fx:id="usernameCol" minWidth="0.0" prefWidth="112.0" text="Username" />
+                        <TableColumn fx:id="contaminantPPMColumn" minWidth="0.0" prefWidth="112.0" text="Contaminant PPM" />
+                        <TableColumn fx:id="virusPPMColumn" minWidth="0.0" prefWidth="112.0" text="Virus PPM" />
                      </columns>
                   </TableView>
                </center>

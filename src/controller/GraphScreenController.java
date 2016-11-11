@@ -81,9 +81,9 @@ public class GraphScreenController {
             int month = report.getDateTime().getMonthValue();
             if(LocalSession.currentGraphYear == year && LocalSession.currentGraphLocation.equals(report.getLocationColumn())) {
                 if(LocalSession.currentHrtType.toString().equals("Virus")) {
-                    series1.getData().add(new XYChart.Data(months[month - 1], Integer.parseInt(report.getVirusPPM())));
+                    series1.getData().add(new XYChart.Data(months[month - 1], report.getVirusPPM()));
                 } else {
-                    series1.getData().add(new XYChart.Data(months[month - 1], Integer.parseInt(report.getContaminantPPM())));
+                    series1.getData().add(new XYChart.Data(months[month - 1], report.getContaminantPPM()));
                 }
             }
         }

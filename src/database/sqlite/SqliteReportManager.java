@@ -105,9 +105,9 @@ class SqliteReportManager extends Connectable {
                 String location = resultSet.getString(4);
                 int condition = resultSet.getInt(6);
 
-                WorkerReport report = new WorkerReport(creationDate, username,
-                        location, WaterPurityCondition.values()[condition], id);
-                output.add(report);
+                //WorkerReport report = new WorkerReport(creationDate, username,
+                  //      location, WaterPurityCondition.values()[condition], id);
+                //output.add(report);
             }
         } catch (Exception e) {
             e.printStackTrace();

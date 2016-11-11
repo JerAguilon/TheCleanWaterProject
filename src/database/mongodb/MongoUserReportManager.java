@@ -85,6 +85,7 @@ class MongoUserReportManager {
             String location = object.getString("location");
             WaterSourceType type = WaterSourceType.values()[object.getInt("waterSourceType")];
             WaterSourceCondition condition = WaterSourceCondition.values()[object.getInt("waterSourceCondition")];
+            System.out.println("Condition: " + condition);
             String id = object.getString("_id");
             String name = object.getString("reporterName");
 

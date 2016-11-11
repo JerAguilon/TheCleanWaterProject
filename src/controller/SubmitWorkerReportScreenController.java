@@ -17,6 +17,7 @@ import model.WorkerReport;
 import model.WaterPurityCondition;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /*
@@ -71,7 +72,8 @@ public class SubmitWorkerReportScreenController {
         WaterPurityCondition wpc = WaterPurityCondition.match(purityCondition.getSelectionModel().getSelectedItem().toString());
 
 
-        WorkerReport report = new WorkerReport(author.getText(), purityLocation.getText(), wpc, virusPPM.getText(), contaminantPPM.getText());
+
+        WorkerReport report = new WorkerReport(author.getText(), purityLocation.getText(), wpc, Integer.parseInt(virusPPM.getText()), Integer.parseInt(contaminantPPM.getText()));
 
         try {
             if (DatabaseFactory.getDatabase().addWorkerReport(report)) {

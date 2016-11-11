@@ -85,6 +85,12 @@ public class MainScreenController implements IMainScreenController {
     @FXML
     Button histReportButton;
 
+    @FXML
+    TableColumn contaminantPPMColumn;
+
+    @FXML
+    TableColumn virusPPMColumn;
+
     /**
      * allow the user to logout and go to the welcome screen again
      *
@@ -291,6 +297,9 @@ public class MainScreenController implements IMainScreenController {
         dateCol.setCellValueFactory(new PropertyValueFactory<WorkerReport, String>("dateColumn"));
         conditionCol.setCellValueFactory(new PropertyValueFactory<WorkerReport, String>("conditionColumn"));
         usernameCol.setCellValueFactory(new PropertyValueFactory<WorkerReport, String>("usernameColumn"));
+        contaminantPPMColumn.setCellValueFactory(new PropertyValueFactory<WorkerReport, Integer>("contaminantPPMColumn"));
+        virusPPMColumn.setCellValueFactory(new PropertyValueFactory<WorkerReport, Integer>("virusPPMColumn"));
+
 
         workerReportTable.getItems().setAll(reports);
         System.out.println(workerReportTable.getItems());

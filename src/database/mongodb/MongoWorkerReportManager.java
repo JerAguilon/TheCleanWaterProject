@@ -68,8 +68,8 @@ class MongoWorkerReportManager {
 
             time = javaFormat.format(date);
 
-            WorkerReport report = new WorkerReport(time, name, location, condition, id);
-            resultList.add(report);
+            //WorkerReport report = new WorkerReport(time, name, location, condition, id);
+            //resultList.add(report);
         }
         return resultList;
 
