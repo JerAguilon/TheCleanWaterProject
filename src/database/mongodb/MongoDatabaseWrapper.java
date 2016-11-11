@@ -32,10 +32,7 @@ public class MongoDatabaseWrapper implements IDatabase {
     public User getUser(String name) throws DatabaseException {
         try {
             return userManager.getUser(name);
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new DatabaseException(e.getMessage());
-        } catch (JSONException e) {
+        } catch (IOException | JSONException e) {
             e.printStackTrace();
             throw new DatabaseException(e.getMessage());
         }

@@ -2,13 +2,10 @@ package model;
 
 import controller.RegistrationController;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /*
  * Created by Ben Radock on 11/9/2016.

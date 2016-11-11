@@ -4,9 +4,6 @@ import apploader.LocalSession;
 import database.DatabaseFactory;
 import database.responses.DatabaseException;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,13 +16,11 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import model.HistoricalReport;
-import model.HistoricalReportType;
 import model.WorkerReport;
 
 import java.util.*;
 
-/**
+/*
  * Created by Ben Radock on 11/8/2016.
  */
 public class GraphScreenController {
@@ -59,7 +54,7 @@ public class GraphScreenController {
         Collection<WorkerReport> reports = null;
         try {
             reports = DatabaseFactory.getDatabase().getWorkerReportList();
-        } catch (DatabaseException e) {
+        } catch (DatabaseException ignored) {
 
         }
         XYChart.Series series1 = new XYChart.Series();
@@ -69,7 +64,7 @@ public class GraphScreenController {
         chart.setTitle("History Graph for " + LocalSession.currentGraphLocation + " in " + LocalSession.currentGraphYear);
 
         String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-        xAxis.setCategories(FXCollections.<String>observableArrayList(Arrays.asList(months)));
+        xAxis.setCategories(FXCollections.observableArrayList(Arrays.asList(months)));
 
         yAxis.setLowerBound(0);
         yAxis.setUpperBound(1000000);

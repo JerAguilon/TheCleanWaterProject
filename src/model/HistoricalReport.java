@@ -23,7 +23,7 @@ public class HistoricalReport {
         this.date = date;
         this.ppm = ppm;
 
-        this.locationColumnProperty.set(location.toString());
+        this.locationColumnProperty.set(location);
         this.hrtColumnProperty.set(hrt.toString());
         this.dateColumnProperty.set(date.toString());
     }
