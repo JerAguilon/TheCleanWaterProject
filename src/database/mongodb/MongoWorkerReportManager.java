@@ -58,6 +58,9 @@ class MongoWorkerReportManager {
             SimpleDateFormat pulledFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSSXXX");
             SimpleDateFormat javaFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
+            int virusPPM = object.getInt("virusPPM");
+            int contaminantPPM = object.getInt("contaminantPPM");
+
             Date date;
             try {
                 date = pulledFormat.parse(time);
@@ -68,8 +71,8 @@ class MongoWorkerReportManager {
 
             time = javaFormat.format(date);
 
-            //WorkerReport report = new WorkerReport(time, name, location, condition, id);
-            //resultList.add(report);
+            WorkerReport report = new WorkerReport(time, name, location, condition, id, virusPPM, contaminantPPM);
+            resultList.add(report);
         }
         return resultList;
 
@@ -89,7 +92,8 @@ class MongoWorkerReportManager {
         pairs.add(new BasicNameValuePair("reporterName", username));
         pairs.add(new BasicNameValuePair("waterPurityCondition", condition));
         pairs.add(new BasicNameValuePair("location", location));
-
+        pairs.add(new BasicNameValuePair("virusPPM", Integer.toString(report.getVirusPPM())));
+        pairs.add(new BasicNameValuePair("contaminantPPM", Integer.toString(report.getContaminantPPM())));
         request.addHeader("x-access-token", TokenKeeper.getToken());
         request.setEntity(new UrlEncodedFormEntity(pairs ));
         HttpResponse resp = client.execute(request);
