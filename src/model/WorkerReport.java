@@ -10,6 +10,9 @@ import java.util.List;
 public class WorkerReport extends Report {
 
     private WaterPurityCondition condition;
+    private String virusPPM;
+    private String contaminantPPM;
+    private String location;
 
     private final SimpleStringProperty conditionColumnProperty = new SimpleStringProperty();
 
@@ -26,7 +29,6 @@ public class WorkerReport extends Report {
         super(time, reporterName, location, id);
 
         this.condition = condition;
-
         this.conditionColumnProperty.set(condition.toString());
     }
 
@@ -44,11 +46,13 @@ public class WorkerReport extends Report {
      * @param location the location at which the report was made
      * @param condition the WaterPurityCondition
      */
-    public WorkerReport(String reporterName, String location, WaterPurityCondition condition) {
+    public WorkerReport(String reporterName, String location, WaterPurityCondition condition, String virusPPM,
+                        String contaminantPPM) {
         super(reporterName, location);
 
         this.condition = condition;
-
+        this.virusPPM = virusPPM;
+        this.contaminantPPM = contaminantPPM;
         this.conditionColumnProperty.set(condition.toString());
 
     }
@@ -79,5 +83,13 @@ public class WorkerReport extends Report {
         output.add(String.format("\tCondition: %s", getConditionColumn()));
         return output;
 
+    }
+
+    public String getVirusPPM() {
+        return virusPPM;
+    }
+
+    public String getContaminantPPM() {
+        return contaminantPPM;
     }
 }

@@ -99,15 +99,6 @@
                </content>
             </Tab>
 
-         <Tab text="Historical Report Entry">
-         <content>
-            <BorderPane prefHeight="200.0" prefWidth="200.0">
-               <center>
-                  <Button fx:id="histReportButton" mnemonicParsing="false" onAction="#submitHistoricalReport" text="Enter Historical Report" BorderPane.alignment="CENTER" />
-               </center>
-            </BorderPane>
-         </content></Tab>
-
          <Tab text="Create History Graph">
          <content>
             <GridPane>

@@ -39,6 +39,12 @@ public class SubmitWorkerReportScreenController {
     ComboBox purityCondition;
 
     @FXML
+    TextField virusPPM;
+
+    @FXML
+    TextField contaminantPPM;
+
+    @FXML
     /*
       initializes the water report screen
      */
@@ -65,7 +71,7 @@ public class SubmitWorkerReportScreenController {
         WaterPurityCondition wpc = WaterPurityCondition.match(purityCondition.getSelectionModel().getSelectedItem().toString());
 
 
-        WorkerReport report = new WorkerReport(author.getText(), purityLocation.getText(), wpc);
+        WorkerReport report = new WorkerReport(author.getText(), purityLocation.getText(), wpc, virusPPM.getText(), contaminantPPM.getText());
 
         try {
             if (DatabaseFactory.getDatabase().addWorkerReport(report)) {
