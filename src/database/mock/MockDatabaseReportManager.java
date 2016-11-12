@@ -93,7 +93,7 @@ class MockDatabaseReportManager {
         if (!reports.containsKey(report.getIdColumn())) return false;
 
         newReport.setIdColumn(report.getIdColumn());
-        newReport.setDateColumn(report.getDateTime());
+        newReport.setDateColumn(report.getDate());
         reports.put(Long.parseLong(report.getIdColumn()), newReport);
 
         return true;

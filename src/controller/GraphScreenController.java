@@ -76,9 +76,18 @@ public class GraphScreenController {
 
 
             //int year = cal.get(Calendar.YEAR);
-            int year = report.getDateTime().getYear();
+
+            Date date = report.getDate();
+
+            Calendar cal = Calendar.getInstance();
+
+            cal.setTime(date);
+
+            int year = cal.get(Calendar.YEAR);
+            //note: Months start at 0 by default, so we increment
+            int month = cal.get(Calendar.MONTH) + 1;
+
             //int month = cal.get(Calendar.MONTH);
-            int month = report.getDateTime().getMonthValue();
             if(LocalSession.currentGraphYear == year && LocalSession.currentGraphLocation.equals(report.getLocationColumn())) {
                 if(LocalSession.currentHrtType.toString().equals("Virus")) {
                     series1.getData().add(new XYChart.Data(months[month - 1], report.getVirusPPM()));

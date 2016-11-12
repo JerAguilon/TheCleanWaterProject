@@ -54,24 +54,26 @@ class MongoWorkerReportManager {
             String id = object.getString("_id");
             String name = object.getString("reporterName");
 
-            String time = object.getString("createdAt");
-            SimpleDateFormat pulledFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSSXXX");
-            SimpleDateFormat javaFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
             int virusPPM = object.getInt("virusPPM");
             int contaminantPPM = object.getInt("contaminantPPM");
 
             Date date;
             try {
-                date = pulledFormat.parse(time);
+                date = DateGenerator.generateDate(object.getString("createdAt"));
             } catch (ParseException e) {
                 e.printStackTrace();
                 throw new DatabaseException("Unable to parse the date from the mongo database");
             }
 
-            time = javaFormat.format(date);
+            String time = DateGenerator.dateToJavaString(date);
 
-            WorkerReport report = new WorkerReport(time, name, location, condition, id, virusPPM, contaminantPPM);
+            WorkerReport report;
+            try {
+                report = new WorkerReport(time, name, location, condition, id, virusPPM, contaminantPPM);
+            } catch (ParseException e) {
+                throw new DatabaseException("Unable to parse date");
+            }
             resultList.add(report);
         }
         return resultList;

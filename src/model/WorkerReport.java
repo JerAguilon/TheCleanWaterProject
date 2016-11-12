@@ -3,6 +3,7 @@ package model;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+import java.text.ParseException;
 import java.util.List;
 
 /*
@@ -27,7 +28,8 @@ public class WorkerReport extends Report {
      * @param id the id of the person making the report
      */
     public WorkerReport(String time, String reporterName,
-                        String location, WaterPurityCondition condition, String id, int virusPPM, int contaminantPPM) {
+                        String location, WaterPurityCondition condition, String id,
+                        int virusPPM, int contaminantPPM) throws ParseException {
         super(time, reporterName, location, id);
 
         this.condition = condition;

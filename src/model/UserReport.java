@@ -3,6 +3,7 @@ package model;
 import javafx.beans.property.SimpleStringProperty;
 
 
+import java.text.ParseException;
 import java.util.List;
 
 /*
@@ -26,7 +27,8 @@ public class UserReport extends Report {
      * @param id the id of the person making the report
      */
     public UserReport(String time, String reporterName,
-                      String location, WaterSourceType type, WaterSourceCondition condition, String id) {
+                      String location, WaterSourceType type,
+                      WaterSourceCondition condition, String id) throws ParseException {
         super(time, reporterName, location, id);
 
         this.type = type;

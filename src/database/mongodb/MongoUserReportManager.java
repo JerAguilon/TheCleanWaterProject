@@ -1,6 +1,7 @@
 package database.mongodb;
 
 import database.responses.DatabaseException;
+import model.DateGenerator;
 import model.UserReport;
 import model.WaterSourceCondition;
 import model.WaterSourceType;
@@ -85,25 +86,28 @@ class MongoUserReportManager {
             String location = object.getString("location");
             WaterSourceType type = WaterSourceType.values()[object.getInt("waterSourceType")];
             WaterSourceCondition condition = WaterSourceCondition.values()[object.getInt("waterSourceCondition")];
-            System.out.println("Condition: " + condition);
+
             String id = object.getString("_id");
             String name = object.getString("reporterName");
 
-            String time = object.getString("createdAt");
-            SimpleDateFormat pulledFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSSXXX");
-            SimpleDateFormat javaFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
             Date date;
+
             try {
-                date = pulledFormat.parse(time);
+                date = DateGenerator.generateDate(object.getString("createdAt"));
             } catch (ParseException e) {
                 e.printStackTrace();
                 throw new DatabaseException("Unable to parse the date from the mongo database");
             }
 
-            time = javaFormat.format(date);
+            String time = DateGenerator.dateToJavaString(date);
 
-            UserReport report = new UserReport(time, name, location, type, condition, id);
+            UserReport report;
+            try {
+                report = new UserReport(time, name, location, type, condition, id);
+            } catch (ParseException e) {
+                e.printStackTrace();
+                throw new DatabaseException("Unable to parse date upon java object creation");
+            }
             resultList.add(report);
         }
         return resultList;

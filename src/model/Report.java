@@ -3,9 +3,11 @@ package model;
 import javafx.beans.property.SimpleStringProperty;
 import model.interfaces.Loggable;
 
+import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /*
@@ -13,7 +15,11 @@ import java.util.List;
  */
 public abstract class Report implements Loggable {
 
-    private LocalDateTime dateTime;
+    private Date date;
+    private String id;
+    private String username;
+    private String location;
+
     private final SimpleStringProperty dateColumnProperty = new SimpleStringProperty();
     private final SimpleStringProperty idColumnProperty = new SimpleStringProperty();
     private final SimpleStringProperty usernameColumnProperty = new SimpleStringProperty();
@@ -26,10 +32,15 @@ public abstract class Report implements Loggable {
      * @param location the location of the reporter
      * @param id the id of the reporter
      */
-    Report(String dateTimeStr, String reporterName, String location, String id) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        this.dateTime = LocalDateTime.parse(dateTimeStr, formatter);
-        dateColumnProperty.set(dateTime.format(formatter));
+    Report(String dateTimeStr, String reporterName, String location, String id) throws ParseException {
+
+        this.date = DateGenerator.generateDate(dateTimeStr);
+        dateColumnProperty.set(DateGenerator.dateToJavaString(date));
+
+        this.username = reporterName;
+        this.location = location;
+        this.id = id;
+
         this.usernameColumnProperty.set(reporterName);
         this.locationColumnProperty.set(location);
         this.idColumnProperty.set(id);
@@ -42,10 +53,10 @@ public abstract class Report implements Loggable {
      * @param location the location of the reporter
      */
     Report(String reporterName, String location) {
-        this.dateTime = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        dateColumnProperty.set(dateTime.format(formatter));
-
+        this.date = new Date();
+        dateColumnProperty.set(DateGenerator.dateToJavaString(date));
+        this.username = reporterName;
+        this.location = location;
         this.usernameColumnProperty.set(reporterName);
         this.locationColumnProperty.set(location);
     }
@@ -59,8 +70,8 @@ public abstract class Report implements Loggable {
      * gets the date and time
      * @return the LocalDateTime
      */
-    public LocalDateTime getDateTime() {
-        return dateTime;
+    public Date getDate() {
+        return date;
     }
 
     /**
@@ -73,12 +84,11 @@ public abstract class Report implements Loggable {
 
     /**
      * sets the date and time to a given dateTime
-     * @param dateTime the date and time you would like to set it to
+     * @param date the date and time you would like to set it to
      */
-    public void setDateColumn(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        dateColumnProperty.set(dateTime.format(formatter));
+    public void setDateColumn(Date date) {
+        this.date = date;
+        dateColumnProperty.set(DateGenerator.dateToJavaString(date));
     }
 
     /**
@@ -94,6 +104,7 @@ public abstract class Report implements Loggable {
      * @param reportID the reportID you would like to set it to as a String
      */
     public void setIdColumn(String reportID) {
+        this.id = reportID;
         this.idColumnProperty.set(reportID);
     }
 
@@ -110,6 +121,7 @@ public abstract class Report implements Loggable {
      * @param reporterName the name of the reporter as a String
      */
     public void setUsernameColumn(String reporterName) {
+        this.username = reporterName;
         this.usernameColumnProperty.set(reporterName);
     }
 
@@ -126,6 +138,7 @@ public abstract class Report implements Loggable {
      * @param location the location of the reporter
      */
     public void setLocationColumn(String location) {
+        this.location = location;
         locationColumnProperty.set(location);
     }
 
