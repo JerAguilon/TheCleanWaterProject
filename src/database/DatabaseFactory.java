@@ -17,7 +17,7 @@ public class DatabaseFactory {
         }
 
         if (database.equals("sqlite")) {
-            throw new RuntimeException("use of sqlite as a data store has been deprecated -Jeremy");
+            throw new RuntimeException("use of sqlite as a data store has been removed -Jeremy");
         }
 
         if (database.equals("mongo")) {
