@@ -24,6 +24,27 @@ public class UserReport extends Report {
      * @param location the location at which the report was made
      * @param type the WaterSourceType
      * @param condition the WaterSourceCondition
+     */
+    public UserReport(String time, String reporterName,
+                      String location, WaterSourceType type,
+                      WaterSourceCondition condition) throws ParseException {
+        super(time, reporterName, location, "DEFAULT");
+
+        this.type = type;
+        this.condition = condition;
+
+        this.typeColumnProperty.set(type.toString());
+        this.conditionColumnProperty.set(condition.toString());
+    }
+
+
+    /**
+     * Constructor for userReport class
+     * @param time the time the report was made
+     * @param reporterName the name of the person making the report
+     * @param location the location at which the report was made
+     * @param type the WaterSourceType
+     * @param condition the WaterSourceCondition
      * @param id the id of the person making the report
      */
     public UserReport(String time, String reporterName,
@@ -36,22 +57,6 @@ public class UserReport extends Report {
 
         this.typeColumnProperty.set(type.toString());
         this.conditionColumnProperty.set(condition.toString());
-    }
-
-    /**
-     * Get method for WaterSourceCondition
-     * @return WaterSourceCondition in the report
-     */
-    public WaterSourceCondition getCondition() {
-        return this.condition;
-    }
-
-    /**
-     *Get method for WaterSourceType
-     * @return WaterSourceType in the report
-     */
-    public WaterSourceType getType() {
-        return this.type;
     }
 
     /**
@@ -70,6 +75,23 @@ public class UserReport extends Report {
         this.conditionColumnProperty.set(condition.toString());
 
     }
+
+    /**
+     * Get method for WaterSourceCondition
+     * @return WaterSourceCondition in the report
+     */
+    public WaterSourceCondition getCondition() {
+        return this.condition;
+    }
+
+    /**
+     *Get method for WaterSourceType
+     * @return WaterSourceType in the report
+     */
+    public WaterSourceType getType() {
+        return this.type;
+    }
+
 
     /**
      * Get method for the TypeColumn

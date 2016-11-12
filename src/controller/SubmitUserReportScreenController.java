@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.*;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +39,9 @@ public class SubmitUserReportScreenController {
 
     @FXML
     ComboBox sourceType;
+
+    @FXML
+    TextField date;
 
     @FXML
     /*
@@ -66,8 +70,15 @@ public class SubmitUserReportScreenController {
         WaterSourceType wst = WaterSourceType.match(sourceType.getSelectionModel().getSelectedItem().toString());
         WaterSourceCondition wsc = WaterSourceCondition.match(sourceCondition.getSelectionModel().getSelectedItem().toString());
 
+        String date = this.date.getText();
 
-        UserReport report = new UserReport(author.getText(), purityLocation.getText(), wst, wsc);
+        UserReport report = null;
+        try {
+            report = new UserReport(date, author.getText(), purityLocation.getText(), wst, wsc);
+        } catch (ParseException e) {
+            sendAlert("Unable to parse date", Alert.AlertType.ERROR);
+            return;
+        }
 
         try {
             if (DatabaseFactory.getDatabase().addUserReport(report)) {

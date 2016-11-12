@@ -18,6 +18,28 @@ public class WorkerReport extends Report {
     private final SimpleStringProperty conditionColumnProperty = new SimpleStringProperty();
     private final SimpleIntegerProperty virusPPMColumnProperty = new SimpleIntegerProperty();
     private final SimpleIntegerProperty contaminantPPMColumnProperty = new SimpleIntegerProperty();
+    /**
+     * Constructor for WorkerReport class
+     * @param time the time the report was made
+     * @param reporterName the name of the person making the report
+     * @param location the location at which the report was made
+     * @param condition the WaterPurityCondition
+     * @param id the id of the person making the report
+     */
+    public WorkerReport(String time, String reporterName,
+                        String location, WaterPurityCondition condition,
+                        int virusPPM, int contaminantPPM) throws ParseException {
+        super(time, reporterName, location, "DEFAULT");
+
+        this.condition = condition;
+        this.conditionColumnProperty.set(condition.toString());
+
+        this.virusPPM = virusPPM;
+        this.contaminantPPM = contaminantPPM;
+
+        this.contaminantPPMColumnProperty.set(contaminantPPM);
+        this.virusPPMColumnProperty.set(virusPPM);
+    }
 
     /**
      * Constructor for WorkerReport class

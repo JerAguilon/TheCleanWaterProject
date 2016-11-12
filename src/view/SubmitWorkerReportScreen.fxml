@@ -6,21 +6,23 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SubmitWorkerReportScreenController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SubmitWorkerReportScreenController">
    <!--<children>-->
-      <Label layoutX="87.0" layoutY="98.0" text="Report Type" />
-      <Label layoutX="87.0" layoutY="57.0" text="Report Author" />
-      <Label fx:id="author" layoutX="360.0" layoutY="57.0" prefHeight="27.0" prefWidth="150.0" text="Label" />
-      <Label layoutX="87.0" layoutY="146.0" prefHeight="27.0" prefWidth="97.0" text="Location" />
-      <TextField fx:id="purityLocation" layoutX="350.0" layoutY="140.0" prefHeight="39.0" prefWidth="150.0" />
+      <Label layoutX="90.0" layoutY="63.0" text="Report Type" />
+      <Label layoutX="90.0" layoutY="29.0" text="Report Author" />
+      <Label fx:id="author" layoutX="360.0" layoutY="24.0" prefHeight="27.0" prefWidth="150.0" text="Label" />
+      <Label layoutX="90.0" layoutY="111.0" prefHeight="27.0" prefWidth="97.0" text="Location" />
+      <TextField fx:id="purityLocation" layoutX="353.0" layoutY="105.0" prefHeight="39.0" prefWidth="150.0" />
       <Button layoutX="482.0" layoutY="360.0" mnemonicParsing="false" onAction="#submit" text="Submit Report" />
-      <Label layoutX="87.0" layoutY="206.0" text="Water Purity Condition" />
-      <ComboBox fx:id="purityCondition" layoutX="350.0" layoutY="200.0" prefWidth="150.0" />
-      <Label fx:id="reportType" layoutX="360.0" layoutY="106.0" text="Label" />
+      <Label layoutX="90.0" layoutY="171.0" text="Water Purity Condition" />
+      <ComboBox fx:id="purityCondition" layoutX="353.0" layoutY="165.0" prefWidth="150.0" />
+      <Label fx:id="reportType" layoutX="363.0" layoutY="71.0" text="Label" />
       <Button cancelButton="true" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#returnToMainScreen" text="Cancel" />
-   <Label layoutX="91.0" layoutY="270.0" text="Virus PPM" />
-   <TextField fx:id="virusPPM" layoutX="350.0" layoutY="264.0" prefHeight="39.0" prefWidth="150.0" />
-   <Label layoutX="91.0" layoutY="320.0" text="Contaminant PPM" />
-   <TextField fx:id="contaminantPPM" layoutX="350.0" layoutY="314.0" prefHeight="39.0" prefWidth="150.0" />
+   <Label layoutX="90.0" layoutY="232.0" text="Virus PPM" />
+   <TextField fx:id="virusPPM" layoutX="353.0" layoutY="212.0" prefHeight="39.0" prefWidth="150.0" />
+   <Label layoutX="90.0" layoutY="274.0" text="Contaminant PPM" />
+   <TextField fx:id="contaminantPPM" layoutX="353.0" layoutY="262.0" prefHeight="39.0" prefWidth="150.0" />
+   <Label layoutX="90.0" layoutY="322.0" text="Date (mm/dd/yyyy)" />
+   <TextField fx:id="date" layoutX="353.0" layoutY="311.0" prefHeight="39.0" prefWidth="150.0" />
    <!--</children>-->
 </Pane>

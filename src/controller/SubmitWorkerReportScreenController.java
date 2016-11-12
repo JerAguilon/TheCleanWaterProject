@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import model.WorkerReport;
 import model.WaterPurityCondition;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -46,6 +47,9 @@ public class SubmitWorkerReportScreenController {
     TextField contaminantPPM;
 
     @FXML
+    TextField date;
+
+    @FXML
     /*
       initializes the water report screen
      */
@@ -72,8 +76,15 @@ public class SubmitWorkerReportScreenController {
         WaterPurityCondition wpc = WaterPurityCondition.match(purityCondition.getSelectionModel().getSelectedItem().toString());
 
 
+        String date = this.date.getText();
 
-        WorkerReport report = new WorkerReport(author.getText(), purityLocation.getText(), wpc, Integer.parseInt(virusPPM.getText()), Integer.parseInt(contaminantPPM.getText()));
+        WorkerReport report = null;
+        try {
+            report = new WorkerReport(date, author.getText(), purityLocation.getText(), wpc,
+                    Integer.parseInt(virusPPM.getText()), Integer.parseInt(contaminantPPM.getText()));
+        } catch (ParseException e) {
+            sendAlert("Unable to parse date.", Alert.AlertType.ERROR);
+        }
 
         try {
             if (DatabaseFactory.getDatabase().addWorkerReport(report)) {

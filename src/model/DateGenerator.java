@@ -30,7 +30,7 @@ public class DateGenerator {
 
 
     public static String dateToDBString(Date date) {
-        SimpleDateFormat dbFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSSXXX");
+         SimpleDateFormat dbFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSSXXX");
 
         return dbFormat.format(date);
 
