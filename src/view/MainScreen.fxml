@@ -41,7 +41,7 @@
                <!--</content>-->
             </Tab>
 
-            <Tab onSelectionChanged="#populateWaterReports" text="User Water Reports">
+            <Tab onSelectionChanged="#populateWaterReports" text="Water Source Reports">
                <!--<content>-->
                   <BorderPane prefHeight="125.0" prefWidth="555.0">
                      <bottom>
@@ -68,7 +68,7 @@
                <!--</content>-->
       </Tab>
 
-         <Tab onSelectionChanged="#populateWaterPurityReportsList" text="Worker Water Reports">
+         <Tab onSelectionChanged="#populateWaterPurityReportsList" text="Water Purity Reports">
             <BorderPane prefHeight="125.0" prefWidth="555.0">
                <bottom>
                   <FlowPane BorderPane.alignment="CENTER">

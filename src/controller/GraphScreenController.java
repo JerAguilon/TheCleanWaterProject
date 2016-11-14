@@ -66,6 +66,15 @@ public class GraphScreenController {
         String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
         xAxis.setCategories(FXCollections.observableArrayList(Arrays.asList(months)));
 
+        int[] virusData = new int[12];
+        int[] virusDataCount = new int[12];
+        int[] contamData = new int[12];
+        int[] contamDataCount = new int[12];
+        for(int i = 0; i < virusData.length; i++) {
+            virusData[i] = -1;
+            contamData[i] = -1;
+        }
+
         yAxis.setLowerBound(0);
         yAxis.setUpperBound(1000000);
         yAxis.setTickUnit(10000);
@@ -90,14 +99,43 @@ public class GraphScreenController {
             //int month = cal.get(Calendar.MONTH);
             if(LocalSession.currentGraphYear == year && LocalSession.currentGraphLocation.equals(report.getLocationColumn())) {
                 if(LocalSession.currentHrtType.toString().equals("Virus")) {
-                    series1.getData().add(new XYChart.Data(months[month - 1], report.getVirusPPM()));
+                    //series1.getData().add(new XYChart.Data(months[month - 1], report.getVirusPPM()));
+                    ++virusDataCount[month - 1];
+                    if(virusData[month - 1] == -1) {
+                        virusData[month - 1] = 0;
+                    }
+                    virusData[month - 1] += report.getVirusPPM();
+
                 } else {
-                    series1.getData().add(new XYChart.Data(months[month - 1], report.getContaminantPPM()));
+                    //series1.getData().add(new XYChart.Data(months[month - 1], report.getContaminantPPM()));
+                    ++contamDataCount[month - 1];
+                    if(contamData[month - 1] == -1) {
+                        contamData[month - 1] = 0;
+                    }
+                    contamData[month - 1] += report.getContaminantPPM();
                 }
+            }
+        }
+        for(int i = 0; i < virusData.length; i++) {
+            if(virusData[i] != -1) {
+                virusData[i] /= virusDataCount[i];
+            }
+            if(contamData[i] != -1) {
+                contamData[i] /= contamDataCount[i];
+            }
+        }
+
+        for(int i = 0; i < virusData.length; i++) {
+            if(virusData[i] != -1) {
+                series1.getData().add(new XYChart.Data(months[i], virusData[i]));
+            }
+            if(contamData[i] != -1) {
+                series1.getData().add(new XYChart.Data(months[i], contamData[i]));
             }
         }
 
         chart.getData().addAll(series1);
+        chart.setLegendVisible(false);
     }
 
     @FXML
