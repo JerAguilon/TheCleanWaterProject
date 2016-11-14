@@ -10,9 +10,10 @@ import java.util.Date;
 public class DateGenerator {
     public static Date generateDate(String date) throws ParseException {
         SimpleDateFormat dbFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSSXXX");
-        SimpleDateFormat javaFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        //SimpleDateFormat javaFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat javaFormat = new SimpleDateFormat("yyyy-MM-dd");
         SimpleDateFormat slashDelimitedFormat = new SimpleDateFormat("MM/dd/yyyy");
-
+        
         Date outputDate;
 
         try {
@@ -37,7 +38,7 @@ public class DateGenerator {
     }
 
     public static String dateToJavaString(Date date) {
-        SimpleDateFormat javaFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat javaFormat = new SimpleDateFormat("yyyy-MM-dd");
         return javaFormat.format(date);
     }
 

@@ -59,7 +59,7 @@ class MongoWorkerReportManager {
 
             Date date;
             try {
-                date = DateGenerator.generateDate(object.getString("createdAt"));
+                date = DateGenerator.generateDate(object.getString("date"));
             } catch (ParseException e) {
                 e.printStackTrace();
                 throw new DatabaseException("Unable to parse the date from the mongo database");
@@ -85,7 +85,7 @@ class MongoWorkerReportManager {
         String condition = Integer.toString(report.getCondition().ordinal());
         String location = report.getLocationColumn();
         String username = report.getUsernameColumn();
-
+        Date date = report.getDate();
         HttpClient client= HttpClientBuilder.create().build();
         HttpPost request = new HttpPost(url);
 
@@ -95,6 +95,7 @@ class MongoWorkerReportManager {
         pairs.add(new BasicNameValuePair("location", location));
         pairs.add(new BasicNameValuePair("virusPPM", Integer.toString(report.getVirusPPM())));
         pairs.add(new BasicNameValuePair("contaminantPPM", Integer.toString(report.getContaminantPPM())));
+        pairs.add(new BasicNameValuePair("date", DateGenerator.dateToDBString(date)));
         request.addHeader("x-access-token", TokenKeeper.getToken());
         request.setEntity(new UrlEncodedFormEntity(pairs ));
         HttpResponse resp = client.execute(request);
