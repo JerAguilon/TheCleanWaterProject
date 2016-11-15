@@ -9,6 +9,10 @@ import java.util.Date;
  */
 public class DateGenerator {
     public static Date generateDate(String date) throws ParseException {
+        if (date == null) {
+            throw new ParseException("Input was null", 0);
+        }
+
         SimpleDateFormat dbFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSSXXX");
         //SimpleDateFormat javaFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         SimpleDateFormat javaFormat = new SimpleDateFormat("yyyy-MM-dd");
