@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-//import apploader.Main;
+import apploader.Main;
 
 /*
  * Created by Ben Radock on 9/21/2016.
@@ -25,10 +25,10 @@ public class WelcomeScreenController {
      * allow for calling back to the main application code if necessary
      * @param main   the reference to the FX Application instance
      * */
-    /*public void setMainApp(Main main) {
+    public void setMainApp(Main main) {
         //reference back to mainApplication if needed
         Main mainApplication = main;
-    }*/
+    }
 
     /**
      * Close menu item event handler

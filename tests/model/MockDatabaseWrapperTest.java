@@ -25,6 +25,10 @@ public class MockDatabaseWrapperTest {
         assertEquals(user, MockDatabaseWrapper.mockDatabase.getUser("user"));
     }
 
+    /*@Test
+    public void addUser_WhenAUserExistsThenFalseIsReturnedAndDatabaseDoesntChange() {
+    }
+
     @Test
-    public void addUser_WhenAUserDoesntExistThenTrueIsReturned() {}
+    public void addUser_WhenAUserDoesntExistThenTrueIsReturned() {}*/
 }

@@ -124,23 +124,21 @@ public class MapController implements Initializable, MapComponentInitializedList
     }
 
 
-// --Commented out by Inspection START (11/15/2016 4:47 PM):
-//    @FXML
-//    public void returnToMain() throws Exception {
-//        try {
-//            Stage stage = (Stage) doneButton.getScene().getWindow();
-//            Parent root = FXMLLoader.load(getClass().getResource("/view/MainScreen.fxml"));
-//
-//            Scene scene = new Scene(root);
-//            scene.getStylesheets().add("css/stylesheet.css");
-//            stage.setScene(scene);
-//            stage.show();
-//        } catch(Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-// --Commented out by Inspection STOP (11/15/2016 4:47 PM)
 
+    @FXML
+    public void returnToMain() throws Exception {
+        try {
+            Stage stage = (Stage) doneButton.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/MainScreen.fxml"));
+
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add("css/stylesheet.css");
+            stage.setScene(scene);
+            stage.show();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
 // --Commented out by Inspection START (11/10/2016 7:48 PM):
