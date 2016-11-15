@@ -16,10 +16,14 @@ import database.responses.DatabaseException;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import model.Report;
 import model.UserReport;
 
@@ -121,22 +125,22 @@ public class MapController implements Initializable, MapComponentInitializedList
 
     }
 
-// --Commented out by Inspection START (11/10/2016 7:48 PM):
-//    @FXML
-//    public void returnToMain() throws Exception {
-//        try {
-//            Stage stage = (Stage) doneButton.getScene().getWindow();
-//            Parent root = FXMLLoader.load(getClass().getResource("/view/MainScreen.fxml"));
-//
-//            Scene scene = new Scene(root);
-//            scene.getStylesheets().add("css/stylesheet.css");
-//            stage.setScene(scene);
-//            stage.show();
-//        } catch(Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-// --Commented out by Inspection STOP (11/10/2016 7:48 PM)
+
+    @FXML
+    public void returnToMain() throws Exception {
+        try {
+            Stage stage = (Stage) doneButton.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/MainScreen.fxml"));
+
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add("css/stylesheet.css");
+            stage.setScene(scene);
+            stage.show();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
 // --Commented out by Inspection START (11/10/2016 7:48 PM):
