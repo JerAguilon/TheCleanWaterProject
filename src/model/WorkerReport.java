@@ -24,7 +24,8 @@ public class WorkerReport extends Report {
      * @param reporterName the name of the person making the report
      * @param location the location at which the report was made
      * @param condition the WaterPurityCondition
-     * @param id the id of the person making the report
+     * @param virusPPM the virus PPM of the water
+     * @param contaminantPPM the contaminant PPM of the water
      */
     public WorkerReport(String time, String reporterName,
                         String location, WaterPurityCondition condition,

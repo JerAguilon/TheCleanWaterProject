@@ -17,7 +17,7 @@
    <!--<children>-->
       <Accordion maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
         <panes>
-          <TitledPane animated="true" text="Login Info">
+          <TitledPane text="Login Info">
             <!--<content>-->
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <!--<children>-->
@@ -44,7 +44,7 @@
                   </AnchorPane>
             <!--</content>-->
           </TitledPane>
-          <TitledPane animated="true" text="Profile Info">
+          <TitledPane text="Profile Info">
             <!--<content>-->
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <!--<children>-->

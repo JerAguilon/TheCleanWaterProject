@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
+/*
  * Created by jeremy on 11/12/16.
  */
 public class DateGenerator {
