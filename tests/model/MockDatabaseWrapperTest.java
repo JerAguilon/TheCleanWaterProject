@@ -26,9 +26,5 @@ public class MockDatabaseWrapperTest {
     }
 
     @Test
-    public void addUser_WhenAUserExistsThenFalseIsReturnedAndDatabaseDoesntChange() {
-    }
-
-    @Test
     public void addUser_WhenAUserDoesntExistThenTrueIsReturned() {}
 }

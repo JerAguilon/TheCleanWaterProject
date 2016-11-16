@@ -82,9 +82,11 @@ public class MainScreenController implements IMainScreenController {
     @FXML
     Button displayGraph;
 
-    @FXML
-    private
-    Button histReportButton;
+// --Commented out by Inspection START (11/15/2016 4:47 PM):
+//    @FXML
+//    private
+//    Button histReportButton;
+// --Commented out by Inspection STOP (11/15/2016 4:47 PM)
 
     @FXML
     TableColumn contaminantPPMColumn;
@@ -133,112 +135,122 @@ public class MainScreenController implements IMainScreenController {
         }
     }
 
-    @FXML
-    /*
-      initializes the registration screen
-     */
-    public void initialize() {
-        List<String> values = new ArrayList<>();
+// --Commented out by Inspection START (11/15/2016 4:47 PM):
+//    @FXML
+//    /*
+//      initializes the registration screen
+//     */
+//    public void initialize() {
+//        List<String> values = new ArrayList<>();
+//
+//        graphVirusContam.getItems().clear();
+//        for (HistoricalReportType hrt : HistoricalReportType.values()) {
+//            values.add(hrt.toString());
+//        }
+//        graphVirusContam.getItems().addAll(values);
+//
+//        graphVirusContam.getSelectionModel().select(0);
+//    }
+// --Commented out by Inspection STOP (11/15/2016 4:47 PM)
 
-        graphVirusContam.getItems().clear();
-        for (HistoricalReportType hrt : HistoricalReportType.values()) {
-            values.add(hrt.toString());
-        }
-        graphVirusContam.getItems().addAll(values);
+// --Commented out by Inspection START (11/15/2016 4:47 PM):
+//    @FXML
+//    public void displayGraph() {
+//        /*if(graphYear.getText().equals("") || graphLocation.getText().equals("")) {
+//
+//        }*/
+//        if(LocalSession.currentAuth != AuthorizationLevel.MANAGER) {
+//            displayGraph.setText("Must be a manager to create graph.");
+//        } else if(graphLocation.getText().equals("") && graphYear.getText().equals("")) {
+//            sendAlert("Multiple fields empty. Please fill in fields to proceed.");
+//        } else if(graphLocation.getText().equals("")) {
+//            sendAlert("Location field is empty. Please fill in field to proceed.");
+//        } else if (graphYear.getText().equals("")) {
+//            sendAlert("Year field is empty. Please fill in field to proceed.");
+//        }
+//        else
+//        {
+//            LocalSession.currentGraphLocation = graphLocation.getText();
+//            LocalSession.currentGraphYear = Integer.parseInt(graphYear.getText());
+//            LocalSession.currentHrtType = HistoricalReportType.match(graphVirusContam.getSelectionModel().getSelectedItem().toString());
+//            try {
+//                Stage stage = (Stage) profileedit.getScene().getWindow();
+//                Parent root = FXMLLoader.load(getClass().getResource("/view/GraphScreen.fxml"));
+//
+//                Scene scene = new Scene(root);
+//                scene.getStylesheets().add("css/stylesheet.css");
+//                stage.setScene(scene);
+//                stage.show();
+//            } catch(Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
+// --Commented out by Inspection STOP (11/15/2016 4:47 PM)
 
-        graphVirusContam.getSelectionModel().select(0);
-    }
+// --Commented out by Inspection START (11/15/2016 4:47 PM):
+//    @FXML
+//    /*
+//      allows the user to open the MapScreen
+//     */
+//    public void openMap() throws Exception {
+//        try {
+//            Stage stage = (Stage) profileedit.getScene().getWindow();
+//            Parent root = FXMLLoader.load(getClass().getResource("/view/MapScreen.fxml"));
+//
+//            Scene scene = new Scene(root);
+//            //scene.getStylesheets().add("css/stylesheet.css");
+//            stage.setScene(scene);
+//            stage.show();
+//        } catch(Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+// --Commented out by Inspection STOP (11/15/2016 4:47 PM)
 
-    @FXML
-    public void displayGraph() {
-        /*if(graphYear.getText().equals("") || graphLocation.getText().equals("")) {
+// --Commented out by Inspection START (11/15/2016 4:47 PM):
+//    @FXML
+//    /*
+//        allows the user to view the SubmitHistoricalReportScreen
+//     */
+//    public void submitHistoricalReport() {
+//        if(LocalSession.currentAuth != AuthorizationLevel.MANAGER) {
+//            histReportButton.setText("Must be a manager to create graph.");
+//        } else {
+//            try {
+//                Stage stage = (Stage) logout.getScene().getWindow();
+//                Parent root = FXMLLoader.load(getClass().getResource("/view/SubmitHistoricalReportScreen.fxml"));
+//
+//                Scene scene = new Scene(root);
+//                scene.getStylesheets().add("css/stylesheet.css");
+//                stage.setScene(scene);
+//                stage.show();
+//            } catch(Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
+// --Commented out by Inspection STOP (11/15/2016 4:47 PM)
 
-        }*/
-        if(LocalSession.currentAuth != AuthorizationLevel.MANAGER) {
-            displayGraph.setText("Must be a manager to create graph.");
-        } else if(graphLocation.getText().equals("") && graphYear.getText().equals("")) {
-            sendAlert("Multiple fields empty. Please fill in fields to proceed.");
-        } else if(graphLocation.getText().equals("")) {
-            sendAlert("Location field is empty. Please fill in field to proceed.");
-        } else if (graphYear.getText().equals("")) {
-            sendAlert("Year field is empty. Please fill in field to proceed.");
-        }
-        else
-        {
-            LocalSession.currentGraphLocation = graphLocation.getText();
-            LocalSession.currentGraphYear = Integer.parseInt(graphYear.getText());
-            LocalSession.currentHrtType = HistoricalReportType.match(graphVirusContam.getSelectionModel().getSelectedItem().toString());
-            try {
-                Stage stage = (Stage) profileedit.getScene().getWindow();
-                Parent root = FXMLLoader.load(getClass().getResource("/view/GraphScreen.fxml"));
-
-                Scene scene = new Scene(root);
-                scene.getStylesheets().add("css/stylesheet.css");
-                stage.setScene(scene);
-                stage.show();
-            } catch(Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    @FXML
-    /*
-      allows the user to open the MapScreen
-     */
-    public void openMap() throws Exception {
-        try {
-            Stage stage = (Stage) profileedit.getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource("/view/MapScreen.fxml"));
-
-            Scene scene = new Scene(root);
-            //scene.getStylesheets().add("css/stylesheet.css");
-            stage.setScene(scene);
-            stage.show();
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    /*
-        allows the user to view the SubmitHistoricalReportScreen
-     */
-    public void submitHistoricalReport() {
-        if(LocalSession.currentAuth != AuthorizationLevel.MANAGER) {
-            histReportButton.setText("Must be a manager to create graph.");
-        } else {
-            try {
-                Stage stage = (Stage) logout.getScene().getWindow();
-                Parent root = FXMLLoader.load(getClass().getResource("/view/SubmitHistoricalReportScreen.fxml"));
-
-                Scene scene = new Scene(root);
-                scene.getStylesheets().add("css/stylesheet.css");
-                stage.setScene(scene);
-                stage.show();
-            } catch(Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    @FXML
-    /*
-      allows the user to view the SubmitWaterReportScreen
-     */
-    public void submitWaterReport() {
-        try {
-            Stage stage = (Stage) logout.getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource("/view/SubmitUserReportScreen.fxml"));
-
-            Scene scene = new Scene(root);
-            scene.getStylesheets().add("css/stylesheet.css");
-            stage.setScene(scene);
-            stage.show();
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-    }
+// --Commented out by Inspection START (11/15/2016 4:47 PM):
+//    @FXML
+//    /*
+//      allows the user to view the SubmitWaterReportScreen
+//     */
+//    public void submitWaterReport() {
+//        try {
+//            Stage stage = (Stage) logout.getScene().getWindow();
+//            Parent root = FXMLLoader.load(getClass().getResource("/view/SubmitUserReportScreen.fxml"));
+//
+//            Scene scene = new Scene(root);
+//            scene.getStylesheets().add("css/stylesheet.css");
+//            stage.setScene(scene);
+//            stage.show();
+//        } catch(Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+// --Commented out by Inspection STOP (11/15/2016 4:47 PM)
 
     @FXML
     public void populateWaterReports() {

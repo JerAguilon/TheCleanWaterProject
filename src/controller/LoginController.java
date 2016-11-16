@@ -84,22 +84,24 @@ public class LoginController implements ILoginController {
         }
     }
 
-    @FXML
-    /*
-     * allows the user to return back to the welcome screen
-     */
-    public void cancel() {
-        try {
-            Stage stage = (Stage) usernameBox.getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource("/view/WelcomeScreen.fxml"));
-            Scene scene = new Scene(root);
-            scene.getStylesheets().add("css/stylesheet.css");
-            stage.setScene(scene);
-            stage.show();
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-    }
+// --Commented out by Inspection START (11/15/2016 4:47 PM):
+//    @FXML
+//    /*
+//     * allows the user to return back to the welcome screen
+//     */
+//    public void cancel() {
+//        try {
+//            Stage stage = (Stage) usernameBox.getScene().getWindow();
+//            Parent root = FXMLLoader.load(getClass().getResource("/view/WelcomeScreen.fxml"));
+//            Scene scene = new Scene(root);
+//            scene.getStylesheets().add("css/stylesheet.css");
+//            stage.setScene(scene);
+//            stage.show();
+//        } catch(Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+// --Commented out by Inspection STOP (11/15/2016 4:47 PM)
 
     /**
      * sends an alert if there is a login error

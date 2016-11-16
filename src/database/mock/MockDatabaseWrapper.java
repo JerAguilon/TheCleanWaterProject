@@ -71,9 +71,11 @@ public class MockDatabaseWrapper implements IDatabase {
         return MockDatabaseReportManager.addWorkerReport(report);
     }
 
-    public boolean addHistoricalReport(HistoricalReport report) throws DatabaseException {
-        return MockDatabaseReportManager.addHistoricalReport(report);
-    }
+// --Commented out by Inspection START (11/15/2016 4:47 PM):
+//    public boolean addHistoricalReport(HistoricalReport report) throws DatabaseException {
+//        return MockDatabaseReportManager.addHistoricalReport(report);
+//    }
+// --Commented out by Inspection STOP (11/15/2016 4:47 PM)
 
     @Override
     public Collection<UserReport> getUserReportList() {
@@ -85,9 +87,11 @@ public class MockDatabaseWrapper implements IDatabase {
         return MockDatabaseReportManager.getWorkerReportList();
     }
 
-    public Collection<HistoricalReport> getHistoricalReportList() throws DatabaseException {
-        return MockDatabaseReportManager.getHistoricalReportList();
-    }
+// --Commented out by Inspection START (11/15/2016 4:47 PM):
+//    public Collection<HistoricalReport> getHistoricalReportList() throws DatabaseException {
+//        return MockDatabaseReportManager.getHistoricalReportList();
+//    }
+// --Commented out by Inspection STOP (11/15/2016 4:47 PM)
 
     @Override
     public boolean deleteReport(long id) {
