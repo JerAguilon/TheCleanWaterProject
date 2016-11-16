@@ -21,7 +21,7 @@ public class Main extends Application {
         loader.setLocation(Main.class.getResource("/view/WelcomeScreen.fxml"));
         loader.load();
         WelcomeScreenController controller = loader.getController();
-        controller.setMainApp(this);
+        //controller.setMainApp(this);
 
         primaryStage.show();
 

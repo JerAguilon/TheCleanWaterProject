@@ -83,7 +83,7 @@
       </Accordion>
       <AnchorPane prefHeight="38.0" prefWidth="600.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
          <!--<children>-->
-            <Button fx:id="Submit" layoutX="525.0" layoutY="6.0" mnemonicParsing="false" onAction="#register" text="Submit" />
+            <Button layoutX="525.0" layoutY="6.0" mnemonicParsing="false" onAction="#register" text="Submit" />
             <Button layoutX="14.0" layoutY="6.0" mnemonicParsing="false" onAction="#returnToWelcomeScreen" text="Cancel" />
          <!--</children>-->
         </AnchorPane>

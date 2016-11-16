@@ -78,7 +78,7 @@ public class MapController implements Initializable, MapComponentInitializedList
         String type;
         String condition;
 
-        for (Report r : markerList != null ? markerList : null) {
+        for (Report r : markerList != null ? markerList : new ArrayList<Report>()) {
 
             dateTime = r.getDateColumn();
             reporterName = r.getUsernameColumn();

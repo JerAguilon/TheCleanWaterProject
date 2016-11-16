@@ -21,7 +21,7 @@
 
    </top>
    <bottom>
-        <Button fx:id="returnToMain" onAction="#returnToMainScreen" text="Back" BorderPane.alignment="BASELINE_RIGHT" />
+        <Button onAction="#returnToMainScreen" text="Back" BorderPane.alignment="BASELINE_RIGHT" />
    </bottom>
    <left>
 

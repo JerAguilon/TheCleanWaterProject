@@ -4,7 +4,6 @@ import apploader.LocalSession;
 import database.DatabaseFactory;
 import database.responses.DatabaseException;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

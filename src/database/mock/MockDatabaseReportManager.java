@@ -10,6 +10,7 @@ import java.util.*;
 /*
  * Created by jeremy on 10/11/16.
  */
+@SuppressWarnings("SuspiciousMethodCalls")
 class MockDatabaseReportManager {
     private static long reportNumber = 0;
 

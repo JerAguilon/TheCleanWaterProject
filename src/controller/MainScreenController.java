@@ -266,12 +266,12 @@ public class MainScreenController implements IMainScreenController {
     private void populateWaterReportsList() {
         Collection<UserReport> reports = getReports();
 
-        idColumn.setCellValueFactory(new PropertyValueFactory<Report, String>("idColumn"));
-        locationColumn.setCellValueFactory(new PropertyValueFactory<Report, String>("locationColumn"));
-        dateColumn.setCellValueFactory(new PropertyValueFactory<Report, String>("dateColumn"));
-        typeColumn.setCellValueFactory(new PropertyValueFactory<Report, String>("typeColumn"));
-        conditionColumn.setCellValueFactory(new PropertyValueFactory<Report, String>("conditionColumn"));
-        usernameColumn.setCellValueFactory(new PropertyValueFactory<Report, String>("usernameColumn"));
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("idColumn"));
+        locationColumn.setCellValueFactory(new PropertyValueFactory<>("locationColumn"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("dateColumn"));
+        typeColumn.setCellValueFactory(new PropertyValueFactory<>("typeColumn"));
+        conditionColumn.setCellValueFactory(new PropertyValueFactory<>("conditionColumn"));
+        usernameColumn.setCellValueFactory(new PropertyValueFactory<>("usernameColumn"));
 
         userReportTable.getItems().setAll(reports);
     }

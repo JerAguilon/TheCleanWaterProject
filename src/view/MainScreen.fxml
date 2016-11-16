@@ -91,7 +91,7 @@
             <Tab text="Water Availability Map">
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <center>
-                        <Button fx:id="mapButton" mnemonicParsing="false" onAction="#openMap" text="Go to Map" BorderPane.alignment="CENTER" />
+                        <Button mnemonicParsing="false" onAction="#openMap" text="Go to Map" BorderPane.alignment="CENTER" />
                      </center>
                   </BorderPane>
             </Tab>
