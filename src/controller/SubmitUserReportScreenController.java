@@ -32,6 +32,7 @@ public class SubmitUserReportScreenController {
     Label reportType;
 
     @FXML
+    private
     TextField purityLocation;
 
     @FXML
@@ -41,6 +42,7 @@ public class SubmitUserReportScreenController {
     ComboBox sourceType;
 
     @FXML
+    private
     TextField date;
 
     @FXML
@@ -72,7 +74,7 @@ public class SubmitUserReportScreenController {
 
         String date = this.date.getText();
 
-        UserReport report = null;
+        UserReport report;
         try {
             report = new UserReport(date, author.getText(), purityLocation.getText(), wst, wsc);
         } catch (ParseException e) {

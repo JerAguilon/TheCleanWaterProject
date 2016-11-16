@@ -21,7 +21,7 @@ public class DatabaseFactory {
         }
 
         if (database.equals("mongo")) {
-            return new MongoDatabaseWrapper("http://localhost:8080");
+            return new MongoDatabaseWrapper();
         }
 
         //should never get here

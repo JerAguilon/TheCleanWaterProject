@@ -93,7 +93,7 @@ public class RegistrationController {
         } catch (UserException e) {
             sendAlert(e.getMessage());
             return;
-        }
+        } catch (NullPointerException ignored) {}
 
 
 

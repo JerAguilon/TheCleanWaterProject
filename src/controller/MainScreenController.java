@@ -83,6 +83,7 @@ public class MainScreenController implements IMainScreenController {
     Button displayGraph;
 
     @FXML
+    private
     Button histReportButton;
 
     @FXML
@@ -156,11 +157,11 @@ public class MainScreenController implements IMainScreenController {
         if(LocalSession.currentAuth != AuthorizationLevel.MANAGER) {
             displayGraph.setText("Must be a manager to create graph.");
         } else if(graphLocation.getText().equals("") && graphYear.getText().equals("")) {
-            sendAlert("Multiple fields empty. Please fill in fields to proceed.", Alert.AlertType.ERROR);
+            sendAlert("Multiple fields empty. Please fill in fields to proceed.");
         } else if(graphLocation.getText().equals("")) {
-            sendAlert("Location field is empty. Please fill in field to proceed.", Alert.AlertType.ERROR);
+            sendAlert("Location field is empty. Please fill in field to proceed.");
         } else if (graphYear.getText().equals("")) {
-            sendAlert("Year field is empty. Please fill in field to proceed.", Alert.AlertType.ERROR);
+            sendAlert("Year field is empty. Please fill in field to proceed.");
         }
         else
         {
@@ -267,9 +268,11 @@ public class MainScreenController implements IMainScreenController {
       allows the user to view the SubmitPurityReportScreen
      */
     public void submitPurityReport() {
+        //LocalSession.currentAuth = AuthorizationLevel.WORKER;
         if(LocalSession.currentAuth.equals(AuthorizationLevel.USER)) {
             submitWorkerReport.setText("Users do not have access");
-        } else {
+        }
+        else {
             try {
                 Stage stage = (Stage) logout.getScene().getWindow();
                 Parent root = FXMLLoader.load(getClass().getResource("/view/SubmitWorkerReportScreen.fxml"));
@@ -343,9 +346,9 @@ public class MainScreenController implements IMainScreenController {
     /**
      * sends the submission error message
      * @param message the message that should be printed as a String
-     * @param type the type of alert
+     *
      */
-    private void sendAlert(String message, Alert.AlertType type) {
+    private void sendAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Submission Error");
         alert.setHeaderText(null);

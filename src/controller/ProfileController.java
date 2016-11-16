@@ -58,7 +58,7 @@ public class ProfileController {
 
         auth.getSelectionModel().select(0);*/
 
-        User user = null;
+        User user;
         try {
             user = DatabaseFactory.getDatabase().getUser(LocalSession.currentUsername);
         } catch (DatabaseException e) {

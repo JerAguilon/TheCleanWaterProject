@@ -16,9 +16,11 @@ public class RegisterTest {
     TextField username;
 
     @FXML
+    private
     PasswordField password;
 
     @FXML
+    private
     PasswordField confirmPassword;
 
     @FXML

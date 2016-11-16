@@ -17,12 +17,12 @@ public class MongoDatabaseWrapper implements IDatabase {
     private final MongoUserManager userManager;
     private final MongoUserReportManager userReportManager;
     private final MongoWorkerReportManager workerReportManager;
-    public MongoDatabaseWrapper(String queryAddress) {
+    public MongoDatabaseWrapper() {
         //String QUERYADDRESS = queryAddress;
 
-        userManager = new MongoUserManager(queryAddress + "/api/users");
-        userReportManager = new MongoUserReportManager(queryAddress + "/api/userreports");
-        workerReportManager = new MongoWorkerReportManager(queryAddress + "/api/workerreports");
+        userManager = new MongoUserManager("http://localhost:8080" + "/api/users");
+        userReportManager = new MongoUserReportManager("http://localhost:8080" + "/api/userreports");
+        workerReportManager = new MongoWorkerReportManager("http://localhost:8080" + "/api/workerreports");
     }
 
 

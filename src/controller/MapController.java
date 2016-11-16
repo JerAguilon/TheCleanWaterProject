@@ -37,8 +37,6 @@ public class MapController implements Initializable, MapComponentInitializedList
 
     private GoogleMap map;
 
-    private GeocodingService geocodingService;
-
     private final StringProperty address = new SimpleStringProperty();
 
     @FXML
@@ -59,7 +57,7 @@ public class MapController implements Initializable, MapComponentInitializedList
     @Override
     public void mapInitialized() {
 
-        geocodingService = new GeocodingService();
+        GeocodingService geocodingService = new GeocodingService();
         MapOptions mapOptions = new MapOptions();
 
         mapOptions.center(new LatLong(33.749, -84.388))

@@ -8,7 +8,7 @@ import java.sql.SQLException;
  */
 class Connectable {
 
-    final Connection connection;
+    private final Connection connection;
 
     Connectable() {
         connection = SqliteConnection.connect();

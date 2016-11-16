@@ -67,6 +67,7 @@ public class LoginController implements ILoginController {
                     stage.show();
 
                     LocalSession.currentUsername = usernameBox.getText();
+                    System.out.println(LocalSession.currentUsername);
                     LocalSession.currentAuth = database.getUser(usernameBox.getText()).getAuthorizationLevel();
 
                 } catch(Exception e) {
