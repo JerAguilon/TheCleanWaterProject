@@ -89,17 +89,14 @@
          </Tab>
 
             <Tab text="Water Availability Map">
-               <content>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <center>
                         <Button fx:id="mapButton" mnemonicParsing="false" onAction="#openMap" text="Go to Map" BorderPane.alignment="CENTER" />
                      </center>
                   </BorderPane>
-               </content>
             </Tab>
 
          <Tab text="Create History Graph">
-         <content>
             <GridPane>
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
@@ -118,7 +115,7 @@
                <Button fx:id="displayGraph" text="Display Graph" GridPane.rowIndex="3" onAction="#displayGraph" />
                <!--</children>-->
             </GridPane>
-         </content></Tab>
+</Tab>
 
          <!--</tabs>-->
       </TabPane>
