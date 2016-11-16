@@ -44,7 +44,7 @@
                      <bottom>
                         <FlowPane BorderPane.alignment="CENTER">
                            <!--<children>-->
-                              <Button mnemonicParsing="false" onAction="#submitWaterReport" text="Submit Water Report" />
+                              <Button fx:id="submitUserReport" mnemonicParsing="false" onAction="#submitWaterReport" text="Submit Water Report" />
                            <!--</children>-->
                         </FlowPane>
                      </bottom>

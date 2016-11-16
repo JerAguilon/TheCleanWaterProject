@@ -80,6 +80,9 @@ public class MainScreenController implements IMainScreenController {
     ComboBox graphVirusContam;
 
     @FXML
+    Button submitUserReport;
+
+    @FXML
     Button displayGraph;
 
 // --Commented out by Inspection START (11/15/2016 4:47 PM):
@@ -233,6 +236,10 @@ public class MainScreenController implements IMainScreenController {
       allows the user to view the SubmitWaterReportScreen
      */
     public void submitWaterReport() {
+        if(!LocalSession.currentAuth.equals(AuthorizationLevel.USER)) {
+            submitUserReport.setText("Users do not have access");
+            return;
+        }
         try {
             Stage stage = (Stage) logout.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("/view/SubmitUserReportScreen.fxml"));
@@ -275,7 +282,7 @@ public class MainScreenController implements IMainScreenController {
      */
     public void submitPurityReport() {
         //LocalSession.currentAuth = AuthorizationLevel.WORKER;
-        if(LocalSession.currentAuth.equals(AuthorizationLevel.USER)) {
+        if(!LocalSession.currentAuth.equals(AuthorizationLevel.WORKER)) {
             submitWorkerReport.setText("Users do not have access");
         }
         else {
