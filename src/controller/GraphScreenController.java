@@ -4,6 +4,7 @@ import apploader.LocalSession;
 import database.DatabaseFactory;
 import database.responses.DatabaseException;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -57,7 +58,7 @@ public class GraphScreenController {
         } catch (DatabaseException ignored) {
 
         }
-        XYChart.Series series1 = new XYChart.Series();
+        XYChart.Series<String, Integer> series1 = new XYChart.Series<>();
 
         chart.getXAxis().setLabel("Month");
         chart.getYAxis().setLabel("PPM");
@@ -127,10 +128,10 @@ public class GraphScreenController {
 
         for(int i = 0; i < virusData.length; i++) {
             if(virusData[i] != -1) {
-                series1.getData().add(new XYChart.Data(months[i], virusData[i]));
+                series1.getData().add(new XYChart.Data<>(months[i], virusData[i]));
             }
             if(contamData[i] != -1) {
-                series1.getData().add(new XYChart.Data(months[i], contamData[i]));
+                series1.getData().add(new XYChart.Data<>(months[i], contamData[i]));
             }
         }
 
