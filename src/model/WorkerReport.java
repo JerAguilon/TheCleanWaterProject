@@ -97,7 +97,7 @@ public class WorkerReport extends Report {
      * Get method for the ConditionColumn
      * @return String that is what the user has inputted in as the water purity condition
      */
-    private String getConditionColumn() {
+    public String getConditionColumn() {
         return conditionColumnProperty.get();
     }
 

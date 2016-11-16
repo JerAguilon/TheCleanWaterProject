@@ -28,10 +28,8 @@ public class RegisterTest {
 
     @FXML
     ComboBox auth;
-
     @FXML
     TextField address;
-
     @FXML
     TextField title;
 

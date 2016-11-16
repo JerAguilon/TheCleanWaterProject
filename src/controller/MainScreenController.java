@@ -32,40 +32,40 @@ public class MainScreenController implements IMainScreenController {
     TableView<Report> userReportTable;
 
     @FXML
-    TableColumn dateColumn;
+    TableColumn<Report,String> dateColumn;
 
     @FXML
-    TableColumn locationColumn;
+    TableColumn<Report, String> locationColumn;
 
     @FXML
-    TableColumn idColumn;
+    TableColumn<Report, String> idColumn;
 
     @FXML
-    TableColumn typeColumn;
+    TableColumn<Report, String> typeColumn;
 
     @FXML
-    TableColumn conditionColumn;
+    TableColumn<Report, String> conditionColumn;
 
     @FXML
-    TableColumn usernameColumn;
+    TableColumn<Report, String> usernameColumn;
 
     @FXML
     TableView<Report> workerReportTable;
 
     @FXML
-    TableColumn dateCol;
+    TableColumn<Report, String> dateCol;
 
     @FXML
-    TableColumn locationCol;
+    TableColumn<Report, String> locationCol;
 
     @FXML
-    TableColumn idCol;
+    TableColumn<Report, String> idCol;
 
     @FXML
-    TableColumn conditionCol;
+    TableColumn<Report, String> conditionCol;
 
     @FXML
-    TableColumn usernameCol;
+    TableColumn<Report, String> usernameCol;
 
     @FXML
     Button submitWorkerReport;
@@ -89,10 +89,10 @@ public class MainScreenController implements IMainScreenController {
 // --Commented out by Inspection STOP (11/15/2016 4:47 PM)
 
     @FXML
-    TableColumn contaminantPPMColumn;
+    TableColumn<Report, Integer> contaminantPPMColumn;
 
     @FXML
-    TableColumn virusPPMColumn;
+    TableColumn<Report, Integer> virusPPMColumn;
 
     /**
      * allow the user to logout and go to the welcome screen again
@@ -259,12 +259,12 @@ public class MainScreenController implements IMainScreenController {
     private void populateWaterReportsList() {
         Collection<UserReport> reports = getReports();
 
-        idColumn.setCellValueFactory(new PropertyValueFactory<UserReport, Long>("idColumn"));
-        locationColumn.setCellValueFactory(new PropertyValueFactory<UserReport, String>("locationColumn"));
-        dateColumn.setCellValueFactory(new PropertyValueFactory<UserReport, String>("dateColumn"));
-        typeColumn.setCellValueFactory(new PropertyValueFactory<UserReport, String>("typeColumn"));
-        conditionColumn.setCellValueFactory(new PropertyValueFactory<UserReport, String>("conditionColumn"));
-        usernameColumn.setCellValueFactory(new PropertyValueFactory<UserReport, String>("usernameColumn"));
+        idColumn.setCellValueFactory(new PropertyValueFactory<Report, String>("idColumn"));
+        locationColumn.setCellValueFactory(new PropertyValueFactory<Report, String>("locationColumn"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<Report, String>("dateColumn"));
+        typeColumn.setCellValueFactory(new PropertyValueFactory<Report, String>("typeColumn"));
+        conditionColumn.setCellValueFactory(new PropertyValueFactory<Report, String>("conditionColumn"));
+        usernameColumn.setCellValueFactory(new PropertyValueFactory<Report, String>("usernameColumn"));
 
         userReportTable.getItems().setAll(reports);
     }
@@ -301,13 +301,13 @@ public class MainScreenController implements IMainScreenController {
         Collection<WorkerReport> reports = getPurityReports();
 
         System.out.println(reports);
-        idCol.setCellValueFactory(new PropertyValueFactory<WorkerReport, Long>("idColumn"));
-        locationCol.setCellValueFactory(new PropertyValueFactory<WorkerReport, String>("locationColumn"));
-        dateCol.setCellValueFactory(new PropertyValueFactory<WorkerReport, String>("dateColumn"));
-        conditionCol.setCellValueFactory(new PropertyValueFactory<WorkerReport, String>("conditionColumn"));
-        usernameCol.setCellValueFactory(new PropertyValueFactory<WorkerReport, String>("usernameColumn"));
-        contaminantPPMColumn.setCellValueFactory(new PropertyValueFactory<WorkerReport, Integer>("contaminantPPMColumn"));
-        virusPPMColumn.setCellValueFactory(new PropertyValueFactory<WorkerReport, Integer>("virusPPMColumn"));
+        idCol.setCellValueFactory(new PropertyValueFactory<>("idColumn"));
+        locationCol.setCellValueFactory(new PropertyValueFactory<>("locationColumn"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("dateColumn"));
+        conditionCol.setCellValueFactory(new PropertyValueFactory<>("conditionColumn"));
+        usernameCol.setCellValueFactory(new PropertyValueFactory<>("usernameColumn"));
+        contaminantPPMColumn.setCellValueFactory(new PropertyValueFactory<>("contaminantPPMColumn"));
+        virusPPMColumn.setCellValueFactory(new PropertyValueFactory<>("virusPPMColumn"));
 
 
         workerReportTable.getItems().setAll(reports);
